@@ -35,55 +35,73 @@
                                                         <constraint firstAttribute="width" constant="65" id="nXK-EP-64J"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Hn-4v-K4l">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Hn-4v-K4l">
                                                     <rect key="frame" x="81" y="33" width="83" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="83" id="38d-PE-ymP"/>
+                                                        <constraint firstAttribute="height" constant="15" id="RZx-4Z-rLQ"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Restaurant name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLv-Kg-SjF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="1. Restaurant name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLv-Kg-SjF">
                                                     <rect key="frame" x="81" y="8" width="132.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knd-5V-Thz">
-                                                    <rect key="frame" x="293" y="33" width="17" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="0.07mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPG-Ze-P7Q">
+                                                    <rect key="frame" x="274" y="8" width="38" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knd-5V-Thz">
+                                                    <rect key="frame" x="296" y="30" width="16" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thai" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gy-91-jTw">
+                                                    <rect key="frame" x="81" y="74" width="26.5" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="880 oak street" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xd-eI-mZn">
-                                                    <rect key="frame" x="81" y="49" width="89" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gy-91-jTw">
-                                                    <rect key="frame" x="81" y="67" width="27" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20 reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmX-CA-oy8">
-                                                    <rect key="frame" x="172" y="30" width="84" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmX-CA-oy8">
+                                                    <rect key="frame" x="172" y="33" width="65.5" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.07mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPG-Ze-P7Q">
-                                                    <rect key="frame" x="268" y="9" width="44" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="880 oak street" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xd-eI-mZn">
+                                                    <rect key="frame" x="81" y="53" width="89" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="EPG-Ze-P7Q" secondAttribute="trailing" constant="8" id="56t-sF-Wlm"/>
                                                 <constraint firstItem="MLv-Kg-SjF" firstAttribute="leading" secondItem="Its-11-9Qv" secondAttribute="trailing" constant="8" id="Eqy-Gc-bz1"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="8gy-91-jTw" secondAttribute="bottom" constant="8" id="G9g-7j-Fjg"/>
+                                                <constraint firstItem="3Xd-eI-mZn" firstAttribute="top" secondItem="7Hn-4v-K4l" secondAttribute="bottom" constant="5" id="GRv-aM-RbQ"/>
                                                 <constraint firstItem="MLv-Kg-SjF" firstAttribute="top" secondItem="vjW-7X-Bg9" secondAttribute="top" constant="8" id="I0R-tC-7po"/>
                                                 <constraint firstItem="EPG-Ze-P7Q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MLv-Kg-SjF" secondAttribute="trailing" constant="8" id="JcE-hb-lpQ"/>
-                                                <constraint firstItem="EPG-Ze-P7Q" firstAttribute="baseline" secondItem="MLv-Kg-SjF" secondAttribute="baseline" id="Xuy-2z-nzS"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8gy-91-jTw" secondAttribute="trailing" constant="8" id="Jrb-VZ-4h7"/>
+                                                <constraint firstItem="knd-5V-Thz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hmX-CA-oy8" secondAttribute="trailing" constant="8" id="Ka9-7u-ZhA"/>
+                                                <constraint firstItem="7Hn-4v-K4l" firstAttribute="top" secondItem="MLv-Kg-SjF" secondAttribute="bottom" constant="8" id="NMS-2M-X1t"/>
+                                                <constraint firstItem="hmX-CA-oy8" firstAttribute="leading" secondItem="7Hn-4v-K4l" secondAttribute="trailing" constant="8" id="NS6-1a-YB4"/>
+                                                <constraint firstItem="8gy-91-jTw" firstAttribute="leading" secondItem="7Hn-4v-K4l" secondAttribute="leading" id="Slu-x3-RxY"/>
+                                                <constraint firstItem="7Hn-4v-K4l" firstAttribute="leading" secondItem="Its-11-9Qv" secondAttribute="trailing" constant="8" id="Uke-ts-1bc"/>
                                                 <constraint firstItem="Its-11-9Qv" firstAttribute="top" secondItem="vjW-7X-Bg9" secondAttribute="top" constant="8" id="dfo-j8-90F"/>
+                                                <constraint firstAttribute="trailing" secondItem="knd-5V-Thz" secondAttribute="trailing" constant="8" id="dsu-Fg-2kN"/>
+                                                <constraint firstItem="hmX-CA-oy8" firstAttribute="centerY" secondItem="7Hn-4v-K4l" secondAttribute="centerY" id="fQi-Mm-1Y0"/>
+                                                <constraint firstItem="8gy-91-jTw" firstAttribute="top" secondItem="3Xd-eI-mZn" secondAttribute="bottom" constant="5" id="gd1-p4-g79"/>
+                                                <constraint firstItem="knd-5V-Thz" firstAttribute="top" secondItem="EPG-Ze-P7Q" secondAttribute="bottom" constant="8" id="hSy-1R-JzW"/>
                                                 <constraint firstItem="Its-11-9Qv" firstAttribute="leading" secondItem="vjW-7X-Bg9" secondAttribute="leading" constant="8" id="nYu-Vf-OdR"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3Xd-eI-mZn" secondAttribute="trailing" constant="8" id="qah-Wq-ggR"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Its-11-9Qv" secondAttribute="bottom" constant="8" id="sFC-41-TV2"/>
+                                                <constraint firstItem="3Xd-eI-mZn" firstAttribute="leading" secondItem="7Hn-4v-K4l" secondAttribute="leading" id="uGj-FU-QAB"/>
+                                                <constraint firstItem="EPG-Ze-P7Q" firstAttribute="top" secondItem="vjW-7X-Bg9" secondAttribute="top" constant="8" id="v9Z-fe-KnQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
