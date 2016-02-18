@@ -21,18 +21,39 @@ class BusinessCell: UITableViewCell {
     
     var row: Int! {
         didSet {
-            nameLabel.text = "\(self.row + 1). \(business.name)"
+            if let row = self.row, bname = business.name {
+                nameLabel.text = "\(row + 1). \(bname)"
+            }
         }
     }
     
     var business: Business! {
         didSet {
-            thumbImageView.setImageWithURL(business.imageURL!)
-            ratingImageView.setImageWithURL(business.ratingImageURL!)
-            distanceLabel.text = business.distance
-            reviewCountLabel.text = "\(business.reviewCount!) Reviews"
-            addressLabel.text = business.address
-            categoryLabel.text = business.categories
+            
+            if let imageURL = self.business.imageURL {
+                self.thumbImageView.setImageWithURL(imageURL)
+            }
+            
+            if let imageURL = self.business.ratingImageURL {
+                self.ratingImageView.setImageWithURL(imageURL)
+            }
+            
+            if let distance = self.business.distance {
+                self.distanceLabel.text = distance
+            }
+            
+            if let count = self.business.reviewCount {
+                self.reviewCountLabel.text = "\(count) Reviews"
+            }
+            
+            if let address = self.business.address {
+                addressLabel.text = address
+            }
+            
+            if let cat = self.business.categories {
+                categoryLabel.text = cat
+            }
+            
         }
     }
     
