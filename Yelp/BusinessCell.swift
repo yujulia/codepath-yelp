@@ -53,7 +53,6 @@ class BusinessCell: UITableViewCell {
             if let cat = self.business.categories {
                 categoryLabel.text = cat
             }
-            
         }
     }
     
@@ -62,6 +61,9 @@ class BusinessCell: UITableViewCell {
         
         self.thumbImageView.layer.cornerRadius = 3
         self.thumbImageView.clipsToBounds = true
+        self.preservesSuperviewLayoutMargins = false
+        self.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0)
+        self.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

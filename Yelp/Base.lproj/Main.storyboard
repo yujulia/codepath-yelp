@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="100" id="VmK-88-PfL" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="BusinessCell" rowHeight="100" id="VmK-88-PfL" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VmK-88-PfL" id="vjW-7X-Bg9">
@@ -104,6 +104,7 @@
                                                 <constraint firstItem="EPG-Ze-P7Q" firstAttribute="top" secondItem="vjW-7X-Bg9" secondAttribute="top" constant="8" id="v9Z-fe-KnQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="addressLabel" destination="3Xd-eI-mZn" id="kgk-zD-3Xv"/>
                                             <outlet property="categoryLabel" destination="8gy-91-jTw" id="0FD-PL-7ln"/>

@@ -21,6 +21,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 120
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
 
         Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
