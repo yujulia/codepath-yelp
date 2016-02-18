@@ -61,7 +61,7 @@ class BusinessCell: UITableViewCell {
         
         self.thumbImageView.layer.cornerRadius = 3
         self.thumbImageView.clipsToBounds = true
-        self.preservesSuperviewLayoutMargins = false
+
         self.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0)
         self.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
