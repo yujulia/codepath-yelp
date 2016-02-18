@@ -135,6 +135,64 @@
             </objects>
             <point key="canvasLocation" x="1485" y="338"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="7wa-xs-Q6m">
+            <objects>
+                <viewController id="qSZ-KX-q3U" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OQw-I6-bKa"/>
+                        <viewControllerLayoutGuide type="bottom" id="liw-Qp-Ybi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CoV-i0-i6k">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Css-kY-gsM">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" rowHeight="88" id="TLg-LU-LnX">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="88"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TLg-LU-LnX" id="XYD-Za-6RL">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="87.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEJ-RM-1GU">
+                                                    <rect key="frame" x="20" y="33" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VnE-Q9-JTm">
+                                                    <rect key="frame" x="251" y="28" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VnE-Q9-JTm" firstAttribute="centerY" secondItem="XYD-Za-6RL" secondAttribute="centerY" id="AZV-WB-ax9"/>
+                                                <constraint firstItem="VnE-Q9-JTm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hEJ-RM-1GU" secondAttribute="trailing" constant="20" id="D4w-LO-xpN"/>
+                                                <constraint firstItem="hEJ-RM-1GU" firstAttribute="leading" secondItem="XYD-Za-6RL" secondAttribute="leading" constant="20" id="HAa-1L-nf0"/>
+                                                <constraint firstAttribute="trailing" secondItem="VnE-Q9-JTm" secondAttribute="trailing" constant="20" id="IBU-jE-Iam"/>
+                                                <constraint firstItem="hEJ-RM-1GU" firstAttribute="centerY" secondItem="XYD-Za-6RL" secondAttribute="centerY" id="QTf-OK-mgU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Css-kY-gsM" secondAttribute="trailing" id="PxZ-Vk-bcD"/>
+                            <constraint firstItem="Css-kY-gsM" firstAttribute="top" secondItem="CoV-i0-i6k" secondAttribute="top" id="ZrG-pB-XvR"/>
+                            <constraint firstItem="liw-Qp-Ybi" firstAttribute="top" secondItem="Css-kY-gsM" secondAttribute="bottom" id="dbG-nJ-0fc"/>
+                            <constraint firstItem="Css-kY-gsM" firstAttribute="leading" secondItem="CoV-i0-i6k" secondAttribute="leading" id="os3-HE-Qqz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kcz-Zf-LVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1856" y="337"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="1yn-hE-Kyj">
             <objects>
