@@ -23,7 +23,9 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     weak var delegate: FiltersViewControllerDelegate?
     
     var categories: [[String:String]]!
+    
     var switchStates = [Int:Bool]()
+    
     var filterSections: [String]!
     
     override func viewDidLoad() {
@@ -33,8 +35,9 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 120
-        self.categories = Helpers.getCategories()
+        self.categories = Helpers.Categories
         self.filterSections = Helpers.FilterSections
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,20 +52,22 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     @IBAction func onSearch(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
         
-        var filters = [String:AnyObject]()
-        var selectedCat = [String]()
-        
-        for (row, isSelected) in switchStates {
-            if isSelected {
-                selectedCat.append(self.categories[row]["code"]!)
-            }
-        }
-        
-        if selectedCat.count > 0 {
-            filters["categories"] = selectedCat
-        }
-        
-        delegate?.filtersViewController?(self, didUpdateFilters: filters)
+//        var filters = [String:AnyObject]()
+//        var selectedCat = [String]()
+//        
+//        for (row, isSelected) in switchStates {
+//            if isSelected {
+//                
+//                
+//                selectedCat.append(self.categories[row]["code"]!)
+//            }
+//        }
+//        
+//        if selectedCat.count > 0 {
+//            filters["categories"] = selectedCat
+//        }
+//        
+//        delegate?.filtersViewController?(self, didUpdateFilters: filters)
     }
 }
 
@@ -73,7 +78,11 @@ extension FiltersViewController: SwitchCellDelegate {
     func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
         
         let indexPath = self.tableView.indexPathForCell(switchCell)!
-        self.switchStates[indexPath.row] = value
+        
+        let multi = indexPath.section * 10
+        let index = multi + indexPath.row
+        
+        self.switchStates[index] = value
         
     }
 }
@@ -153,14 +162,33 @@ extension FiltersViewController: UITableViewDelegate {
             
             cell.switchLabel.text = self.categories[indexPath.row]["name"]
             cell.delegate = self
-            cell.onSwitch.on = switchStates[indexPath.row] ?? false
+            
+            let multi = indexPath.section * 10
+            let index = multi + indexPath.row
+            
+            print("access index", index)
+            cell.onSwitch.on = switchStates[index] ?? false
+
+//            cell.onSwitch.on = switchStates[indexPath.row] ?? false
             
             return cell
             
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
             
+            let multi = indexPath.section * 10
+            let index = multi + indexPath.row
+            
+            print("access index", index)
+            
+            cell.switchLabel.text = "special snow flake"
+            
+            cell.onSwitch.on = switchStates[index] ?? false
+            
+            //            cell.onSwitch.on = switchStates[indexPath.row] ?? false
+            
             return cell
+
         }
     
     }

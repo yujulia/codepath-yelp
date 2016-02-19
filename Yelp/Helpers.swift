@@ -10,11 +10,11 @@ import Foundation
 
 class Helpers {
     
-    static var FilterSections = ["Deals", "Distance", "Sort By", "Categories"]
+    static let SortOptions = ["First", "Distance", "Highest Rated"]
     
-    static func getCategories() -> [[String:String]] {
-        
-        let categories = [["name" : "Afghan", "code": "afghani"],
+    static let FilterSections = ["Deals", "Distance", "Sort By", "Categories"]
+    
+    static let Categories = [["name" : "Afghan", "code": "afghani"],
             ["name" : "African", "code": "african"],
             ["name" : "American, New", "code": "newamerican"],
             ["name" : "American, Traditional", "code": "tradamerican"],
@@ -184,6 +184,4 @@ class Helpers {
             ["name" : "Wraps", "code": "wraps"],
             ["name" : "Yugoslav", "code": "yugoslav"]]
         
-        return categories
-    }
 }
