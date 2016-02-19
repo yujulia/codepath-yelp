@@ -69,6 +69,8 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
             filters["categories"] = selectedCat
         }
         
+        // ----------- check deals
+        
         if let hasDeal = dealStates[0] {
             if hasDeal {
                 filters["deals"] = true
@@ -90,7 +92,6 @@ extension FiltersViewController: SwitchCellDelegate {
         
         let indexPath = self.tableView.indexPathForCell(switchCell)!
         
-        print("switch delegate", indexPath)
         if indexPath.section == 0 {
             self.dealStates[indexPath.row] = value
         }
@@ -98,6 +99,20 @@ extension FiltersViewController: SwitchCellDelegate {
             self.catStates[indexPath.row] = value
         }
         
+    }
+}
+
+
+// ---------------------------- SliderCell delegate
+
+extension FiltersViewController: SliderCellDelegate {
+    
+    func sliderCell(sliderCell: SliderCell, didChangeValue value: Float) {
+        print("filters heard slider change", value)
+        
+//         let indexPath = self.tableView.indexPathForCell(sliderCell)!
+        
+        // inform search i guess?
         
     }
 }
@@ -163,6 +178,9 @@ extension FiltersViewController: UITableViewDelegate {
         
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("SliderCell", forIndexPath: indexPath) as! SliderCell
+            
+            cell.sliderLabel.text = "Within \(cell.slider.value) Miles"
+            cell.delegate = self
             
             return cell
             

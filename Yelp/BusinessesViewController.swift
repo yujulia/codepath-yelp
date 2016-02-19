@@ -77,8 +77,6 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
         let categories = filters["categories"] as? [String]
         let deals = filters["deals"] as? Bool
         
-        print("deals is" , deals)
-        
         Business.searchWithTerm(
             "Restaurants",
             sort: nil,

@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol SliderCellDelegate {
-    optional func sliderCell(sliderCell: SliderCell, didChangeValue value: Bool)
+    optional func sliderCell(sliderCell: SliderCell, didChangeValue value: Float)
 }
 
 class SliderCell: UITableViewCell {
@@ -31,7 +31,9 @@ class SliderCell: UITableViewCell {
     
     func sliderValueChanged() {
         print("slider value changed", slider.value)
-//        delegate?.sliderCell?(self, didChangeValue: self.onSwitch.on)
+        
+        self.sliderLabel.text = ""
+        delegate?.sliderCell?(self, didChangeValue: self.slider.value)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
