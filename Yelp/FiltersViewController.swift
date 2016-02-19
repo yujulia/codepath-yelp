@@ -105,6 +105,11 @@ extension FiltersViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
+        if section == 0 {
+            let emptyHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+            return emptyHeaderView
+        }
+        
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
         headerView.backgroundColor = UIColor.lightGrayColor()
         
@@ -121,6 +126,9 @@ extension FiltersViewController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0
+        }
         return 30
     }
     
@@ -128,6 +136,18 @@ extension FiltersViewController: UITableViewDelegate {
    
 
         switch indexPath.section {
+        
+        case 1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SliderCell", forIndexPath: indexPath) as! SliderCell
+            
+            return cell
+            
+        case 2:
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("SegmentCell", forIndexPath: indexPath) as! SegmentCell
+            
+            return cell
+            
         case 3:
             let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
             
@@ -136,30 +156,12 @@ extension FiltersViewController: UITableViewDelegate {
             cell.onSwitch.on = switchStates[indexPath.row] ?? false
             
             return cell
-        case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
             
-//            cell.switchLabel.text = self.categories[indexPath.row]["name"]
-//            cell.delegate = self
-//            cell.onSwitch.on = switchStates[indexPath.row] ?? false
-            
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("SliderCell", forIndexPath: indexPath) as! SliderCell
-            
-            return cell
-            
-        case 2:
-            
-            let cell = tableView.dequeueReusableCellWithIdentifier("PickerCell", forIndexPath: indexPath) as! PickerCell
-            
-            return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("SliderCell", forIndexPath: indexPath) as! SliderCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
             
             return cell
         }
-        
-        
+    
     }
 }
