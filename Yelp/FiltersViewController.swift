@@ -179,7 +179,9 @@ extension FiltersViewController: UITableViewDelegate {
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("SliderCell", forIndexPath: indexPath) as! SliderCell
             
-            cell.sliderLabel.text = "Within \(cell.slider.value) Miles"
+            cell.sliderLabel.text = String(Int(cell.slider.value))
+            cell.beforeLabel.text = "Within "
+            cell.afterLabel.text = " Miles"
             cell.delegate = self
             
             return cell

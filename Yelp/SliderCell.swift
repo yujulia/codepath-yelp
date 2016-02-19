@@ -16,6 +16,8 @@ class SliderCell: UITableViewCell {
     
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var sliderLabel: UILabel!
+    @IBOutlet weak var afterLabel: UILabel!
+    @IBOutlet weak var beforeLabel: UILabel!
     
     weak var delegate: SliderCellDelegate?
 
@@ -30,9 +32,8 @@ class SliderCell: UITableViewCell {
     }
     
     func sliderValueChanged() {
-        print("slider value changed", slider.value)
-        
-        self.sliderLabel.text = ""
+
+        self.sliderLabel.text = String(Int(self.slider.value))
         delegate?.sliderCell?(self, didChangeValue: self.slider.value)
     }
 
