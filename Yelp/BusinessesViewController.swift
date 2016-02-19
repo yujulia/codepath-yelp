@@ -15,9 +15,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     var businesses: [Business]!
     var searchBar: UISearchBar!
     var previousSearch = ""
+    var state: YelpState!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.state = YelpState()
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -30,6 +33,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         searchBar.sizeToFit()
         self.navigationItem.titleView = searchBar
         
+        
 //        searchBar.backgroundColor = UIColor.blackColor()
 //        searchBar.barTintColor = UIColor.blackColor()
 //        searchBar.translucent = false
@@ -39,10 +43,10 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
             self.businesses = businesses
             self.tableView.reloadData()
         
-            for business in businesses {
-                print(business.name!)
+//            for business in businesses {
+//                print(business.name!)
 //                print(business.address!)
-            }
+//            }
         })
 
 /* Example of Yelp search with more search options specified
@@ -67,6 +71,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         let filterViewController = navController.topViewController as! FiltersViewController
         
         filterViewController.delegate = self
+        filterViewController.state = self.state
     }
 }
 
@@ -76,7 +81,10 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
         
         let categories = filters["categories"] as? [String]
         let deals = filters["deals"] as? Bool
-        let distance = filters["distance"] as? Float
+        
+//        let distance = filters["distance"] as? Float 
+        
+        let distance = self.state.getDistance()
         
         Business.searchWithTerm(
             "Restaurants",

@@ -21,6 +21,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
     weak var delegate: FiltersViewControllerDelegate?
+    weak var state: YelpState?
     
     var filters = [String:AnyObject]()
     var categories: [[String:String]]!
@@ -28,7 +29,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     var dealStates = [Int:Bool]()
     var catStates = [Int:Bool]()
     
-    var distance: Float = 1000.00
+
     
     var filterSections: [String]!
     
@@ -80,9 +81,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
                 filters["deals"] = false
             }
         }
-        
-        // ----------- search 
-        filters["distance"] = self.distance
+
     
         delegate?.filtersViewController?(self, didUpdateFilters: filters)
         
@@ -113,7 +112,11 @@ extension FiltersViewController: SwitchCellDelegate {
 extension FiltersViewController: SliderCellDelegate {
     
     func sliderCell(sliderCell: SliderCell, didChangeValue value: Float) {
-        self.distance = value * Float(1609.34)
+
+        if let state = self.state {
+            state.setDistance(value)
+        }
+        
     }
 }
 
@@ -188,7 +191,7 @@ extension FiltersViewController: UITableViewDelegate {
             
         case 2:
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("SegmentCell", forIndexPath: indexPath) as! SegmentCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("DropCell", forIndexPath: indexPath) as! DropCell
             
             return cell
             

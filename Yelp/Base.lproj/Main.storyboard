@@ -240,44 +240,33 @@
                                             <outlet property="sliderLabel" destination="z9a-KW-vlL" id="BNy-eS-ibR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentCell" rowHeight="106" id="OIP-G1-aKO" customClass="SegmentCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="306" width="320" height="106"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DropCell" id="DWO-wS-S7d" customClass="DropCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="306" width="320" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OIP-G1-aKO" id="Qfq-Au-Iuu">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="105.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DWO-wS-S7d" id="ePI-yb-HSP">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Segment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSN-m5-wjd">
-                                                    <rect key="frame" x="20" y="20" width="61.5" height="27.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NtQ-Jg-PMg">
+                                                    <rect key="frame" x="20" y="20.5" width="280" height="47.5"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhn-PF-Hhb">
+                                                    <rect key="frame" x="40" y="20" width="110.5" height="47.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2LE-Q4-Jcq">
-                                                    <rect key="frame" x="20" y="57.5" width="280" height="29"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="28" id="VKB-7M-yiL"/>
-                                                    </constraints>
-                                                    <segments>
-                                                        <segment title="First"/>
-                                                        <segment title="Distance"/>
-                                                        <segment title="Highest Rated"/>
-                                                    </segments>
-                                                </segmentedControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="LSN-m5-wjd" firstAttribute="leading" secondItem="Qfq-Au-Iuu" secondAttribute="leading" constant="20" id="9DP-0I-nel"/>
-                                                <constraint firstItem="2LE-Q4-Jcq" firstAttribute="leading" secondItem="Qfq-Au-Iuu" secondAttribute="leading" constant="20" id="JHb-gX-vj2"/>
-                                                <constraint firstItem="2LE-Q4-Jcq" firstAttribute="top" secondItem="LSN-m5-wjd" secondAttribute="bottom" constant="10" id="X4r-DN-vGU"/>
-                                                <constraint firstAttribute="bottom" secondItem="2LE-Q4-Jcq" secondAttribute="bottom" constant="20" id="YpR-Ua-xa3"/>
-                                                <constraint firstItem="LSN-m5-wjd" firstAttribute="top" secondItem="Qfq-Au-Iuu" secondAttribute="top" constant="20" id="hfm-4w-hVG"/>
-                                                <constraint firstAttribute="trailing" secondItem="2LE-Q4-Jcq" secondAttribute="trailing" constant="20" id="puB-R1-P3C"/>
+                                                <constraint firstAttribute="bottom" secondItem="NtQ-Jg-PMg" secondAttribute="bottom" constant="20" id="DK6-UP-mRQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="dhn-PF-Hhb" secondAttribute="bottom" constant="20" id="NDC-FX-Qtb"/>
+                                                <constraint firstItem="NtQ-Jg-PMg" firstAttribute="top" secondItem="ePI-yb-HSP" secondAttribute="top" constant="20" id="Owm-nR-b2P"/>
+                                                <constraint firstItem="NtQ-Jg-PMg" firstAttribute="leading" secondItem="ePI-yb-HSP" secondAttribute="leading" constant="20" id="YbY-F4-bwM"/>
+                                                <constraint firstItem="dhn-PF-Hhb" firstAttribute="top" secondItem="ePI-yb-HSP" secondAttribute="top" constant="20" id="fId-JC-i6M"/>
+                                                <constraint firstAttribute="trailing" secondItem="NtQ-Jg-PMg" secondAttribute="trailing" constant="20" id="nfG-JS-TD1"/>
+                                                <constraint firstItem="dhn-PF-Hhb" firstAttribute="leading" secondItem="ePI-yb-HSP" secondAttribute="leading" constant="40" id="twg-QN-0Hx"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="segmentControl" destination="2LE-Q4-Jcq" id="Vir-LN-qML"/>
-                                            <outlet property="segmentLabel" destination="LSN-m5-wjd" id="dVe-OI-U9H"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
