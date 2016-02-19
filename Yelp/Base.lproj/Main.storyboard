@@ -153,7 +153,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Css-kY-gsM">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Css-kY-gsM">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -165,21 +165,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEJ-RM-1GU">
-                                                    <rect key="frame" x="20" y="33" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="20" y="35" width="37.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VnE-Q9-JTm">
-                                                    <rect key="frame" x="251" y="28" width="51" height="31"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VnE-Q9-JTm">
+                                                    <rect key="frame" x="251" y="20" width="51" height="47.5"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VnE-Q9-JTm" firstAttribute="centerY" secondItem="XYD-Za-6RL" secondAttribute="centerY" id="AZV-WB-ax9"/>
-                                                <constraint firstItem="VnE-Q9-JTm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hEJ-RM-1GU" secondAttribute="trailing" constant="20" id="D4w-LO-xpN"/>
-                                                <constraint firstItem="hEJ-RM-1GU" firstAttribute="leading" secondItem="XYD-Za-6RL" secondAttribute="leading" constant="20" id="HAa-1L-nf0"/>
-                                                <constraint firstAttribute="trailing" secondItem="VnE-Q9-JTm" secondAttribute="trailing" constant="20" id="IBU-jE-Iam"/>
-                                                <constraint firstItem="hEJ-RM-1GU" firstAttribute="centerY" secondItem="XYD-Za-6RL" secondAttribute="centerY" id="QTf-OK-mgU"/>
+                                                <constraint firstAttribute="bottom" secondItem="VnE-Q9-JTm" secondAttribute="bottom" constant="20" id="E8T-Im-3n5"/>
+                                                <constraint firstItem="VnE-Q9-JTm" firstAttribute="top" secondItem="XYD-Za-6RL" secondAttribute="top" constant="20" id="Ji8-lf-use"/>
+                                                <constraint firstItem="VnE-Q9-JTm" firstAttribute="centerY" secondItem="hEJ-RM-1GU" secondAttribute="centerY" id="RYI-R1-zEG"/>
+                                                <constraint firstItem="hEJ-RM-1GU" firstAttribute="leading" secondItem="XYD-Za-6RL" secondAttribute="leading" constant="20" id="mDi-c5-oaj"/>
+                                                <constraint firstAttribute="trailing" secondItem="VnE-Q9-JTm" secondAttribute="trailing" constant="20" id="tjU-uX-dI2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -187,32 +187,33 @@
                                             <outlet property="switchLabel" destination="hEJ-RM-1GU" id="MFl-T4-rK8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" rowHeight="108" id="Bbq-JJ-612" customClass="SliderCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="180" width="320" height="108"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="SliderCell" rowHeight="126" id="Bbq-JJ-612" customClass="SliderCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="180" width="320" height="126"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bbq-JJ-612" id="wt0-PT-kep">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="107.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="125.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tbK-mo-il9">
-                                                    <rect key="frame" x="18" y="48.5" width="284" height="40"/>
-                                                </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9a-KW-vlL">
-                                                    <rect key="frame" x="20" y="20" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slider" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9a-KW-vlL">
+                                                    <rect key="frame" x="20" y="20" width="39.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tbK-mo-il9">
+                                                    <rect key="frame" x="18" y="48" width="284" height="58"/>
+                                                </slider>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="z9a-KW-vlL" firstAttribute="leading" secondItem="wt0-PT-kep" secondAttribute="leading" constant="20" id="AXA-rI-aLm"/>
-                                                <constraint firstItem="tbK-mo-il9" firstAttribute="leading" secondItem="wt0-PT-kep" secondAttribute="leading" constant="20" id="Gb2-Yd-HIr"/>
-                                                <constraint firstItem="z9a-KW-vlL" firstAttribute="top" secondItem="wt0-PT-kep" secondAttribute="top" constant="20" id="Vgc-0w-f9q"/>
-                                                <constraint firstAttribute="bottom" secondItem="tbK-mo-il9" secondAttribute="bottom" constant="20" id="Zh7-Mk-vRj"/>
-                                                <constraint firstItem="tbK-mo-il9" firstAttribute="top" secondItem="z9a-KW-vlL" secondAttribute="bottom" constant="8" id="aC1-il-4av"/>
-                                                <constraint firstAttribute="trailing" secondItem="tbK-mo-il9" secondAttribute="trailing" constant="20" id="as0-Li-yBU"/>
+                                                <constraint firstAttribute="bottom" secondItem="tbK-mo-il9" secondAttribute="bottom" constant="20" id="5WQ-VQ-yxG"/>
+                                                <constraint firstAttribute="trailing" secondItem="tbK-mo-il9" secondAttribute="trailing" constant="20" id="DVg-FD-WvW"/>
+                                                <constraint firstItem="tbK-mo-il9" firstAttribute="leading" secondItem="wt0-PT-kep" secondAttribute="leading" constant="20" id="Fms-bz-Y5A"/>
+                                                <constraint firstItem="z9a-KW-vlL" firstAttribute="top" secondItem="wt0-PT-kep" secondAttribute="top" constant="20" id="Ytj-iB-26O"/>
+                                                <constraint firstItem="tbK-mo-il9" firstAttribute="top" secondItem="z9a-KW-vlL" secondAttribute="bottom" constant="10" id="cla-aS-msU"/>
+                                                <constraint firstItem="z9a-KW-vlL" firstAttribute="leading" secondItem="wt0-PT-kep" secondAttribute="leading" constant="20" id="iDd-W4-gGw"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="slider" destination="tbK-mo-il9" id="CMz-ob-6Wi"/>
                                             <outlet property="sliderLabel" destination="z9a-KW-vlL" id="BNy-eS-ibR"/>
@@ -222,12 +223,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Css-kY-gsM" secondAttribute="trailing" id="PxZ-Vk-bcD"/>
-                            <constraint firstItem="Css-kY-gsM" firstAttribute="top" secondItem="CoV-i0-i6k" secondAttribute="top" id="ZrG-pB-XvR"/>
-                            <constraint firstItem="liw-Qp-Ybi" firstAttribute="top" secondItem="Css-kY-gsM" secondAttribute="bottom" id="dbG-nJ-0fc"/>
-                            <constraint firstItem="Css-kY-gsM" firstAttribute="leading" secondItem="CoV-i0-i6k" secondAttribute="leading" id="os3-HE-Qqz"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="0P5-gt-DYF">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="WC2-ng-nMD">

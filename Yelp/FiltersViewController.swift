@@ -32,6 +32,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 120
         self.categories = Helpers.getCategories()
         self.filterSections = Helpers.FilterSections
     }
@@ -104,7 +105,7 @@ extension FiltersViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
         headerView.backgroundColor = UIColor.lightGrayColor()
         
         let sectionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 280, height: 30))
