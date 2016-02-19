@@ -10,6 +10,14 @@ import Foundation
 
 class Helpers {
     
+    enum SortBy {
+        case First, Distance, Rated
+    }
+    
+    enum Sections {
+        case Deals, Distance, Sortby, Categories
+    }
+    
     static let SortOptions = ["First", "Distance", "Highest Rated"]
     
     static let FilterSections = ["Deals", "Distance", "Sort By", "Categories"]
@@ -183,5 +191,4 @@ class Helpers {
             ["name" : "Wok", "code": "wok"],
             ["name" : "Wraps", "code": "wraps"],
             ["name" : "Yugoslav", "code": "yugoslav"]]
-        
 }

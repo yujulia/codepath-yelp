@@ -76,12 +76,14 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
         
         let categories = filters["categories"] as? [String]
         let deals = filters["deals"] as? Bool
+        let distance = filters["distance"] as? Float
         
         Business.searchWithTerm(
             "Restaurants",
             sort: nil,
             categories: categories,
-            deals: deals) { (business, error) -> Void in
+            deals: deals,
+            distance: distance) { (business, error) -> Void in
                 self.businesses = business
                 self.tableView.reloadData()
         }

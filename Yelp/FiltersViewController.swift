@@ -27,6 +27,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     
     var dealStates = [Int:Bool]()
     var catStates = [Int:Bool]()
+    
     var distance: Float = 1000.00
     
     var filterSections: [String]!
@@ -112,7 +113,7 @@ extension FiltersViewController: SwitchCellDelegate {
 extension FiltersViewController: SliderCellDelegate {
     
     func sliderCell(sliderCell: SliderCell, didChangeValue value: Float) {
-        self.distance = value * Float(1609.34)
+        self.distance = value * Float(1609.34) / 2
     }
 }
 
