@@ -10,6 +10,8 @@ import Foundation
 
 class Helpers {
     
+    static var FilterSections = ["Deals", "Distance", "Sort By", "Categories"]
+    
     static func getCategories() -> [[String:String]] {
         
         let categories = [["name" : "Afghan", "code": "afghani"],

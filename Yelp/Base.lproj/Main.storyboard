@@ -187,6 +187,37 @@
                                             <outlet property="switchLabel" destination="hEJ-RM-1GU" id="MFl-T4-rK8"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" rowHeight="108" id="Bbq-JJ-612" customClass="SliderCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="180" width="320" height="108"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bbq-JJ-612" id="wt0-PT-kep">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="107.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tbK-mo-il9">
+                                                    <rect key="frame" x="18" y="48.5" width="284" height="40"/>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9a-KW-vlL">
+                                                    <rect key="frame" x="20" y="20" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="z9a-KW-vlL" firstAttribute="leading" secondItem="wt0-PT-kep" secondAttribute="leading" constant="20" id="AXA-rI-aLm"/>
+                                                <constraint firstItem="tbK-mo-il9" firstAttribute="leading" secondItem="wt0-PT-kep" secondAttribute="leading" constant="20" id="Gb2-Yd-HIr"/>
+                                                <constraint firstItem="z9a-KW-vlL" firstAttribute="top" secondItem="wt0-PT-kep" secondAttribute="top" constant="20" id="Vgc-0w-f9q"/>
+                                                <constraint firstAttribute="bottom" secondItem="tbK-mo-il9" secondAttribute="bottom" constant="20" id="Zh7-Mk-vRj"/>
+                                                <constraint firstItem="tbK-mo-il9" firstAttribute="top" secondItem="z9a-KW-vlL" secondAttribute="bottom" constant="8" id="aC1-il-4av"/>
+                                                <constraint firstAttribute="trailing" secondItem="tbK-mo-il9" secondAttribute="trailing" constant="20" id="as0-Li-yBU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="slider" destination="tbK-mo-il9" id="CMz-ob-6Wi"/>
+                                            <outlet property="sliderLabel" destination="z9a-KW-vlL" id="BNy-eS-ibR"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
