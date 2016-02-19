@@ -80,10 +80,8 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String:AnyObject]) {
         
         let categories = filters["categories"] as? [String]
-        let deals = filters["deals"] as? Bool
-        
-//        let distance = filters["distance"] as? Float 
-        
+
+        let deals = self.state.getDeals()
         let distance = self.state.getDistance()
         
         Business.searchWithTerm(

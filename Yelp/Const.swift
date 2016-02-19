@@ -8,15 +8,7 @@
 
 import Foundation
 
-class Helpers {
-    
-    enum SortBy {
-        case First, Distance, Rated
-    }
-    
-    enum Sections {
-        case Deals, Distance, Sortby, Categories
-    }
+class Const {
     
     static let SortOptions = ["First", "Distance", "Highest Rated"]
     

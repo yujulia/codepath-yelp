@@ -26,7 +26,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     var filters = [String:AnyObject]()
     var categories: [[String:String]]!
     
-    var dealStates = [Int:Bool]()
     var catStates = [Int:Bool]()
     
 
@@ -40,8 +39,8 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 120
-        self.categories = Helpers.Categories
-        self.filterSections = Helpers.FilterSections
+        self.categories = Const.Categories
+        self.filterSections = Const.FilterSections
         
     }
 
@@ -72,16 +71,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
             filters["categories"] = selectedCat
         }
         
-        // ----------- check deals
-        
-        if let hasDeal = dealStates[0] {
-            if hasDeal {
-                filters["deals"] = true
-            } else {
-                filters["deals"] = false
-            }
-        }
-
     
         delegate?.filtersViewController?(self, didUpdateFilters: filters)
         
@@ -97,7 +86,7 @@ extension FiltersViewController: SwitchCellDelegate {
         let indexPath = self.tableView.indexPathForCell(switchCell)!
         
         if indexPath.section == 0 {
-            self.dealStates[indexPath.row] = value
+            self.state?.setDeals(value)
         }
         if indexPath.section == 3 {
             self.catStates[indexPath.row] = value
@@ -211,7 +200,7 @@ extension FiltersViewController: UITableViewDelegate {
             cell.switchLabel.text = "Offering a Deal"
             cell.delegate = self
             
-            cell.onSwitch.on = dealStates[indexPath.row] ?? false
+            cell.onSwitch.on = self.state?.getDeals() ?? false
             
             return cell
 
