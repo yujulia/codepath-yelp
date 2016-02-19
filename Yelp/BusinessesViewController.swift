@@ -13,6 +13,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
     var businesses: [Business]!
+    var searchBar: UISearchBar!
+    var previousSearch = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +24,19 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 120
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-
+        
+        searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        self.navigationItem.titleView = searchBar
+        
+//        searchBar.backgroundColor = UIColor.blackColor()
+//        searchBar.barTintColor = UIColor.blackColor()
+//        searchBar.translucent = false
+        searchBar.placeholder = "Restaurants"
+        
         Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
-            
             self.tableView.reloadData()
         
             for business in businesses {
@@ -51,16 +62,29 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let navController = segue.destinationViewController as! UINavigationController
+        let filterViewController = navController.topViewController as! FiltersViewController
+        
+        filterViewController.delegate = self
     }
-    */
+}
 
+extension BusinessesViewController: FiltersViewControllerDelegate {
+    
+    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String:AnyObject]) {
+        
+        let categories = filters["categories"] as? [String]
+        
+        Business.searchWithTerm(
+            "Restaurants",
+            sort: nil,
+            categories: categories,
+            deals: nil) { (business, error) -> Void in
+                self.businesses = business
+                self.tableView.reloadData()
+        }
+    }
 }
 
 extension BusinessesViewController: UITableViewDelegate {
@@ -84,3 +108,43 @@ extension BusinessesViewController: UITableViewDelegate {
     
 }
 
+// Search bar delegate methods
+
+extension BusinessesViewController: UISearchBarDelegate {
+    
+    //-------------------------------------------- search begin
+    
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(true, animated: true)
+        return true;
+    }
+    
+    //-------------------------------------------- search end
+    
+    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(false, animated: true)
+        return true;
+    }
+    
+    //-------------------------------------------- search cancel
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+//        self.searchData(searchBar.text)
+    }
+    
+    //-------------------------------------------- search
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+//        self.searchData(searchBar.text)
+    }
+    
+    //-------------------------------------------- searc text change
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+//        self.searchData(searchBar.text)
+    }
+    
+}

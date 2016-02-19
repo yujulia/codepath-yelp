@@ -8,11 +8,22 @@
 
 import UIKit
 
+@objc protocol FiltersViewControllerDelegate {
+    optional func filtersViewController(
+        filtersViewController: FiltersViewController,
+        didUpdateFilters filters: [String:AnyObject]
+    )
+}
+
+
 class FiltersViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    weak var delegate: FiltersViewControllerDelegate?
+    
     var categories: [[String:String]]!
+    var switchStates = [Int:Bool]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,27 +31,13 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        
         self.categories = Helpers.getCategories()
-
-
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func onCancelFilters(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -48,8 +45,37 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func onSearch(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
+        
+        var filters = [String:AnyObject]()
+        var selectedCat = [String]()
+        
+        for (row, isSelected) in switchStates {
+            if isSelected {
+                selectedCat.append(self.categories[row]["code"]!)
+            }
+        }
+        
+        if selectedCat.count > 0 {
+            filters["categories"] = selectedCat
+        }
+        
+        delegate?.filtersViewController?(self, didUpdateFilters: filters)
     }
 }
+
+// ---------------------------- SwitchCell delegate
+
+extension FiltersViewController: SwitchCellDelegate {
+    
+    func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
+        
+        let indexPath = self.tableView.indexPathForCell(switchCell)!
+        self.switchStates[indexPath.row] = value
+        
+    }
+}
+
+// ---------------------------- table delegate
 
 extension FiltersViewController: UITableViewDelegate {
     
@@ -65,6 +91,8 @@ extension FiltersViewController: UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
         
         cell.switchLabel.text = self.categories[indexPath.row]["name"]
+        cell.delegate = self
+        cell.onSwitch.on = switchStates[indexPath.row] ?? false
         
         return cell
     }
