@@ -22,9 +22,11 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     
     weak var delegate: FiltersViewControllerDelegate?
     
+    var filters = [String:AnyObject]()
     var categories: [[String:String]]!
     
-    var switchStates = [Int:Bool]()
+    var dealStates = [Int:Bool]()
+    var catStates = [Int:Bool]()
     
     var filterSections: [String]!
     
@@ -52,22 +54,31 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     @IBAction func onSearch(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
         
-//        var filters = [String:AnyObject]()
-//        var selectedCat = [String]()
-//        
-//        for (row, isSelected) in switchStates {
-//            if isSelected {
-//                
-//                
-//                selectedCat.append(self.categories[row]["code"]!)
-//            }
-//        }
-//        
-//        if selectedCat.count > 0 {
-//            filters["categories"] = selectedCat
-//        }
-//        
-//        delegate?.filtersViewController?(self, didUpdateFilters: filters)
+        
+        // ------------ check category
+        
+        var selectedCat = [String]()
+
+        for (row, isSelected) in catStates {
+            if isSelected {
+                selectedCat.append(self.categories[row]["code"]!)
+            }
+        }
+        
+        if selectedCat.count > 0 {
+            filters["categories"] = selectedCat
+        }
+        
+        if let hasDeal = dealStates[0] {
+            if hasDeal {
+                filters["deals"] = true
+            } else {
+                filters["deals"] = false
+            }
+        }
+    
+        delegate?.filtersViewController?(self, didUpdateFilters: filters)
+        
     }
 }
 
@@ -79,10 +90,14 @@ extension FiltersViewController: SwitchCellDelegate {
         
         let indexPath = self.tableView.indexPathForCell(switchCell)!
         
-        let multi = indexPath.section * 10
-        let index = multi + indexPath.row
+        print("switch delegate", indexPath)
+        if indexPath.section == 0 {
+            self.dealStates[indexPath.row] = value
+        }
+        if indexPath.section == 3 {
+            self.catStates[indexPath.row] = value
+        }
         
-        self.switchStates[index] = value
         
     }
 }
@@ -163,29 +178,17 @@ extension FiltersViewController: UITableViewDelegate {
             cell.switchLabel.text = self.categories[indexPath.row]["name"]
             cell.delegate = self
             
-            let multi = indexPath.section * 10
-            let index = multi + indexPath.row
-            
-            print("access index", index)
-            cell.onSwitch.on = switchStates[index] ?? false
-
-//            cell.onSwitch.on = switchStates[indexPath.row] ?? false
+            cell.onSwitch.on = catStates[indexPath.row] ?? false
             
             return cell
             
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
             
-            let multi = indexPath.section * 10
-            let index = multi + indexPath.row
+            cell.switchLabel.text = "Offering a Deal"
+            cell.delegate = self
             
-            print("access index", index)
-            
-            cell.switchLabel.text = "special snow flake"
-            
-            cell.onSwitch.on = switchStates[index] ?? false
-            
-            //            cell.onSwitch.on = switchStates[indexPath.row] ?? false
+            cell.onSwitch.on = dealStates[indexPath.row] ?? false
             
             return cell
 
