@@ -151,7 +151,7 @@ extension FiltersViewController: UITableViewDelegate {
             
         case 2:
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("SliderCell", forIndexPath: indexPath) as! SliderCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PickerCell", forIndexPath: indexPath) as! PickerCell
             
             return cell
         default:
