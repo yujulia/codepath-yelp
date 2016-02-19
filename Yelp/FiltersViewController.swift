@@ -27,6 +27,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     
     var dealStates = [Int:Bool]()
     var catStates = [Int:Bool]()
+    var distance: Float = 1000.00
     
     var filterSections: [String]!
     
@@ -78,6 +79,9 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
                 filters["deals"] = false
             }
         }
+        
+        // ----------- search 
+        filters["distance"] = self.distance
     
         delegate?.filtersViewController?(self, didUpdateFilters: filters)
         
@@ -108,12 +112,7 @@ extension FiltersViewController: SwitchCellDelegate {
 extension FiltersViewController: SliderCellDelegate {
     
     func sliderCell(sliderCell: SliderCell, didChangeValue value: Float) {
-        print("filters heard slider change", value)
-        
-//         let indexPath = self.tableView.indexPathForCell(sliderCell)!
-        
-        // inform search i guess?
-        
+        self.distance = value * Float(1609.34)
     }
 }
 
