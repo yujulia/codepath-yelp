@@ -12,6 +12,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
+    let ESTIMATE_ROW_HEIGHT: CGFloat = 120.0
+    
     var previousSearch = ""
     var state: YelpState!
     var businesses: [Business]!
@@ -38,7 +40,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 120
+        self.tableView.estimatedRowHeight = ESTIMATE_ROW_HEIGHT
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
     

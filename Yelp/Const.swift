@@ -17,11 +17,11 @@ class Const {
         case Rated
     }
     
-    enum Sections {
-        case Deals
-        case Distance
-        case Sortby
-        case Categories
+    enum Sections: Int {
+        case Deals = 0
+        case Distance = 1
+        case Sortby = 2
+        case Categories = 3
     }
     
     static let YelpRed = UIColor(red: 189.0/255, green: 27.0/255, blue: 0/255, alpha: 1.0)
