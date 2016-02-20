@@ -8,13 +8,19 @@
 
 import UIKit
 
+// Filters View Controller Delegate protocol
+
 @objc protocol FiltersViewControllerDelegate {
+    
+    // ------------------------------------------   did update filters
+    
     optional func filtersViewController(
         filtersViewController: FiltersViewController,
         didUpdateFilters filters: [String:AnyObject]
     )
 }
 
+// our controller
 
 class FiltersViewController: UIViewController, UITableViewDataSource {
     
@@ -26,29 +32,44 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     var filters = [String:AnyObject]()
     var categories: [[String:String]]!
     var catStates = [Int:Bool]()
- 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    
+    // ------------------------------------------ set up nav bar colors
+    
+    private func setupNavBar() {
         self.navigationController?.navigationBar.barTintColor = Const.YelpRed
         let titleDict: Dictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict
-
+    }
+    
+    // ------------------------------------------ set up current table
+    
+    private func setupTable() {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 120
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+ 
+    // ------------------------------------------ view did load
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.setupNavBar()
+        self.setupTable()
+        
+        // TODO -- remove
         self.categories = Const.Categories
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    // ------------------------------------------ cancel clicked
+    
     @IBAction func onCancelFilters(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    // ------------------------------------------ search clicked
     
     @IBAction func onSearch(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -72,17 +93,21 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     }
 }
 
-// ---------------------------- SwitchCell delegate
+// SwitchCell delegate methods
 
 extension FiltersViewController: SwitchCellDelegate {
     
+    // ------------------------------------------ switch cell value changed
+    
     func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
-        
         let indexPath = self.tableView.indexPathForCell(switchCell)!
+        
+        // TODO -- beter naming
         
         if indexPath.section == 0 {
             self.state?.setDeals(value)
         }
+        
         if indexPath.section == 3 {
             self.catStates[indexPath.row] = value
         }
@@ -91,33 +116,47 @@ extension FiltersViewController: SwitchCellDelegate {
 }
 
 
-// ---------------------------- SliderCell delegate
+// SliderCell delegate methods
 
 extension FiltersViewController: SliderCellDelegate {
     
+    // ------------------------------------------ slider cell value changed
+    
     func sliderCell(sliderCell: SliderCell, didChangeValue value: Float) {
-
-        if let state = self.state {
-            state.setDistance(value)
+        let indexPath = self.tableView.indexPathForCell(sliderCell)!
+        
+        // TODO -- beter naming
+        
+        if indexPath.section == 1 {
+            if let state = self.state {
+                state.setDistance(value)
+            }
         }
         
     }
 }
 
-// ---------------------------- table delegate
+// TableView delegate methods
 
 extension FiltersViewController: UITableViewDelegate {
     
+    // ------------------------------------------ row selected, deselect
+    
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        print("did select", indexPath)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+    
+    // ------------------------------------------ return sections count
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return Const.FilterSections.count
     }
     
+    // ------------------------------------------ return rows in section
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        //TODO -- fix this wtf
         
         switch section {
             case 3:
@@ -134,12 +173,18 @@ extension FiltersViewController: UITableViewDelegate {
         }
     }
     
+    // ------------------------------------------ render section header
+    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        // -- return empty header for the first row
         
         if section == 0 {
             let emptyHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
             return emptyHeaderView
         }
+        
+        // TODO -- manually add auto layout constraints?
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
         headerView.backgroundColor = Const.YelpRed
@@ -149,6 +194,7 @@ extension FiltersViewController: UITableViewDelegate {
         sectionLabel.frame.origin.y = 0
         sectionLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 14.0)
         sectionLabel.textColor = UIColor.whiteColor()
+        
         sectionLabel.text = Const.FilterSections[section]
 
         headerView.addSubview(sectionLabel)
@@ -156,12 +202,19 @@ extension FiltersViewController: UITableViewDelegate {
         return headerView
     }
     
+    // ------------------------------------------ return section header height
+    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        // TODO -- beter naming
+        
         if section == 0 {
             return 0
         }
         return 30
     }
+    
+    // ------------------------------------------ return table cell
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
    

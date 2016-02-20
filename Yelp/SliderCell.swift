@@ -8,9 +8,13 @@
 
 import UIKit
 
+// cell prototype
+
 @objc protocol SliderCellDelegate {
     optional func sliderCell(sliderCell: SliderCell, didChangeValue value: Float)
 }
+
+// slider table cell
 
 class SliderCell: UITableViewCell {
     
@@ -21,6 +25,8 @@ class SliderCell: UITableViewCell {
     
     weak var delegate: SliderCellDelegate?
 
+    // ------------------------------------------ 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -31,15 +37,11 @@ class SliderCell: UITableViewCell {
         )
     }
     
+    // ------------------------------------------
+    
     func sliderValueChanged() {
         self.sliderLabel.text = String(format: "%.2f", self.slider.value)
         delegate?.sliderCell?(self, didChangeValue: self.slider.value)
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

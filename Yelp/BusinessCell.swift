@@ -18,6 +18,8 @@ class BusinessCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     
+    // ------------------------------------------ row is set after business is set...
+    
     var row: Int! {
         didSet {
             if let row = self.row, bname = business.name {
@@ -25,6 +27,8 @@ class BusinessCell: UITableViewCell {
             }
         }
     }
+    
+    // ------------------------------------------ business data passed in
     
     var business: Business! {
         didSet {
@@ -55,20 +59,15 @@ class BusinessCell: UITableViewCell {
         }
     }
     
+    // ------------------------------------------
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.thumbImageView.layer.cornerRadius = 3
         self.thumbImageView.clipsToBounds = true
-
         self.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0)
         self.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

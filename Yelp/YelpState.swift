@@ -10,7 +10,7 @@ import Foundation
 
 class YelpState: NSObject {
     
-    let MilestoMeter: Float = 1609.34
+    let MilestoMeter: Float = 1609.34 // convert miles/meter
     
     var searchDistance: Float?
     var searchDistanceInMiles: Float?
@@ -18,7 +18,7 @@ class YelpState: NSObject {
     var searchCategory: [[String:String]]?
     var searchDeals: Bool?
     
-    // ------------------
+    // ------------------ search distance setter getter
     
     func setDistance(distanceInMiles: Float) {
         self.searchDistance = distanceInMiles * MilestoMeter
@@ -35,7 +35,7 @@ class YelpState: NSObject {
         return self.searchDistance
     }
     
-    // ------------------
+    // ------------------ search deals setter getter
     
     func setDeals(hasDeal: Bool) {
         self.searchDeals = hasDeal

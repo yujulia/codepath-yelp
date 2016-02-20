@@ -18,7 +18,10 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     
     // ------------------------------------------ add search to navbar
     
-    private func addSearchBar() {
+    private func setupNavBar() {
+        
+        self.navigationController?.navigationBar.barTintColor = Const.YelpRed
+        
         let searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.backgroundColor = Const.YelpRed
@@ -46,11 +49,9 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         
         self.state = YelpState()
         
-        self.addSearchBar()
+        self.setupNavBar()
         self.setupTable()
-        
-        self.navigationController?.navigationBar.barTintColor = Const.YelpRed
-        
+    
         
         Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
         

@@ -8,9 +8,13 @@
 
 import UIKit
 
+// cell prototype
+
 @objc protocol SwitchCellDelegate {
     optional func switchCell(switchCell: SwitchCell, didChangeValue value: Bool)
 }
+
+// table cell containing a switch
 
 class SwitchCell: UITableViewCell {
 
@@ -28,12 +32,6 @@ class SwitchCell: UITableViewCell {
             action: "switchValueChanged",
             forControlEvents: UIControlEvents.ValueChanged
         )
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func switchValueChanged() {
