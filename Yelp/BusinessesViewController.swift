@@ -33,7 +33,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         self.navigationItem.titleView = searchBar
     }
     
-    
     // ------------------------------------------ set up current table
     
     private func setupTable() {
@@ -54,25 +53,15 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         self.setupNavBar()
         self.setupTable()
     
-        
-        Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
-        
-            // TODO -- append business on infinite scroll
-            
-            self.businesses = businesses
-            self.tableView.reloadData()
-        })
-
-/* Example of Yelp search with more search options specified
-        Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
-            self.businesses = businesses
-            
-            for business in businesses {
-                print(business.name!)
-                print(business.address!)
-            }
+        Business.searchWithTerm(
+            "Restaurants",
+            sort: nil,
+            categories: nil,
+            deals: nil,
+            distance: nil) { (business, error) -> Void in
+                self.businesses = business
+                self.tableView.reloadData()
         }
-*/
     }
     
     // ------------------------------------------ prepare for segue
