@@ -14,17 +14,17 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
     let ESTIMATE_ROW_HEIGHT: CGFloat = 120.0
+    let refreshControl = UIRefreshControl()
     
+    var hud: MBProgressHUD?
     var previousSearch: String?
     var state: YelpState!
-    
     var allBusinesses: [Business]!
     var businesses: [Business]!
     
     // ------------------------------------------ add search to navbar
     
     private func setupNavBar() {
-        
         let searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.placeholder = "Restaurants"
@@ -47,8 +47,10 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     
     private func searchWithFilters() {
         
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        
+        self.refreshControl.endRefreshing()
+        self.hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        self.setupCustomHUD()
+       
         let categories = self.state?.getFilterCategories() as? [String]
         let deals = self.state.getFilterDeals()
         let distance = self.state.getFilterDistance()
@@ -71,14 +73,56 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    // ------------------------------------------ set up refresh control
+    
+    private func setupRefresh() {
+        self.refreshControl.tintColor = UIColor.blackColor()
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.insertSubview(self.refreshControl, atIndex: 0)
+    }
+    
+    //-------------------------------------------- pull to refresh load data
+    
+    func refresh(refreshControl: UIRefreshControl) {
+        self.searchWithFilters()
+    }
+    
+    func setupCustomHUD() {
+        
+        var imgListArray = [UIImage]()
+        let testimage = UIImage(named: "red1")
+        let spinner = UIImageView(image: testimage)
+        
+        for countValue in 1...12
+        {
+            let strImageName: String = "red\(countValue)"
+            let image  = UIImage(named:strImageName)
+            imgListArray.append(image!)
+        }
+        
+        spinner.animationImages = imgListArray
+        spinner.animationDuration = 1.0
+        spinner.startAnimating()
+        
+        self.hud?.mode = .CustomView
+        self.hud?.customView = spinner
+        self.hud?.color = Const.YelpRed
+        
+      
+    }
+    
     // ------------------------------------------ view did load
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.state = YelpState()
+        
         self.setupNavBar()
         self.setupTable()
+        self.setupRefresh()
+//        self.setupCustomHUD()
+        
         self.searchWithFilters()
     }
     

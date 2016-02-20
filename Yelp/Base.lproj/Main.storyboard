@@ -180,11 +180,11 @@
                                                 </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="VnE-Q9-JTm" secondAttribute="bottom" constant="20" id="24R-8s-auN"/>
-                                                <constraint firstItem="VnE-Q9-JTm" firstAttribute="centerY" secondItem="hEJ-RM-1GU" secondAttribute="centerY" id="RYI-R1-zEG"/>
-                                                <constraint firstAttribute="trailing" secondItem="VnE-Q9-JTm" secondAttribute="trailing" constant="20" id="Rwg-dN-8V5"/>
-                                                <constraint firstItem="hEJ-RM-1GU" firstAttribute="leading" secondItem="XYD-Za-6RL" secondAttribute="leading" constant="20" id="mDi-c5-oaj"/>
-                                                <constraint firstItem="VnE-Q9-JTm" firstAttribute="top" secondItem="XYD-Za-6RL" secondAttribute="top" constant="20" id="xkA-ZJ-tHy"/>
+                                                <constraint firstItem="VnE-Q9-JTm" firstAttribute="top" secondItem="XYD-Za-6RL" secondAttribute="top" constant="20" id="CFl-DA-feh"/>
+                                                <constraint firstAttribute="bottom" secondItem="VnE-Q9-JTm" secondAttribute="bottom" constant="20" id="Nsg-RZ-cfw"/>
+                                                <constraint firstItem="hEJ-RM-1GU" firstAttribute="leading" secondItem="XYD-Za-6RL" secondAttribute="leading" constant="20" id="VwL-Ci-bPR"/>
+                                                <constraint firstAttribute="trailing" secondItem="VnE-Q9-JTm" secondAttribute="trailing" constant="20" id="hDe-de-216"/>
+                                                <constraint firstItem="hEJ-RM-1GU" firstAttribute="centerY" secondItem="VnE-Q9-JTm" secondAttribute="centerY" id="lvM-AZ-7Ty"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

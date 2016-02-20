@@ -49,6 +49,8 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         self.tableView.estimatedRowHeight = ESTIMATE_ROW_HEIGHT
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
+    
+
  
     // ------------------------------------------ view did load
     
