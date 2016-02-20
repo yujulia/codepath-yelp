@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 class Const {
+    
+    static let YelpRed = UIColor(red: 189.0/255, green: 27.0/255, blue: 0/255, alpha: 1.0)
     
     static let SortOptions = ["First", "Distance", "Highest Rated"]
     

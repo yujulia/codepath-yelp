@@ -127,7 +127,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Yelp" id="Uf7-pY-JMW">
-                        <barButtonItem key="leftBarButtonItem" title="Filters" id="fMd-oy-jHE">
+                        <barButtonItem key="leftBarButtonItem" image="filter" id="fMd-oy-jHE">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="r2i-jX-79W" kind="modal" id="IUj-Ja-IPk"/>
                             </connections>
@@ -197,23 +198,23 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="125.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="tbK-mo-il9">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12.5" minValue="0.0" maxValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="tbK-mo-il9">
                                                     <rect key="frame" x="18" y="48" width="284" height="58.5"/>
                                                 </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9a-KW-vlL">
-                                                    <rect key="frame" x="65" y="20" width="36.5" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12.50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9a-KW-vlL">
+                                                    <rect key="frame" x="66.5" y="20" width="37.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="before" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJa-j1-kF9">
-                                                    <rect key="frame" x="19.5" y="20" width="44.5" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Within" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJa-j1-kF9">
+                                                    <rect key="frame" x="19.5" y="20" width="44" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="after" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQ4-af-fIS">
-                                                    <rect key="frame" x="102.5" y="20" width="32.5" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQ4-af-fIS">
+                                                    <rect key="frame" x="107" y="20" width="36" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -223,11 +224,11 @@
                                                 <constraint firstAttribute="bottom" secondItem="tbK-mo-il9" secondAttribute="bottom" constant="20" id="5WQ-VQ-yxG"/>
                                                 <constraint firstAttribute="trailing" secondItem="tbK-mo-il9" secondAttribute="trailing" constant="20" id="DVg-FD-WvW"/>
                                                 <constraint firstItem="tbK-mo-il9" firstAttribute="leading" secondItem="wt0-PT-kep" secondAttribute="leading" constant="20" id="Fms-bz-Y5A"/>
-                                                <constraint firstItem="z9a-KW-vlL" firstAttribute="leading" secondItem="lJa-j1-kF9" secondAttribute="trailing" constant="1" id="J5R-uh-ICS"/>
+                                                <constraint firstItem="z9a-KW-vlL" firstAttribute="leading" secondItem="lJa-j1-kF9" secondAttribute="trailing" constant="3" id="J5R-uh-ICS"/>
                                                 <constraint firstItem="tbK-mo-il9" firstAttribute="top" secondItem="lJa-j1-kF9" secondAttribute="bottom" constant="10" id="QlK-Ah-tlj"/>
                                                 <constraint firstItem="rQ4-af-fIS" firstAttribute="top" secondItem="lJa-j1-kF9" secondAttribute="top" id="T8W-lP-JTK"/>
                                                 <constraint firstItem="lJa-j1-kF9" firstAttribute="top" secondItem="wt0-PT-kep" secondAttribute="top" constant="20" id="TBm-h9-L2E"/>
-                                                <constraint firstItem="rQ4-af-fIS" firstAttribute="leading" secondItem="z9a-KW-vlL" secondAttribute="trailing" constant="1" id="qaa-dP-l3D"/>
+                                                <constraint firstItem="rQ4-af-fIS" firstAttribute="leading" secondItem="z9a-KW-vlL" secondAttribute="trailing" constant="3" id="qaa-dP-l3D"/>
                                                 <constraint firstItem="lJa-j1-kF9" firstAttribute="leading" secondItem="wt0-PT-kep" secondAttribute="leading" constant="20" id="tZ0-UU-uWi"/>
                                                 <constraint firstItem="z9a-KW-vlL" firstAttribute="top" secondItem="lJa-j1-kF9" secondAttribute="top" id="zb1-5I-10Z"/>
                                             </constraints>
@@ -274,12 +275,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="0P5-gt-DYF">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="WC2-ng-nMD">
+                        <barButtonItem key="leftBarButtonItem" image="cancel" id="WC2-ng-nMD">
                             <connections>
                                 <action selector="onCancelFilters:" destination="qSZ-KX-q3U" id="Bb7-Iv-um7"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="xyN-lP-QOS">
+                        <barButtonItem key="rightBarButtonItem" image="search" id="xyN-lP-QOS">
                             <connections>
                                 <action selector="onSearch:" destination="qSZ-KX-q3U" id="gPl-eY-XzU"/>
                             </connections>
@@ -330,4 +331,10 @@
             <point key="canvasLocation" x="1712" y="338"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cancel" width="16" height="16"/>
+        <image name="filter" width="16" height="16"/>
+        <image name="search" width="16" height="16"/>
+    </resources>
+    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

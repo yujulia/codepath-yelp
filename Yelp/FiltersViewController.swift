@@ -27,13 +27,15 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     var categories: [[String:String]]!
     
     var catStates = [Int:Bool]()
-    
-
-    
     var filterSections: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.barTintColor = Const.YelpRed
+        let titleDict: Dictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict
+
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -41,7 +43,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         self.tableView.estimatedRowHeight = 120
         self.categories = Const.Categories
         self.filterSections = Const.FilterSections
-        
+   
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,9 +73,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
             filters["categories"] = selectedCat
         }
         
-    
-        delegate?.filtersViewController?(self, didUpdateFilters: filters)
-        
+        self.delegate?.filtersViewController?(self, didUpdateFilters: filters)
     }
 }
 
@@ -142,12 +142,12 @@ extension FiltersViewController: UITableViewDelegate {
         }
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
-        headerView.backgroundColor = UIColor.lightGrayColor()
+        headerView.backgroundColor = Const.YelpRed
         
         let sectionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 280, height: 30))
         sectionLabel.frame.origin.x = 20
         sectionLabel.frame.origin.y = 0
-        sectionLabel.font = UIFont(name: "HelveticaNeue-Light", size: 14.0)
+        sectionLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 14.0)
         sectionLabel.textColor = UIColor.whiteColor()
         sectionLabel.text = self.filterSections?[section]
 
@@ -171,9 +171,12 @@ extension FiltersViewController: UITableViewDelegate {
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("SliderCell", forIndexPath: indexPath) as! SliderCell
             
-            cell.sliderLabel.text = String(Int(cell.slider.value))
-            cell.beforeLabel.text = "Within "
-            cell.afterLabel.text = " Miles"
+            if let miles = self.state?.getDistanceInMiles() {
+                print("got miles", miles)
+                cell.sliderLabel.text = String(miles)
+            } else {
+                print ("got no miles")
+            }
             cell.delegate = self
             
             return cell

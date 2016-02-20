@@ -26,6 +26,8 @@ class YelpState: NSObject {
     let MilestoMeter: Float = 1609.34
     
     var searchDistance: Float?
+    var searchDistanceInMiles: Float?
+    
     var searchCategory: [[String:String]]?
     var searchDeals: Bool?
     
@@ -33,7 +35,13 @@ class YelpState: NSObject {
     
     func setDistance(distanceInMiles: Float) {
         self.searchDistance = distanceInMiles * MilestoMeter
-        print("setting distance in miles ", distanceInMiles, " to meters ", self.searchDistance)
+        self.searchDistanceInMiles = distanceInMiles
+        
+        print("meters", self.searchDistance, " miles ", self.searchDistanceInMiles)
+    }
+    
+    func getDistanceInMiles() -> Float? {
+        return self.searchDistanceInMiles
     }
     
     func getDistance() -> Float? {

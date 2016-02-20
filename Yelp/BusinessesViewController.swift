@@ -28,6 +28,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         self.tableView.estimatedRowHeight = 120
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         
+        self.navigationController?.navigationBar.barTintColor = Const.YelpRed
+        
         searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.sizeToFit()

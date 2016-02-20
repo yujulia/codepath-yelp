@@ -32,8 +32,7 @@ class SliderCell: UITableViewCell {
     }
     
     func sliderValueChanged() {
-
-        self.sliderLabel.text = String(Int(self.slider.value))
+        self.sliderLabel.text = String(format: "%.2f", self.slider.value)
         delegate?.sliderCell?(self, didChangeValue: self.slider.value)
     }
 
