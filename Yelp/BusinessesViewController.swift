@@ -22,15 +22,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     
     private func setupNavBar() {
         
-        self.navigationController?.navigationBar.barTintColor = Const.YelpRed
-        
         let searchBar = UISearchBar()
         searchBar.delegate = self
-        searchBar.backgroundColor = Const.YelpRed
-        searchBar.translucent = false
         searchBar.placeholder = "Restaurants"
         searchBar.sizeToFit()
         self.navigationItem.titleView = searchBar
+        self.navigationController?.navigationBar.barTintColor = Const.YelpRed
     }
     
     // ------------------------------------------ set up current table
