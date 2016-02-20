@@ -14,11 +14,11 @@ class YelpState: NSObject {
     
     var searchDistance: Float?
     var searchDistanceInMiles: Float?
-    
-    var searchCategory: [[String:String]]?
     var searchDeals: Bool?
     
-    // ------------------ search distance setter getter
+    var filterCategories = [Int:String]()
+    
+    // ------------------ filter distance
     
     func setSearchDistance(distanceInMiles: Float) {
         self.searchDistance = distanceInMiles * MilestoMeter
@@ -33,7 +33,7 @@ class YelpState: NSObject {
         return self.searchDistance
     }
     
-    // ------------------ search deals setter getter
+    // ------------------ filter deals
     
     func setSearchDeals(hasDeal: Bool) {
         self.searchDeals = hasDeal
@@ -41,6 +41,34 @@ class YelpState: NSObject {
     
     func getSearchDeals() -> Bool? {
         return self.searchDeals
+    }
+    
+    // ------------------ filter category
+    
+    func addToCategory(index: Int, category: String) {
+        self.filterCategories[index] = category
+    }
+    
+    func removeFromCategory(index: Int) {
+        self.filterCategories[index] = nil
+    }
+
+    func toggleCategory(index: Int, on: Bool) {
+        if on {
+            let categoryCode = Const.Categories[index]["code"]!
+            self.addToCategory(index, category: categoryCode)
+        } else {
+            self.removeFromCategory(index)
+        }
+    }
+    
+    func getFilterCategories() -> NSArray? {
+        
+        print(self.filterCategories, self.filterCategories.count)
+        
+        // conver dictionary to array
+        
+        return nil
     }
     
     

@@ -84,7 +84,9 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
 
         for (row, isSelected) in catStates {
             if isSelected {
+                
                 selectedCat.append(self.categories[row]["code"]!)
+                
             }
         }
         
@@ -105,15 +107,26 @@ extension FiltersViewController: SwitchCellDelegate {
     func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
         let indexPath = self.tableView.indexPathForCell(switchCell)!
         
-        // TODO -- beter naming
-        
-        if indexPath.section == 0 {
-            self.state?.setSearchDeals(value)
+        switch indexPath.section {
+            
+            case Const.Sections.Deals.rawValue:
+                self.state?.setSearchDeals(value)
+            
+            case Const.Sections.Categories.rawValue:
+                
+                // TODO --- fix
+                self.catStates[indexPath.row] = value
+                
+                print(" switch cell value changed for category ")
+                self.state?.toggleCategory(indexPath.row, on: value)
+//                self.state?.addCategoryByIndex(index: indexPath.row)
+            
+            
+            default:
+                print("a switch cell value changed thats should not exist")
         }
         
-        if indexPath.section == 3 {
-            self.catStates[indexPath.row] = value
-        }
+        self.state?.getFilterCategories()
         
     }
 }
@@ -269,7 +282,6 @@ extension FiltersViewController: UITableViewDelegate {
         return cell
     }
 
-    
     // ------------------------------------------ return table cell
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
