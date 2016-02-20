@@ -17,6 +17,7 @@ class YelpState: NSObject {
     var filterDistanceInMiles: Float?
     var filterDeals: Bool?
     var filterCategories = [Int:String]()
+    var resultOffset: Int?
     
     // ------------------ filter distance
     
@@ -75,6 +76,16 @@ class YelpState: NSObject {
         } else {
             return nil
         }
+    }
+    
+    // ------------------ result offset
+    
+    func setResultOffset(offset: Int) {
+        self.resultOffset = offset
+    }
+    
+    func getResultOffset() -> Int? {
+        return self.resultOffset
     }
     
     // ------------------ reset all filters 

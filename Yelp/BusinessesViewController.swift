@@ -79,6 +79,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         let categories = self.state?.getFilterCategories() as? [String]
         let deals = self.state.getFilterDeals()
         let distance = self.state.getFilterDistance()
+        let offset = self.state.getResultOffset()
         
         // TODO -- implement sort
         // let sort = self.state.getSortBy()
@@ -88,12 +89,29 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
             sort: nil,
             categories: categories,
             deals: deals,
-            distance: distance) { (business, error) -> Void in
+            distance: distance,
+            offset: offset
+            ) { (business, error) -> Void in
                 
-                self.notLoading()
-                self.allBusinesses = business
+                var biz = self.allBusinesses
+                
+                if self.allBusinesses != nil {
+                    biz.appendContentsOf(business)
+                } else {
+                    biz = business
+                }
+    
+                self.allBusinesses = biz
+                self.state.setResultOffset(self.allBusinesses.count)
                 self.applySearch(self.previousSearch)
+                self.notLoading()
         }
+    }
+    
+    // ------------------------------------------ at end of page so load more
+    
+    private func loadMore() {
+        self.searchWithFilters()
     }
     
     // ------------------------------------------ set up refresh control
@@ -193,6 +211,10 @@ extension BusinessesViewController: UITableViewDelegate {
         cell.business = self.businesses[indexPath.row]
         cell.row = indexPath.row
         
+        if indexPath.row >= self.allBusinesses.count-1 {
+            self.loadMore()
+        }
+        
         return cell
     }
 }
@@ -204,8 +226,6 @@ extension BusinessesViewController: UISearchBarDelegate {
     // ------------------------------------------ search the current result set
     
     func applySearch(searchTerm: String?){
-        
-        print("trying to search ", searchTerm)
         
         if searchTerm == nil {
             self.previousSearch = ""

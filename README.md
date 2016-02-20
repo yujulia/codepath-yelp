@@ -22,7 +22,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [ ] Search results page
-   - [ ] Infinite scroll for restaurant results.
+   - [x] Infinite scroll for restaurant results.
    - [ ] Implement map view of restaurant results.
 - [ ] Filter page
    - [ ] Implement a custom switch instead of the default UISwitch.
@@ -36,6 +36,7 @@ The following **additional** features are implemented:
 - [x] Added distance to search, made it a slider
 - [x] Implemented "search" on restaurant name of existing results
 - [x] Added hud spin on loading response
+- [x] Custom spinner
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
