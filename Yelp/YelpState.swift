@@ -17,6 +17,7 @@ class YelpState: NSObject {
     var filterDistanceInMiles: Float?
     var filterDeals: Bool?
     var filterCategories = [Int:String]()
+    
     var resultOffset: Int?
     
     // ------------------ filter distance
