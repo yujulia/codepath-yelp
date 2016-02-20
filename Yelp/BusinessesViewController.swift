@@ -170,11 +170,16 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let navController = segue.destinationViewController as! UINavigationController
-        let filterViewController = navController.topViewController as! FiltersViewController
+        if segue.identifier == "toFilterSegue" {
+            
+            let navController = segue.destinationViewController as! UINavigationController
+            let filterViewController = navController.topViewController as! FiltersViewController
+            
+            filterViewController.delegate = self
+            filterViewController.state = self.state
+        }
         
-        filterViewController.delegate = self
-        filterViewController.state = self.state
+        
     }
 }
 
