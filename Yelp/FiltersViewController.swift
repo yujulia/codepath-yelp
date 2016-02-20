@@ -27,7 +27,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     var categories: [[String:String]]!
     
     var catStates = [Int:Bool]()
-    var filterSections: [String]!
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 120
         self.categories = Const.Categories
-        self.filterSections = Const.FilterSections
+ 
    
     }
 
@@ -119,7 +119,7 @@ extension FiltersViewController: UITableViewDelegate {
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.filterSections.count
+        return Const.FilterSections.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -154,7 +154,7 @@ extension FiltersViewController: UITableViewDelegate {
         sectionLabel.frame.origin.y = 0
         sectionLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 14.0)
         sectionLabel.textColor = UIColor.whiteColor()
-        sectionLabel.text = self.filterSections?[section]
+        sectionLabel.text = Const.FilterSections[section]
 
         headerView.addSubview(sectionLabel)
   
