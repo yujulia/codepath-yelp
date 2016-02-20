@@ -23,6 +23,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     }
     
     var loading = false
+    var filtering = false
     var previousSearch: String?
     var state: YelpState!
     var allBusinesses: [Business]!
@@ -93,17 +94,28 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
             offset: offset
             ) { (business, error) -> Void in
                 
-                var biz = self.allBusinesses
-                
-                if self.allBusinesses != nil {
-                    biz.appendContentsOf(business)
-                } else {
-                    biz = business
+ 
+                //  has result
+                if business.count != 0 {
+                    if self.filtering {
+                        self.allBusinesses = business
+                        self.filtering = false
+                    } else {
+                        var biz = self.allBusinesses
+                        if self.allBusinesses != nil {
+                            biz.appendContentsOf(business)
+                        } else {
+                            biz = business
+                        }
+                        self.allBusinesses = biz
+                    }
+                    
+                    self.applySearch(self.previousSearch)
                 }
-    
-                self.allBusinesses = biz
-                self.state.setResultOffset(self.allBusinesses.count)
-                self.applySearch(self.previousSearch)
+                
+                print("response length", business.count)
+           
+                
                 self.notLoading()
         }
     }
@@ -190,6 +202,8 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
     // ------------------------------------------ did update filters
     
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters ok: Bool) {
+        self.filtering = true
+        self.state.setResultOffset(0) // fresh search
         self.searchWithFilters()
     }
 }
@@ -217,6 +231,7 @@ extension BusinessesViewController: UITableViewDelegate {
         cell.row = indexPath.row
         
         if indexPath.row >= self.allBusinesses.count-1 {
+            self.state.setResultOffset(self.allBusinesses.count)
             self.loadMore()
         }
         

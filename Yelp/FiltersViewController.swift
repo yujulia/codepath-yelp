@@ -92,7 +92,7 @@ extension FiltersViewController: SwitchCellDelegate {
                 self.state?.setFilterDeals(value)
             
             case Const.Sections.Categories.rawValue:
-                self.state?.toggleCategory(indexPath.row, on: value)
+                self.state?.toggleFilterCategory(indexPath.row, on: value)
             
             default:
                 print("a switch cell value changed thats should not exist")

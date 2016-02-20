@@ -46,21 +46,13 @@ class YelpState: NSObject {
     }
     
     // ------------------ filter category
-    
-    func addToCategory(index: Int, category: String) {
-        self.filterCategories[index] = category
-    }
-    
-    func removeFromCategory(index: Int) {
-        self.filterCategories[index] = nil
-    }
 
-    func toggleCategory(index: Int, on: Bool) {
+    func toggleFilterCategory(index: Int, on: Bool) {
         if on {
             let categoryCode = Const.Categories[index]["code"]!
-            self.addToCategory(index, category: categoryCode)
+            self.filterCategories[index] = categoryCode
         } else {
-            self.removeFromCategory(index)
+            self.filterCategories[index] = nil
         }
     }
     
