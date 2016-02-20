@@ -16,7 +16,7 @@ import UIKit
     
     optional func filtersViewController(
         filtersViewController: FiltersViewController,
-        didUpdateFilters filters: [String:AnyObject]
+        didUpdateFilters ok: Bool
     )
 }
 
@@ -31,10 +31,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     
     let SECTION_HEIGHT: CGFloat = 30.0
     let ESTIMATE_ROW_HEIGHT: CGFloat = 120.0
-    
-    var filters = [String:AnyObject]()
-    var categories: [[String:String]]!
-    var catStates = [Int:Bool]()
     
     // ------------------------------------------ set up nav bar colors
     
@@ -61,40 +57,21 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         
         self.setupNavBar()
         self.setupTable()
-        
-        // TODO -- remove
-        self.categories = Const.Categories
     }
 
     // ------------------------------------------ cancel clicked
     
     @IBAction func onCancelFilters(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
+        self.state?.resetFilters()
+        self.delegate?.filtersViewController?(self, didUpdateFilters: true)
     }
     
     // ------------------------------------------ search clicked
     
     @IBAction func onSearch(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
-        
-        
-        // ------------ check category
-        
-        var selectedCat = [String]()
-
-        for (row, isSelected) in catStates {
-            if isSelected {
-                
-                selectedCat.append(self.categories[row]["code"]!)
-                
-            }
-        }
-        
-        if selectedCat.count > 0 {
-            filters["categories"] = selectedCat
-        }
-        
-        self.delegate?.filtersViewController?(self, didUpdateFilters: filters)
+        self.delegate?.filtersViewController?(self, didUpdateFilters: true)
     }
 }
 
@@ -110,24 +87,14 @@ extension FiltersViewController: SwitchCellDelegate {
         switch indexPath.section {
             
             case Const.Sections.Deals.rawValue:
-                self.state?.setSearchDeals(value)
+                self.state?.setFilterDeals(value)
             
             case Const.Sections.Categories.rawValue:
-                
-                // TODO --- fix
-                self.catStates[indexPath.row] = value
-                
-                print(" switch cell value changed for category ")
                 self.state?.toggleCategory(indexPath.row, on: value)
-//                self.state?.addCategoryByIndex(index: indexPath.row)
-            
             
             default:
                 print("a switch cell value changed thats should not exist")
         }
-        
-        self.state?.getFilterCategories()
-        
     }
 }
 
@@ -136,19 +103,14 @@ extension FiltersViewController: SwitchCellDelegate {
 
 extension FiltersViewController: SliderCellDelegate {
     
-    // ------------------------------------------ slider cell value changed
+    // ------------------------------------------ some slider cell value changed
     
     func sliderCell(sliderCell: SliderCell, didChangeValue value: Float) {
         let indexPath = self.tableView.indexPathForCell(sliderCell)!
         
-        // TODO -- beter naming
-        
-        if indexPath.section == 1 {
-            if let state = self.state {
-                state.setSearchDistance(value)
-            }
+        if indexPath.section == Const.Sections.Distance.rawValue {
+            self.state?.setFilterDistance(value)
         }
-        
     }
 }
 
@@ -172,20 +134,11 @@ extension FiltersViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        //TODO -- fix this wtf
-        
         switch section {
-            case 3:
-                if let cat = self.categories {
-                        return cat.count
-                    } else {
-                        return 0
-                }
-            case 0,1,2:
-                return 1
+            case Const.Sections.Categories.rawValue:
+                return Const.Categories.count
             default:
-                return 0
-            
+                return 1
         }
     }
     
@@ -236,10 +189,9 @@ extension FiltersViewController: UITableViewDelegate {
         
         // TODO -- do this in the cell
         
-        if let miles = self.state?.getSearchDistanceInMiles() {
+        if let miles = self.state?.getFilterDistanceInMiles() {
             cell.sliderLabel.text = String(miles)
         }
-        
         cell.delegate = self
         
         return cell
@@ -251,11 +203,15 @@ extension FiltersViewController: UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
         
-        cell.switchLabel.text = self.categories[indexPath.row]["name"]
+        cell.switchLabel.text = Const.Categories[indexPath.row]["name"]
+
+        if self.state?.filterCategories[indexPath.row] != nil {
+            cell.onSwitch.on = true
+        } else {
+            cell.onSwitch.on = false
+        }
         cell.delegate = self
-        
-        cell.onSwitch.on = catStates[indexPath.row] ?? false
-        
+
         return cell
     }
     
@@ -266,9 +222,8 @@ extension FiltersViewController: UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
 
         cell.switchLabel.text = "Offering a Deal"
+        cell.onSwitch.on = self.state?.getFilterDeals() ?? false
         cell.delegate = self
-
-        cell.onSwitch.on = self.state?.getSearchDeals() ?? false
         
         return cell
     }
@@ -305,6 +260,7 @@ extension FiltersViewController: UITableViewDelegate {
             default:
                 cell = UITableViewCell()
         }
+
         
         return cell
     

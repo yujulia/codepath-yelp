@@ -11,36 +11,36 @@ import Foundation
 class YelpState: NSObject {
     
     let MilestoMeter: Float = 1609.34 // convert miles/meter
+    let MilesDefault: Float = 12.50
     
-    var searchDistance: Float?
-    var searchDistanceInMiles: Float?
-    var searchDeals: Bool?
-    
+    var filterDistance: Float?
+    var filterDistanceInMiles: Float?
+    var filterDeals: Bool?
     var filterCategories = [Int:String]()
     
     // ------------------ filter distance
     
-    func setSearchDistance(distanceInMiles: Float) {
-        self.searchDistance = distanceInMiles * MilestoMeter
-        self.searchDistanceInMiles = distanceInMiles
+    func setFilterDistance(distanceInMiles: Float) {
+        self.filterDistance = distanceInMiles * MilestoMeter
+        self.filterDistanceInMiles = distanceInMiles
     }
     
-    func getSearchDistanceInMiles() -> Float? {
-        return self.searchDistanceInMiles
+    func getFilterDistanceInMiles() -> Float? {
+        return self.filterDistanceInMiles
     }
     
-    func getSearchDistance() -> Float? {
-        return self.searchDistance
+    func getFilterDistance() -> Float? {
+        return self.filterDistance
     }
     
     // ------------------ filter deals
     
-    func setSearchDeals(hasDeal: Bool) {
-        self.searchDeals = hasDeal
+    func setFilterDeals(hasDeal: Bool) {
+        self.filterDeals = hasDeal
     }
     
-    func getSearchDeals() -> Bool? {
-        return self.searchDeals
+    func getFilterDeals() -> Bool? {
+        return self.filterDeals
     }
     
     // ------------------ filter category
@@ -64,12 +64,26 @@ class YelpState: NSObject {
     
     func getFilterCategories() -> NSArray? {
         
-        print(self.filterCategories, self.filterCategories.count)
+        var codeList = [String]()
         
-        // conver dictionary to array
+        for (_, code) in self.filterCategories {
+            codeList.append(code)
+        }
         
-        return nil
+        if codeList.count > 0 {
+            return codeList
+        } else {
+            return nil
+        }
     }
     
+    // ------------------ reset all filters 
+    
+    func resetFilters() {
+        self.filterDistance = nil
+        self.filterDistanceInMiles = nil
+        self.filterDeals = nil
+        self.filterCategories = [Int:String]()
+    }
     
 }

@@ -93,14 +93,11 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
     
     // ------------------------------------------ did update filters
     
-    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String:AnyObject]) {
+    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters ok: Bool) {
         
-        // TODO -- read from self.state not filters
-        
-        let categories = filters["categories"] as? [String]
-
-        let deals = self.state.getSearchDeals()
-        let distance = self.state.getSearchDistance()
+        let categories = self.state?.getFilterCategories() as? [String]
+        let deals = self.state.getFilterDeals()
+        let distance = self.state.getFilterDistance()
         
         Business.searchWithTerm(
             "Restaurants",
