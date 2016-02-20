@@ -33,13 +33,10 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.sizeToFit()
-        self.navigationItem.titleView = searchBar
-        
-        
-//        searchBar.backgroundColor = UIColor.blackColor()
-//        searchBar.barTintColor = UIColor.blackColor()
-//        searchBar.translucent = false
+        searchBar.backgroundColor = Const.YelpRed
+        searchBar.translucent = false
         searchBar.placeholder = "Restaurants"
+        self.navigationItem.titleView = searchBar
         
         Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
@@ -61,11 +58,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
             }
         }
 */
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

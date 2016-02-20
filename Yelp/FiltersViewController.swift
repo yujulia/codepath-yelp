@@ -113,6 +113,11 @@ extension FiltersViewController: SliderCellDelegate {
 
 extension FiltersViewController: UITableViewDelegate {
     
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        print("did select", indexPath)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.filterSections.count
     }
@@ -172,10 +177,7 @@ extension FiltersViewController: UITableViewDelegate {
             let cell = tableView.dequeueReusableCellWithIdentifier("SliderCell", forIndexPath: indexPath) as! SliderCell
             
             if let miles = self.state?.getDistanceInMiles() {
-                print("got miles", miles)
                 cell.sliderLabel.text = String(miles)
-            } else {
-                print ("got no miles")
             }
             cell.delegate = self
             

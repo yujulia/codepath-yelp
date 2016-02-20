@@ -10,19 +10,6 @@ import Foundation
 
 class YelpState: NSObject {
     
-    enum SortBy {
-        case First
-        case Distance
-        case Rated
-    }
-    
-    enum Sections {
-        case Deals
-        case Distance
-        case Sortby
-        case Categories
-    }
-    
     let MilestoMeter: Float = 1609.34
     
     var searchDistance: Float?

@@ -12,7 +12,6 @@ class BusinessCell: UITableViewCell {
 
     @IBOutlet weak var thumbImageView: UIImageView!
     @IBOutlet weak var ratingImageView: UIImageView!
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var reviewCountLabel: UILabel!
