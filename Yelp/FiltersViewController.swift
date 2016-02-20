@@ -50,8 +50,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
-
- 
     // ------------------------------------------ view did load
     
     override func viewDidLoad() {
