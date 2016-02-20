@@ -97,8 +97,8 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
         
         let categories = filters["categories"] as? [String]
 
-        let deals = self.state.getDeals()
-        let distance = self.state.getDistance()
+        let deals = self.state.getSearchDeals()
+        let distance = self.state.getSearchDistance()
         
         Business.searchWithTerm(
             "Restaurants",

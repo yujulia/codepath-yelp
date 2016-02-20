@@ -20,28 +20,26 @@ class YelpState: NSObject {
     
     // ------------------ search distance setter getter
     
-    func setDistance(distanceInMiles: Float) {
+    func setSearchDistance(distanceInMiles: Float) {
         self.searchDistance = distanceInMiles * MilestoMeter
         self.searchDistanceInMiles = distanceInMiles
-        
-        print("meters", self.searchDistance, " miles ", self.searchDistanceInMiles)
     }
     
-    func getDistanceInMiles() -> Float? {
+    func getSearchDistanceInMiles() -> Float? {
         return self.searchDistanceInMiles
     }
     
-    func getDistance() -> Float? {
+    func getSearchDistance() -> Float? {
         return self.searchDistance
     }
     
     // ------------------ search deals setter getter
     
-    func setDeals(hasDeal: Bool) {
+    func setSearchDeals(hasDeal: Bool) {
         self.searchDeals = hasDeal
     }
     
-    func getDeals() -> Bool? {
+    func getSearchDeals() -> Bool? {
         return self.searchDeals
     }
     

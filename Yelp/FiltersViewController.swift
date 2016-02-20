@@ -105,7 +105,7 @@ extension FiltersViewController: SwitchCellDelegate {
         // TODO -- beter naming
         
         if indexPath.section == 0 {
-            self.state?.setDeals(value)
+            self.state?.setSearchDeals(value)
         }
         
         if indexPath.section == 3 {
@@ -129,7 +129,7 @@ extension FiltersViewController: SliderCellDelegate {
         
         if indexPath.section == 1 {
             if let state = self.state {
-                state.setDistance(value)
+                state.setSearchDistance(value)
             }
         }
         
@@ -224,7 +224,7 @@ extension FiltersViewController: UITableViewDelegate {
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("SliderCell", forIndexPath: indexPath) as! SliderCell
             
-            if let miles = self.state?.getDistanceInMiles() {
+            if let miles = self.state?.getSearchDistanceInMiles() {
                 cell.sliderLabel.text = String(miles)
             }
             cell.delegate = self
@@ -253,7 +253,7 @@ extension FiltersViewController: UITableViewDelegate {
             cell.switchLabel.text = "Offering a Deal"
             cell.delegate = self
             
-            cell.onSwitch.on = self.state?.getDeals() ?? false
+            cell.onSwitch.on = self.state?.getSearchDeals() ?? false
             
             return cell
 
