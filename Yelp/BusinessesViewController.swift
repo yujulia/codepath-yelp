@@ -12,40 +12,52 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var businesses: [Business]!
-    var searchBar: UISearchBar!
     var previousSearch = ""
     var state: YelpState!
+    var businesses: [Business]!
+    
+    // ------------------------------------------ add search to navbar
+    
+    private func addSearchBar() {
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.backgroundColor = Const.YelpRed
+        searchBar.translucent = false
+        searchBar.placeholder = "Restaurants"
+        searchBar.sizeToFit()
+        self.navigationItem.titleView = searchBar
+    }
+    
+    
+    // ------------------------------------------ set up current table
+    
+    private func setupTable() {
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 120
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+    
+    // ------------------------------------------ view did load
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.state = YelpState()
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 120
-        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        self.addSearchBar()
+        self.setupTable()
         
         self.navigationController?.navigationBar.barTintColor = Const.YelpRed
         
-        searchBar = UISearchBar()
-        searchBar.delegate = self
-        searchBar.sizeToFit()
-        searchBar.backgroundColor = Const.YelpRed
-        searchBar.translucent = false
-        searchBar.placeholder = "Restaurants"
-        self.navigationItem.titleView = searchBar
         
         Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        
+            // TODO -- append business on infinite scroll
+            
             self.businesses = businesses
             self.tableView.reloadData()
-        
-//            for business in businesses {
-//                print(business.name!)
-//                print(business.address!)
-//            }
         })
 
 /* Example of Yelp search with more search options specified
@@ -59,8 +71,11 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         }
 */
     }
+    
+    // ------------------------------------------ prepare for segue
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         let navController = segue.destinationViewController as! UINavigationController
         let filterViewController = navController.topViewController as! FiltersViewController
         
@@ -69,9 +84,15 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     }
 }
 
+// filtersViewController delegate methods
+
 extension BusinessesViewController: FiltersViewControllerDelegate {
     
+    // ------------------------------------------ did update filters
+    
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String:AnyObject]) {
+        
+        // TODO -- read from self.state not filters
         
         let categories = filters["categories"] as? [String]
 
@@ -90,7 +111,11 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
     }
 }
 
+// tableview delegate methods
+
 extension BusinessesViewController: UITableViewDelegate {
+    
+    // ------------------------------------------ return business count
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let businesses = self.businesses {
@@ -99,6 +124,8 @@ extension BusinessesViewController: UITableViewDelegate {
             return 0
         }
     }
+    
+    // ------------------------------------------ return business cell
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell", forIndexPath: indexPath) as! BusinessCell
@@ -111,7 +138,7 @@ extension BusinessesViewController: UITableViewDelegate {
     
 }
 
-// Search bar delegate methods
+// search delegate methods
 
 extension BusinessesViewController: UISearchBarDelegate {
     

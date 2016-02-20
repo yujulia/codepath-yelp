@@ -25,10 +25,8 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     
     var filters = [String:AnyObject]()
     var categories: [[String:String]]!
-    
     var catStates = [Int:Bool]()
  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,14 +34,11 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         let titleDict: Dictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict
 
-        
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 120
         self.categories = Const.Categories
- 
-   
     }
 
     override func didReceiveMemoryWarning() {
