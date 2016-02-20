@@ -223,7 +223,7 @@ extension FiltersViewController: UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
 
-        cell.switchLabel.text = "Offering a Deal the deal of the ages more deal than you can handle"
+        cell.switchLabel.text = "Offering a Deal"
         cell.onSwitch.on = self.state?.getFilterDeals() ?? false
         cell.delegate = self
         
