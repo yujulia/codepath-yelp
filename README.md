@@ -30,7 +30,7 @@ The following **optional** features are implemented:
    - [ ] Categories should show a subset of the full list with a "See All" row to expand. Category list is [here](http://www.yelp.com/developers/documentation/category_list).
 
 - [x] Implement the restaurant detail page.
-  - [x] actually put data here :P
+  - [ ] actually put data here :P
 
 The following **additional** features are implemented:
 
