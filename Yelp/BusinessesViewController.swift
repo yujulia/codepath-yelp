@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class BusinessesViewController: UIViewController, UITableViewDataSource {
 
@@ -14,8 +15,10 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     
     let ESTIMATE_ROW_HEIGHT: CGFloat = 120.0
     
-    var previousSearch = ""
+    var previousSearch: String?
     var state: YelpState!
+    
+    var allBusinesses: [Business]!
     var businesses: [Business]!
     
     // ------------------------------------------ add search to navbar
@@ -40,25 +43,43 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
+    // ------------------------------------------ perform the search
+    
+    private func searchWithFilters() {
+        
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
+        let categories = self.state?.getFilterCategories() as? [String]
+        let deals = self.state.getFilterDeals()
+        let distance = self.state.getFilterDistance()
+        
+        // TODO -- implement sort
+        // let sort = self.state.getSortBy()
+        
+        Business.searchWithTerm(
+            "Restaurants",
+            sort: nil,
+            categories: categories,
+            deals: deals,
+            distance: distance) { (business, error) -> Void in
+                
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                
+                self.allBusinesses = business
+                self.applySearch(self.previousSearch)
+                
+        }
+    }
+    
     // ------------------------------------------ view did load
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.state = YelpState()
-        
         self.setupNavBar()
         self.setupTable()
-    
-        Business.searchWithTerm(
-            "Restaurants",
-            sort: nil,
-            categories: nil,
-            deals: nil,
-            distance: nil) { (business, error) -> Void in
-                self.businesses = business
-                self.tableView.reloadData()
-        }
+        self.searchWithFilters()
     }
     
     // ------------------------------------------ prepare for segue
@@ -80,20 +101,7 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
     // ------------------------------------------ did update filters
     
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters ok: Bool) {
-        
-        let categories = self.state?.getFilterCategories() as? [String]
-        let deals = self.state.getFilterDeals()
-        let distance = self.state.getFilterDistance()
-        
-        Business.searchWithTerm(
-            "Restaurants",
-            sort: nil,
-            categories: categories,
-            deals: deals,
-            distance: distance) { (business, error) -> Void in
-                self.businesses = business
-                self.tableView.reloadData()
-        }
+        self.searchWithFilters()
     }
 }
 
@@ -128,6 +136,29 @@ extension BusinessesViewController: UITableViewDelegate {
 
 extension BusinessesViewController: UISearchBarDelegate {
     
+    // ------------------------------------------ search the current result set
+    
+    func applySearch(searchTerm: String?){
+        
+        print("trying to search ", searchTerm)
+        
+        if searchTerm == nil {
+            self.previousSearch = ""
+        } else {
+            self.previousSearch = searchTerm?.lowercaseString
+        }
+        
+        self.businesses = self.allBusinesses
+        
+        if self.previousSearch != "" {
+            self.businesses = self.businesses.filter({
+                $0.name?.lowercaseString.rangeOfString(self.previousSearch!) != nil
+            })
+        }
+        
+        self.tableView.reloadData()
+    }
+    
     //-------------------------------------------- search begin
     
     func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
@@ -147,20 +178,20 @@ extension BusinessesViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.resignFirstResponder()
-//        self.searchData(searchBar.text)
+        self.applySearch(searchBar.text)
     }
     
     //-------------------------------------------- search
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-//        self.searchData(searchBar.text)
+        self.applySearch(searchBar.text)
     }
     
     //-------------------------------------------- searc text change
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        self.searchData(searchBar.text)
+        self.applySearch(searchBar.text)
     }
     
 }
