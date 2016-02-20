@@ -29,27 +29,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     var allBusinesses: [Business]!
     var businesses: [Business]!
     
-    // ------------------------------------------ add search to navbar
-    
-    private func setupNavBar() {
-        let searchBar = UISearchBar()
-        searchBar.delegate = self
-        searchBar.placeholder = "Restaurants"
-        searchBar.sizeToFit()
-        
-        self.navigationItem.titleView = searchBar
-        self.navigationController?.navigationBar.barTintColor = Const.YelpRed
-    }
-    
-    // ------------------------------------------ set up current table
-    
-    private func setupTable() {
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = ESTIMATE_ROW_HEIGHT
-        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-    }
     
     // ------------------------------------------ toggle HUD, set/release locks
     
@@ -171,7 +150,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         
         self.state = YelpState()
         
-        self.setupNavBar()
+        self.setupSearchBar()
         self.setupTable()
         self.setupRefresh()
         
@@ -190,8 +169,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
             filterViewController.delegate = self
             filterViewController.state = self.state
         }
-        
-        
     }
 }
 
@@ -211,6 +188,16 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
 // tableview delegate methods
 
 extension BusinessesViewController: UITableViewDelegate {
+    
+    // ------------------------------------------ set up current table
+    
+    private func setupTable() {
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = ESTIMATE_ROW_HEIGHT
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+    }
     
     // ------------------------------------------ return business count
     
@@ -242,6 +229,18 @@ extension BusinessesViewController: UITableViewDelegate {
 // search delegate methods
 
 extension BusinessesViewController: UISearchBarDelegate {
+    
+    // ------------------------------------------ add search to navbar
+    
+    private func setupSearchBar() {
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.placeholder = "Restaurants"
+        searchBar.sizeToFit()
+        
+        self.navigationItem.titleView = searchBar
+        self.navigationController?.navigationBar.barTintColor = Const.YelpRed
+    }
     
     // ------------------------------------------ search the current result set
     
