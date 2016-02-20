@@ -16,7 +16,13 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     let ESTIMATE_ROW_HEIGHT: CGFloat = 120.0
     let refreshControl = UIRefreshControl()
     
-    var hud: MBProgressHUD?
+    var hud: MBProgressHUD? {
+        didSet {
+            self.setupCustomHUD()
+        }
+    }
+    
+    var loading = false
     var previousSearch: String?
     var state: YelpState!
     var allBusinesses: [Business]!
@@ -29,6 +35,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         searchBar.delegate = self
         searchBar.placeholder = "Restaurants"
         searchBar.sizeToFit()
+        
         self.navigationItem.titleView = searchBar
         self.navigationController?.navigationBar.barTintColor = Const.YelpRed
     }
@@ -43,13 +50,31 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
+    // ------------------------------------------ toggle HUD, set/release locks
+    
+    private func isLoading() {
+        self.loading = true
+        self.refreshControl.endRefreshing()
+        self.hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    }
+    
+    private func notLoading() {
+        self.loading = false
+        self.refreshControl.endRefreshing()
+        MBProgressHUD.hideHUDForView(self.view, animated: true)
+    }
+    
     // ------------------------------------------ perform the search
     
     private func searchWithFilters() {
         
-        self.refreshControl.endRefreshing()
-        self.hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        self.setupCustomHUD()
+        // TODO - for now, stop spamming loads with do nothing
+        //        this should probably queue up
+        if self.loading {
+            return
+        }
+        
+        self.isLoading()
        
         let categories = self.state?.getFilterCategories() as? [String]
         let deals = self.state.getFilterDeals()
@@ -65,11 +90,9 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
             deals: deals,
             distance: distance) { (business, error) -> Void in
                 
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-                
+                self.notLoading()
                 self.allBusinesses = business
                 self.applySearch(self.previousSearch)
-                
         }
     }
     
@@ -87,7 +110,9 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         self.searchWithFilters()
     }
     
-    func setupCustomHUD() {
+    //-------------------------------------------- add custom spinner to the hud
+    
+    private func setupCustomHUD() {
         
         var imgListArray = [UIImage]()
         let testimage = UIImage(named: "red1")
@@ -107,8 +132,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         self.hud?.mode = .CustomView
         self.hud?.customView = spinner
         self.hud?.color = Const.YelpRed
-        
-      
     }
     
     // ------------------------------------------ view did load
@@ -121,7 +144,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         self.setupNavBar()
         self.setupTable()
         self.setupRefresh()
-//        self.setupCustomHUD()
         
         self.searchWithFilters()
     }
@@ -173,7 +195,6 @@ extension BusinessesViewController: UITableViewDelegate {
         
         return cell
     }
-    
 }
 
 // search delegate methods
@@ -203,14 +224,14 @@ extension BusinessesViewController: UISearchBarDelegate {
         self.tableView.reloadData()
     }
     
-    //-------------------------------------------- search begin
+    //-------------------------------------------- search begin edit
     
     func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(true, animated: true)
         return true;
     }
     
-    //-------------------------------------------- search end
+    //-------------------------------------------- search end edit
     
     func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(false, animated: true)
@@ -225,7 +246,7 @@ extension BusinessesViewController: UISearchBarDelegate {
         self.applySearch(searchBar.text)
     }
     
-    //-------------------------------------------- search
+    //-------------------------------------------- search enter
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
