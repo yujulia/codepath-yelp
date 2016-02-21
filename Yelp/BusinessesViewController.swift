@@ -151,7 +151,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toFilterSegue" {
-            
             let navController = segue.destinationViewController as! UINavigationController
             let filterViewController = navController.topViewController as! FiltersViewController
             
@@ -163,7 +162,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
             let detailViewController = segue.destinationViewController as! DetailViewController
             let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
             
-            detailViewController.restaurant = self.businesses[indexPath!.row]
+            detailViewController.business = self.businesses[indexPath!.row]
         }
     }
 }
@@ -222,7 +221,7 @@ extension BusinessesViewController: UITableViewDelegate {
     }
 }
 
-// search delegate methods
+// Search delegate
 
 extension BusinessesViewController: UISearchBarDelegate {
     

@@ -10,9 +10,19 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    var restaurant: Business? {
+    @IBOutlet weak var detailImage: UIImageView!
+    @IBOutlet weak var detailName: UILabel!
+    @IBOutlet weak var detailRating: UIImageView!
+    @IBOutlet weak var detailReviewImage: UILabel!
+    @IBOutlet weak var detailDistance: UILabel!
+    @IBOutlet weak var detailAddress: UILabel!
+    @IBOutlet weak var detailCategories: UILabel!
+    
+    var business: Business? {
         didSet {
             print("got info about business")
+            
+            print(business)
         }
     }
 
