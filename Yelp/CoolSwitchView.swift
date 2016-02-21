@@ -16,12 +16,12 @@ class CoolSwitchView: UIView {
     @IBOutlet var contentView: UIView!
     
     var changeCallback: (()->Void)?
-    
     var on = false
+    
+    // ------------------------------------------ defaults
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         initSubViews()
     }
     
@@ -30,19 +30,27 @@ class CoolSwitchView: UIView {
         initSubViews()
     }
     
+    // ------------------------------------------ init that matters
+    
     func initSubViews(){
+        
+        // stuff 
         
         let nib = UINib(nibName: "CoolSwitch", bundle: nil)
         nib.instantiateWithOwner(self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)
         
+        // my stuff
+        
         self.fullImage.alpha = 0
         self.emptyImage.alpha = 1
     }
     
+    // ------------------------------------------ show on state
+    
     func turnOn() {
-        UIView.animateWithDuration(0.6,
+        UIView.animateWithDuration(0.3,
             animations:  {() in
                 self.fullImage.alpha = 1
                 self.emptyImage.alpha = 0
@@ -51,8 +59,10 @@ class CoolSwitchView: UIView {
         self.on = true
     }
     
+    // ------------------------------------------ show off state
+    
     func turnOff() {
-        UIView.animateWithDuration(0.6,
+        UIView.animateWithDuration(0.3,
             animations:  {() in
                 self.fullImage.alpha = 0
                 self.emptyImage.alpha = 1
@@ -60,6 +70,8 @@ class CoolSwitchView: UIView {
         )
         self.on = false
     }
+    
+    // ------------------------------------------ toggle the switch
     
     func toggle() {
         if self.on {
@@ -70,10 +82,13 @@ class CoolSwitchView: UIView {
         self.changeCallback?()
     }
     
+    // ------------------------------------------ such hack much wow?
+    
     func addValueChangeCallback(callback: ()-> Void) {
-        print("ok heres this callback ");
         self.changeCallback = callback
     }
+    
+    // ------------------------------------------ toggle on click
     
     @IBAction func onTap(sender: AnyObject) {
         self.toggle()
