@@ -35,21 +35,20 @@ The following **additional** features are implemented:
 
 - [x] Added distance to search, made it a slider
 - [x] Implemented "search" on restaurant name of existing results
-- [x] Added hud spin on loading response
-- [x] Custom spinner
+- [x] Added custom hud spinner on loading response
+- [x] Custom checkbox / radio view
+- [x] No result displays message
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. when segueing search bar background flickers, not sure what is causing this
 2. how to override cancel in search bar
+3. adding a prototype to custom views seems to break it, how to do this correctly
 
 
 ## Video Walkthrough
 
 ![yelp demo](yelp.gif)
-
-![yelp demo](yelp2.gif)
-
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
