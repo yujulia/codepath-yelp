@@ -15,6 +15,8 @@ class CoolSwitchView: UIView {
     @IBOutlet weak var emptyImage: UIImageView!
     @IBOutlet var contentView: UIView!
     
+    var changeCallback: (()->Void)?
+    
     var on = false
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,7 +42,6 @@ class CoolSwitchView: UIView {
     }
     
     func turnOn() {
-        print("turn on")
         UIView.animateWithDuration(0.6,
             animations:  {() in
                 self.fullImage.alpha = 1
@@ -51,7 +52,6 @@ class CoolSwitchView: UIView {
     }
     
     func turnOff() {
-        print("turn off")
         UIView.animateWithDuration(0.6,
             animations:  {() in
                 self.fullImage.alpha = 0
@@ -67,10 +67,15 @@ class CoolSwitchView: UIView {
         } else {
             self.turnOn()
         }
+        self.changeCallback?()
+    }
+    
+    func addValueChangeCallback(callback: ()-> Void) {
+        print("ok heres this callback ");
+        self.changeCallback = callback
     }
     
     @IBAction func onTap(sender: AnyObject) {
-        print("its tapped");
         self.toggle()
     }
 }

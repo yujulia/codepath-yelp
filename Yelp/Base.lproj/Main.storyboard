@@ -330,7 +330,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="CoolSwitch" destination="sPU-ab-kk7" id="0kf-K4-DDk"/>
+                                            <outlet property="myCoolSwitch" destination="sPU-ab-kk7" id="BWH-Ep-KHS"/>
                                             <outlet property="onSwitch" destination="VnE-Q9-JTm" id="zrk-63-Yo9"/>
                                             <outlet property="switchLabel" destination="hEJ-RM-1GU" id="MFl-T4-rK8"/>
                                         </connections>
