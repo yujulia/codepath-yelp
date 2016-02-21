@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class YelpState: NSObject {
     
@@ -17,8 +18,8 @@ class YelpState: NSObject {
     var filterDistanceInMiles: Float?
     var filterDeals: Bool?
     var filterCategories = [Int:String]()
-    
     var resultOffset: Int?
+    var droppedSections = [Int:Bool]()
     
     // ------------------ filter distance
     
@@ -113,6 +114,24 @@ class YelpState: NSObject {
             ) { (business, error) -> Void in
                 callback(business, error: error)
         }
+    }
+    
+    // ------------------
+    
+    func setDropped(section: Int) {
+        print("section dropped", section)
+        self.droppedSections[section] = true
+    }
+    
+    func setNotDropped(section: Int) {
+        print("section  not dropped", section)
+        self.droppedSections[section] = false
+    }
+    
+    func getDropped(section: Int) -> Bool {
+        print("trying to get dropped for section ", section)
+        print(self.droppedSections)
+        return self.droppedSections[section] ?? false
     }
     
 }

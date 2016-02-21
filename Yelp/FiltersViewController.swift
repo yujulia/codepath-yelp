@@ -105,6 +105,24 @@ extension FiltersViewController: SliderCellDelegate {
     }
 }
 
+// DropCell delegate methods 
+
+extension FiltersViewController: DropCellDelegate {
+    
+    func dropCell(dropCell: DropCell, didTap dropped: Bool) {
+        let indexPath = self.tableView.indexPathForCell(dropCell)!
+        
+        print("drop cell dropped ", dropped, indexPath.section)
+        
+        if dropped {
+            self.state?.setDropped(indexPath.section)
+            self.reloadTest()
+        } else {
+            self.state?.setNotDropped(indexPath.section)
+        }
+    }
+}
+
 // TableView delegate methods
 
 extension FiltersViewController: UITableViewDelegate {
@@ -138,6 +156,12 @@ extension FiltersViewController: UITableViewDelegate {
         switch section {
             case Const.Sections.Categories.rawValue:
                 return Const.Categories.count
+            case Const.Sections.Sortby.rawValue:
+                let dropped = self.state?.getDropped(section)
+                if dropped! {
+                    return 3
+                }
+                return 1
             default:
                 return 1
         }
@@ -237,11 +261,23 @@ extension FiltersViewController: UITableViewDelegate {
     
     // ------------------------------------------ return a drop down cell for sort by
     
-    private func returnSortByCell(tableView: UITableView, indexPath: NSIndexPath) -> DropCell {
+    private func returnSortByCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("DropCell", forIndexPath: indexPath) as! DropCell
+        if let dropped = self.state?.getDropped(indexPath.section) {
+            if dropped {
+                let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
+                cell.delegate = self
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("DropCell", forIndexPath: indexPath) as! DropCell
+                cell.delegate = self
+                return cell
+            }
+        }
         
-        return cell
+        // should not hit this...
+        let nopeCell = UITableViewCell()
+        return nopeCell
     }
 
     // ------------------------------------------ return table cell
@@ -275,15 +311,10 @@ extension FiltersViewController: UITableViewDelegate {
     func reloadTest() {
         print("reload")
 
-        self.tableView.reloadSections(NSIndexSet(index: 3), withRowAnimation: UITableViewRowAnimation.Automatic)
+        self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: UITableViewRowAnimation.Left)
     }
     
     
-    
-//    func reloadSections(_ sections: NSIndexSet,
-//        withRowAnimation animation: UITableViewRowAnimation) {
-//            
-//    }
-    
+
     
 }

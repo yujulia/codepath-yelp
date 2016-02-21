@@ -8,11 +8,20 @@
 
 import UIKit
 
+// cell prototype
+
+@objc protocol DropCellDelegate {
+    optional func dropCell(dropCell: DropCell, didTap dropped: Bool)
+}
+
 class DropCell: UITableViewCell {
 
     @IBOutlet weak var selecteLabel: UILabel!
-    @IBOutlet weak var dropdownImage: UIImageView!
+    @IBOutlet weak var arrowButton: UIButton!
 
+    var dropped = false
+    
+    weak var delegate: DropCellDelegate?
     
     // ------------------------------------------ 
     
@@ -21,4 +30,8 @@ class DropCell: UITableViewCell {
 
     }
 
+    @IBAction func onArrowTap(sender: AnyObject) {
+        self.dropped = !self.dropped
+        delegate?.dropCell?(self, didTap: self.dropped)
+    }
 }

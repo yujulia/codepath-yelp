@@ -391,7 +391,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="70.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3N-bX-xLs">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3N-bX-xLs" userLabel="divider">
                                                     <rect key="frame" x="20" y="10" width="280" height="1"/>
                                                     <color key="backgroundColor" red="0.67843137249999996" green="0.0" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -405,29 +405,34 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="arrow-right" translatesAutoresizingMaskIntoConstraints="NO" id="acH-H3-tLr">
-                                                    <rect key="frame" x="260" y="21" width="40" height="40"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CQ-sa-lqe">
+                                                    <rect key="frame" x="260" y="20.5" width="40" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="5JW-ai-Rsw"/>
-                                                        <constraint firstAttribute="width" constant="40" id="xyM-VB-1fk"/>
+                                                        <constraint firstAttribute="height" constant="40" id="HH4-43-nhd"/>
+                                                        <constraint firstAttribute="width" constant="40" id="oRa-KN-npf"/>
                                                     </constraints>
-                                                </imageView>
+                                                    <state key="normal" image="arrow-right"/>
+                                                    <connections>
+                                                        <action selector="onArrowTap:" destination="DWO-wS-S7d" eventType="touchUpInside" id="M01-n3-7UQ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="3CQ-sa-lqe" secondAttribute="trailing" constant="20" id="1BC-1Y-6Lb"/>
                                                 <constraint firstItem="d3N-bX-xLs" firstAttribute="leading" secondItem="ePI-yb-HSP" secondAttribute="leading" constant="20" id="1pm-6H-Rib"/>
                                                 <constraint firstAttribute="trailing" secondItem="d3N-bX-xLs" secondAttribute="trailing" constant="20" id="1qn-qU-lyZ"/>
                                                 <constraint firstItem="d3N-bX-xLs" firstAttribute="top" secondItem="ePI-yb-HSP" secondAttribute="top" constant="10" id="5hu-TY-KlC"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dhn-PF-Hhb" secondAttribute="bottom" constant="10" id="6pX-A8-z1Y"/>
-                                                <constraint firstItem="acH-H3-tLr" firstAttribute="top" secondItem="d3N-bX-xLs" secondAttribute="bottom" constant="10" id="cdm-Pd-Nnm"/>
+                                                <constraint firstItem="3CQ-sa-lqe" firstAttribute="top" secondItem="d3N-bX-xLs" secondAttribute="bottom" constant="10" id="U5r-rt-a1C"/>
+                                                <constraint firstItem="3CQ-sa-lqe" firstAttribute="leading" secondItem="ePI-yb-HSP" secondAttribute="leadingMargin" constant="252" id="dnN-un-1up"/>
                                                 <constraint firstItem="dhn-PF-Hhb" firstAttribute="top" secondItem="d3N-bX-xLs" secondAttribute="bottom" constant="10" id="fSM-So-AvR"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="acH-H3-tLr" secondAttribute="bottom" constant="10" id="g3S-E7-hOK"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3CQ-sa-lqe" secondAttribute="bottom" constant="10" id="lVm-TF-4Cs"/>
                                                 <constraint firstItem="d3N-bX-xLs" firstAttribute="leading" secondItem="dhn-PF-Hhb" secondAttribute="trailing" constant="-112.5" id="n91-aG-ie0"/>
-                                                <constraint firstAttribute="trailing" secondItem="acH-H3-tLr" secondAttribute="trailing" constant="20" id="puk-Lu-52M"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outlet property="dropdownImage" destination="acH-H3-tLr" id="fph-Uh-Vtd"/>
+                                            <outlet property="arrowButton" destination="3CQ-sa-lqe" id="iw6-0L-la0"/>
                                             <outlet property="selecteLabel" destination="dhn-PF-Hhb" id="guV-Jb-krC"/>
                                         </connections>
                                     </tableViewCell>
