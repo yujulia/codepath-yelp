@@ -19,18 +19,25 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailReviewCount: UILabel!
     
     var business: Business?
+    
+    func detailImageLoaded() {
+        UIView.animateWithDuration(0.6,
+            animations:  {() in
+                self.detailImage.alpha = 1
+            }
+        )
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         if let biz = self.business {
             
             if let url = biz.imageURL {
                 var stringURL = String(url)
                 stringURL = stringURL.stringByReplacingOccurrencesOfString("ms.jpg", withString: "o.jpg")
-                let newURL = NSURL(string: stringURL)
-                self.detailImage.setImageWithURL(newURL!)
+                detailImage.alpha = 0
+                ImageLoader.loadImage(stringURL, imageview: self.detailImage, callback: detailImageLoaded)
             }
             
             if let name = biz.name {
