@@ -15,8 +15,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
     let ESTIMATE_ROW_HEIGHT: CGFloat = 120.0
+    let RESPONSE_LIMIT = 20
     let refreshControl = UIRefreshControl()
-    let LIMIT = 20
     
     var hud: MBProgressHUD? {
         didSet {
@@ -63,7 +63,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
 
         print("response length", business.count)
         
-        if business.count < LIMIT {
+        if business.count < RESPONSE_LIMIT {
             self.nomore = true
         }
         
@@ -82,7 +82,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
                 }
                 self.allBusinesses = biz
             }
-            
         } else {
             self.allBusinesses.removeAll()
             self.emptyView.hidden = false
