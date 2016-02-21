@@ -253,14 +253,13 @@ extension FiltersViewController: UITableViewDelegate {
                 
             case Const.Sections.Deals.rawValue:
                 cell = self.returnDealsCell(tableView, indexPath: indexPath)
-                
+        
             case Const.Sections.Sortby.rawValue:
                 cell = self.returnSortByCell(tableView, indexPath: indexPath)
             
             default:
                 cell = UITableViewCell()
         }
-
         
         return cell
     
