@@ -20,19 +20,21 @@ class SwitchCell: UITableViewCell {
 
 
     @IBOutlet weak var switchLabel: UILabel!
-    @IBOutlet weak var myCoolSwitch: CoolSwitchView!
+    
+    @IBOutlet weak var checkBox: CheckDesuView!
+   
     
     weak var delegate: SwitchCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.myCoolSwitch.addValueChangeCallback(self.coolSwitchValueChanged)
+        self.checkBox.addValueChangeCallback(self.checkBoxValueChanged)
     }
     
-    func coolSwitchValueChanged() {
-        print("cool switch value changed", switchLabel.text);
-        delegate?.switchCell?(self, didChangeValue: self.myCoolSwitch.on)
+    func checkBoxValueChanged() {
+        print("check value changed", switchLabel.text);
+        delegate?.switchCell?(self, didChangeValue: self.checkBox.checked)
     }
     
 }

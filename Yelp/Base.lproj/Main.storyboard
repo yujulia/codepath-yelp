@@ -307,7 +307,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="sPU-ab-kk7" customClass="CoolSwitchView" customModule="Yelp" customModuleProvider="target">
+                                                <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="sPU-ab-kk7" customClass="CheckDesuView" customModule="Yelp" customModuleProvider="target">
                                                     <rect key="frame" x="260" y="24" width="40" height="40"/>
                                                     <color key="backgroundColor" red="1" green="0.52479115610000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <gestureRecognizers/>
@@ -328,7 +328,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="myCoolSwitch" destination="sPU-ab-kk7" id="BWH-Ep-KHS"/>
+                                            <outlet property="checkBox" destination="sPU-ab-kk7" id="S3d-Oe-bba"/>
                                             <outlet property="switchLabel" destination="hEJ-RM-1GU" id="MFl-T4-rK8"/>
                                         </connections>
                                     </tableViewCell>

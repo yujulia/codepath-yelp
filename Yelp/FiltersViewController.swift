@@ -231,9 +231,9 @@ extension FiltersViewController: UITableViewDelegate {
         cell.switchLabel.text = Const.Categories[indexPath.row]["name"]
 
         if self.state?.filterCategories[indexPath.row] != nil {
-            cell.myCoolSwitch.setToOn()
+            cell.checkBox.check()
         } else {
-            cell.myCoolSwitch.setToOff()
+            cell.checkBox.uncheck()
         }
         cell.delegate = self
 
@@ -249,9 +249,9 @@ extension FiltersViewController: UITableViewDelegate {
         cell.switchLabel.text = "Offering a Deal"
         
         if self.state?.getFilterDeals() != nil {
-            cell.myCoolSwitch.setToOn()
+            cell.checkBox.check()
         } else {
-            cell.myCoolSwitch.setToOff()
+            cell.checkBox.uncheck()
         }
         
         cell.delegate = self

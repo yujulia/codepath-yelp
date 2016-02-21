@@ -1,23 +1,21 @@
 //
-//  CoolSwitchView.swift
+//  CheckDesuView.swift
 //  Yelp
 //
-//  Created by Julia Yu on 2/20/16.
+//  Created by Julia Yu on 2/21/16.
 //  Copyright © 2016 Timothy Lee. All rights reserved.
 //
 
 import UIKit
 
-class CoolSwitchView: UIView {
+class CheckDesuView: UIView {
 
-
-    @IBOutlet weak var fullImage: UIImageView!
-    @IBOutlet weak var emptyImage: UIImageView!
-    @IBOutlet var contentView: UIView!
-    
     var changeCallback: (()->Void)?
+    var checked: Bool = false
     
-    var on: Bool = false
+    @IBOutlet weak var uncheckedImage: UIImageView!
+    @IBOutlet weak var checkedImage: UIImageView!
+    @IBOutlet var contentView: UIView!
     
     // ------------------------------------------ defaults
     
@@ -34,58 +32,55 @@ class CoolSwitchView: UIView {
     // ------------------------------------------ init that matters
     
     func initSubViews(){
-        
-        // stuff 
-        
-        let nib = UINib(nibName: "CoolSwitch", bundle: nil)
+        let nib = UINib(nibName: "CheckDesu", bundle: nil)
         nib.instantiateWithOwner(self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)
         
-        // my stuff
-        
-        self.setToOff()
+        self.setToUnchecked()
     }
     
-    func setToOff() {
-        self.fullImage.alpha = 0
-        self.emptyImage.alpha = 1
-        self.on = false
+    // ------------------------------------------ set the alpha and value
+    
+    func setToUnchecked() {
+        self.uncheckedImage.alpha = 1
+        self.checkedImage.alpha = 0
+        self.checked = false
     }
     
-    func setToOn() {
-        self.fullImage.alpha = 1
-        self.emptyImage.alpha = 0
-        self.on = true
+    func setToChecked() {
+        self.uncheckedImage.alpha = 0
+        self.checkedImage.alpha = 1
+        self.checked = true
     }
     
-    // ------------------------------------------ show on state
+    // ------------------------------------------ animate to on state
     
-    func turnOn() {
+    func check() {
         UIView.animateWithDuration(0.3,
             animations:  {() in
-                self.setToOn()
+                self.setToChecked()
             }
         )
     }
     
-    // ------------------------------------------ show off state
+    // ------------------------------------------ animate to off state
     
-    func turnOff() {
+    func uncheck() {
         UIView.animateWithDuration(0.3,
             animations:  {() in
-                self.setToOff()
+                self.setToUnchecked()
             }
         )
     }
     
-    // ------------------------------------------ toggle the switch
+    // ------------------------------------------ toggle the checkbox
     
     func toggle() {
-        if self.on {
-            self.turnOff()
+        if self.checked {
+            self.uncheck()
         } else {
-            self.turnOn()
+            self.check()
         }
         self.changeCallback?()
     }
@@ -96,9 +91,10 @@ class CoolSwitchView: UIView {
         self.changeCallback = callback
     }
     
-    // ------------------------------------------ toggle on click
+    // ------------------------------------------ area tap
     
     @IBAction func onTap(sender: AnyObject) {
         self.toggle()
     }
+    
 }

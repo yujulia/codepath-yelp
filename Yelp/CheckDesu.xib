@@ -5,11 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CoolSwitchView" customModule="Yelp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckDesuView" customModule="Yelp" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="iN0-l3-epB" id="mIF-4i-Z5M"/>
-                <outlet property="emptyImage" destination="Saf-C9-n52" id="8DU-EA-EPH"/>
-                <outlet property="fullImage" destination="M7b-Tg-joo" id="F2a-OB-sYO"/>
+                <outlet property="checkedImage" destination="l5s-JM-jV2" id="j3G-OK-PnT"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="w5S-mb-hYJ"/>
+                <outlet property="uncheckedImage" destination="luP-Hv-QaP" id="U88-z6-8hN"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -17,23 +17,23 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="Saf-C9-n52">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="l5s-JM-jV2">
                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                 </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="M7b-Tg-joo">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="luP-Hv-QaP">
                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                    <gestureRecognizers/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <connections>
-                <outletCollection property="gestureRecognizers" destination="Ibd-lT-fyd" appends="YES" id="y2I-8Z-GI9"/>
+                <outletCollection property="gestureRecognizers" destination="lZy-Wg-PJk" appends="YES" id="AuQ-Ae-Fxe"/>
             </connections>
-            <point key="canvasLocation" x="111" y="274"/>
         </view>
-        <tapGestureRecognizer id="Ibd-lT-fyd">
+        <tapGestureRecognizer id="lZy-Wg-PJk">
             <connections>
-                <action selector="onTap:" destination="-1" id="L1l-B0-8OV"/>
+                <action selector="onTap:" destination="-1" id="BL2-KW-LzA"/>
             </connections>
         </tapGestureRecognizer>
     </objects>
