@@ -16,6 +16,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     
     let ESTIMATE_ROW_HEIGHT: CGFloat = 120.0
     let refreshControl = UIRefreshControl()
+    let LIMIT = 20
     
     var hud: MBProgressHUD? {
         didSet {
@@ -23,6 +24,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    var nomore = false
     var loading = false
     var filtering = false
     var previousSearch: String?
@@ -61,12 +63,15 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
 
         print("response length", business.count)
         
+        if business.count < LIMIT {
+            self.nomore = true
+        }
+        
         if business.count != 0 {
             if self.filtering {
                 // new set of results
                 self.allBusinesses = business
                 self.filtering = false
-                
             } else {
                 // append results (scrolled)
                 var biz = self.allBusinesses
@@ -84,14 +89,13 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         }
         
         self.filterResults(self.previousSearch)
-        
         self.notLoading()
     }
     
     // ------------------------------------------ perform the search
     
     private func searchWithFilters() {
-        if self.loading {
+        if self.loading || self.nomore {
             return
         }
         self.emptyView.hidden = true
@@ -166,6 +170,7 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters ok: Bool) {
         self.filtering = true
         self.state.setResultOffset(0) // fresh search
+        self.nomore = false
         self.searchWithFilters()
     }
 }
