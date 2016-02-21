@@ -2,7 +2,7 @@
 
 Yelp is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
-Time spent: 14+8+5 hours spent in total
+Time spent: 14+8+5+8 hours spent in total
 
 ## User Stories
 
@@ -30,7 +30,6 @@ The following **optional** features are implemented:
    - [ ] Categories should show a subset of the full list with a "See All" row to expand. Category list is [here](http://www.yelp.com/developers/documentation/category_list).
 
 - [x] Implement the restaurant detail page.
-  - [ ] actually put data here :P
 
 The following **additional** features are implemented:
 
@@ -48,6 +47,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 ![yelp demo](yelp.gif)
 
+![yelp demo](yelp2.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
