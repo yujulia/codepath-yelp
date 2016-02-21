@@ -16,7 +16,8 @@ class CoolSwitchView: UIView {
     @IBOutlet var contentView: UIView!
     
     var changeCallback: (()->Void)?
-    var on = false
+    
+    var on: Bool = false
     
     // ------------------------------------------ defaults
     
@@ -43,8 +44,19 @@ class CoolSwitchView: UIView {
         
         // my stuff
         
+        self.setToOff()
+    }
+    
+    func setToOff() {
         self.fullImage.alpha = 0
         self.emptyImage.alpha = 1
+        self.on = false
+    }
+    
+    func setToOn() {
+        self.fullImage.alpha = 1
+        self.emptyImage.alpha = 0
+        self.on = true
     }
     
     // ------------------------------------------ show on state
@@ -52,11 +64,9 @@ class CoolSwitchView: UIView {
     func turnOn() {
         UIView.animateWithDuration(0.3,
             animations:  {() in
-                self.fullImage.alpha = 1
-                self.emptyImage.alpha = 0
+                self.setToOn()
             }
         )
-        self.on = true
     }
     
     // ------------------------------------------ show off state
@@ -64,11 +74,9 @@ class CoolSwitchView: UIView {
     func turnOff() {
         UIView.animateWithDuration(0.3,
             animations:  {() in
-                self.fullImage.alpha = 0
-                self.emptyImage.alpha = 1
+                self.setToOff()
             }
         )
-        self.on = false
     }
     
     // ------------------------------------------ toggle the switch

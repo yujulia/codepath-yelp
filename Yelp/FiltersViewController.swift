@@ -207,9 +207,9 @@ extension FiltersViewController: UITableViewDelegate {
         cell.switchLabel.text = Const.Categories[indexPath.row]["name"]
 
         if self.state?.filterCategories[indexPath.row] != nil {
-            cell.onSwitch.on = true
+            cell.myCoolSwitch.setToOn()
         } else {
-            cell.onSwitch.on = false
+            cell.myCoolSwitch.setToOff()
         }
         cell.delegate = self
 
@@ -223,7 +223,13 @@ extension FiltersViewController: UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
 
         cell.switchLabel.text = "Offering a Deal"
-        cell.onSwitch.on = self.state?.getFilterDeals() ?? false
+        
+        if self.state?.getFilterDeals() != nil {
+            cell.myCoolSwitch.setToOn()
+        } else {
+            cell.myCoolSwitch.setToOff()
+        }
+        
         cell.delegate = self
         
         return cell

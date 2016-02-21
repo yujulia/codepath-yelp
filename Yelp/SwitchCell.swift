@@ -20,7 +20,6 @@ class SwitchCell: UITableViewCell {
 
 
     @IBOutlet weak var switchLabel: UILabel!
-    @IBOutlet weak var onSwitch: UISwitch!
     @IBOutlet weak var myCoolSwitch: CoolSwitchView!
     
     weak var delegate: SwitchCellDelegate?
@@ -28,35 +27,13 @@ class SwitchCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.onSwitch.addTarget(
-            self,
-            action: "switchValueChanged",
-            forControlEvents: UIControlEvents.ValueChanged
-        )
-        
         self.myCoolSwitch.addValueChangeCallback(self.coolSwitchValueChanged)
     }
     
     func coolSwitchValueChanged() {
         print("cool switch value changed", switchLabel.text);
+        delegate?.switchCell?(self, didChangeValue: self.myCoolSwitch.on)
     }
     
-    func switchValueChanged() {
-        delegate?.switchCell?(self, didChangeValue: self.onSwitch.on)
-    }
 }
 
-//extension SwitchCell: CoolSwitchDelegate {
-//    
-//    func CoolSwitchView(coolSwitchView: UIView, didChangeValue value: Bool) {
-//        print("this is switch cell i heard it ", value);
-//    }
-//    
-////    func sliderCell(sliderCell: SliderCell, didChangeValue value: Float) {
-////        let indexPath = self.tableView.indexPathForCell(sliderCell)!
-////        
-////        if indexPath.section == Const.Sections.Distance.rawValue {
-////            self.state?.setFilterDistance(value)
-////        }
-////    }
-//}
