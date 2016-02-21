@@ -311,7 +311,7 @@ extension FiltersViewController: UITableViewDelegate {
     func reloadTest() {
         print("reload")
 
-        self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: UITableViewRowAnimation.Left)
+        self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: UITableViewRowAnimation.Bottom)
     }
     
     
