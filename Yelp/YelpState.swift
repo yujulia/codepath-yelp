@@ -90,4 +90,29 @@ class YelpState: NSObject {
         self.filterCategories = [Int:String]()
     }
     
+    // ------------------ do the actual search
+    
+    func doSearch(callback:([Business], error: NSError?) -> Void) {
+        
+        let categories = self.getFilterCategories() as? [String]
+        let deals = self.getFilterDeals()
+        let distance = self.getFilterDistance()
+        let offset = self.getResultOffset()
+        let term = "Restaurants"
+        
+        // TODO -- implement sort
+        // let sort = self.state.getSortBy()
+        
+        Business.searchWithTerm(
+            term,
+            sort: nil,
+            categories: categories,
+            deals: deals,
+            distance: distance,
+            offset: offset
+            ) { (business, error) -> Void in
+                callback(business, error: error)
+        }
+    }
+    
 }

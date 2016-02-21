@@ -44,6 +44,35 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         MBProgressHUD.hideHUDForView(self.view, animated: true)
     }
     
+    // ------------------------------------------ search returned
+    
+    func searchReturned(business: [Business], error: NSError?) -> Void {
+
+        if business.count != 0 {
+            if self.filtering {
+                self.allBusinesses = business
+                self.filtering = false
+            } else {
+                var biz = self.allBusinesses
+                if self.allBusinesses != nil {
+                    biz.appendContentsOf(business)
+                } else {
+                    biz = business
+                }
+                self.allBusinesses = biz
+            }
+        } else {
+            self.allBusinesses.removeAll()
+        }
+        
+        self.filterResults(self.previousSearch)
+        
+        print("response length", business.count)
+        // if no results display something
+        
+        self.notLoading()
+    }
+    
     // ------------------------------------------ perform the search
     
     private func searchWithFilters() {
@@ -53,45 +82,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         }
         
         self.isLoading()
-       
-        let categories = self.state?.getFilterCategories() as? [String]
-        let deals = self.state.getFilterDeals()
-        let distance = self.state.getFilterDistance()
-        let offset = self.state.getResultOffset()
-        
-        // TODO -- implement sort
-        // let sort = self.state.getSortBy()
-        
-        Business.searchWithTerm(
-            "Restaurants",
-            sort: nil,
-            categories: categories,
-            deals: deals,
-            distance: distance,
-            offset: offset
-            ) { (business, error) -> Void in
-                
-                if business.count != 0 {
-                    if self.filtering {
-                        self.allBusinesses = business
-                        self.filtering = false
-                    } else {
-                        var biz = self.allBusinesses
-                        if self.allBusinesses != nil {
-                            biz.appendContentsOf(business)
-                        } else {
-                            biz = business
-                        }
-                        self.allBusinesses = biz
-                    }
-                    
-                    self.applySearch(self.previousSearch)
-                }
-                
-                print("response length", business.count)
-                
-                self.notLoading()
-        }
+        self.state.doSearch(self.searchReturned)
     }
     
     // ------------------------------------------ set up refresh control
@@ -239,7 +230,7 @@ extension BusinessesViewController: UISearchBarDelegate {
     
     // ------------------------------------------ search the current result set
     
-    func applySearch(searchTerm: String?){
+    func filterResults(searchTerm: String?){
         
         if searchTerm == nil {
             self.previousSearch = ""
@@ -277,20 +268,20 @@ extension BusinessesViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        self.applySearch(searchBar.text)
+        self.filterResults(searchBar.text)
     }
     
     //-------------------------------------------- search enter
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        self.applySearch(searchBar.text)
+        self.filterResults(searchBar.text)
     }
     
     //-------------------------------------------- searc text change
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        self.applySearch(searchBar.text)
+        self.filterResults(searchBar.text)
     }
     
 }
