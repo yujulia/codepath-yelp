@@ -40,16 +40,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         self.navigationController?.navigationBar.titleTextAttributes = titleDict
     }
     
-    // ------------------------------------------ set up current table
-    
-    private func setupTable() {
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = ESTIMATE_ROW_HEIGHT
-        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-    }
-    
     // ------------------------------------------ view did load
     
     override func viewDidLoad() {
@@ -117,6 +107,16 @@ extension FiltersViewController: SliderCellDelegate {
 // TableView delegate methods
 
 extension FiltersViewController: UITableViewDelegate {
+    
+    // ------------------------------------------ set up current table
+    
+    private func setupTable() {
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = ESTIMATE_ROW_HEIGHT
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+    }
     
     // ------------------------------------------ row selected, deselect
     

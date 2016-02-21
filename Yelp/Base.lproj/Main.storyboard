@@ -113,7 +113,7 @@
                                             <outlet property="ratingImageView" destination="7Hn-4v-K4l" id="si9-iH-Bkx"/>
                                             <outlet property="reviewCountLabel" destination="hmX-CA-oy8" id="XrJ-Rm-oKW"/>
                                             <outlet property="thumbImageView" destination="Its-11-9Qv" id="JOY-tB-Pub"/>
-                                            <segue destination="FRC-Rx-k5f" kind="push" id="PAN-B9-Yaq"/>
+                                            <segue destination="FRC-Rx-k5f" kind="push" identifier="toDetailSegue" id="PAN-B9-Yaq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -143,10 +143,10 @@
             </objects>
             <point key="canvasLocation" x="1325" y="338"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="ikp-oN-fne">
             <objects>
-                <viewController id="FRC-Rx-k5f" sceneMemberID="viewController">
+                <viewController id="FRC-Rx-k5f" customClass="DetailViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SmV-b2-wbM"/>
                         <viewControllerLayoutGuide type="bottom" id="nKi-E1-cDK"/>

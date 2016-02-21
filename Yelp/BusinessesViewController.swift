@@ -48,8 +48,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     
     private func searchWithFilters() {
         
-        // TODO - for now, stop spamming loads with do nothing
-        //        this should probably queue up
         if self.loading {
             return
         }
@@ -73,8 +71,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
             offset: offset
             ) { (business, error) -> Void in
                 
- 
-                //  has result
                 if business.count != 0 {
                     if self.filtering {
                         self.allBusinesses = business
@@ -93,16 +89,9 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
                 }
                 
                 print("response length", business.count)
-           
                 
                 self.notLoading()
         }
-    }
-    
-    // ------------------------------------------ at end of page so load more
-    
-    private func loadMore() {
-        self.searchWithFilters()
     }
     
     // ------------------------------------------ set up refresh control
@@ -169,6 +158,13 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
             filterViewController.delegate = self
             filterViewController.state = self.state
         }
+        
+        if segue.identifier == "toDetailSegue" {
+            let detailViewController = segue.destinationViewController as! DetailViewController
+            let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
+            
+            detailViewController.restaurant = self.businesses[indexPath!.row]
+        }
     }
 }
 
@@ -219,7 +215,7 @@ extension BusinessesViewController: UITableViewDelegate {
         
         if indexPath.row >= self.allBusinesses.count-1 {
             self.state.setResultOffset(self.allBusinesses.count)
-            self.loadMore()
+            self.searchWithFilters()
         }
         
         return cell
