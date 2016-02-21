@@ -162,34 +162,30 @@
                                     <constraint firstAttribute="height" constant="320" id="Dtc-GY-0dV"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sdK-Ll-Hd9">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sdK-Ll-Hd9">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <view alpha="0.69999999999999996" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ig3-j0-XU5">
+                                    <view alpha="0.69999999999999996" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ig3-j0-XU5">
                                         <rect key="frame" x="20" y="224" width="280" height="280"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="restaurant name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82K-Oc-9NS">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="restaurant name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82K-Oc-9NS">
                                                 <rect key="frame" x="28" y="28" width="224" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thai" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7V-8T-Kn7">
-                                                <rect key="frame" x="132" y="176" width="26.5" height="16"/>
+                                                <rect key="frame" x="132" y="112" width="26.5" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" fixedFrame="YES" text="0.07mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKf-EA-7de">
-                                                <rect key="frame" x="45" y="193" width="38" height="14.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="20 reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Es-ny-mXz">
+                                                <rect key="frame" x="158" y="49" width="65.5" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="880 oak street" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShJ-eq-dkE">
-                                                <rect key="frame" x="90" y="140" width="89" height="16"/>
+                                                <rect key="frame" x="101" y="81" width="89" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SON-iM-Ogb">
@@ -199,24 +195,25 @@
                                                     <constraint firstAttribute="height" constant="15" id="Cze-TA-p9O"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="20 reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Es-ny-mXz">
-                                                <rect key="frame" x="158" y="49" width="65.5" height="16"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" fixedFrame="YES" text="0.07mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKf-EA-7de">
+                                                <rect key="frame" x="126" y="136" width="38" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="280" id="5Z5-EB-Nim"/>
-                                            <constraint firstItem="82K-Oc-9NS" firstAttribute="top" secondItem="Ig3-j0-XU5" secondAttribute="topMargin" constant="20" id="MDu-RX-Fh6"/>
-                                            <constraint firstItem="82K-Oc-9NS" firstAttribute="leading" secondItem="Ig3-j0-XU5" secondAttribute="leadingMargin" constant="20" id="O2P-dI-o4R"/>
+                                            <constraint firstAttribute="height" constant="280" id="LRl-wh-02J"/>
                                             <constraint firstItem="1Es-ny-mXz" firstAttribute="top" secondItem="82K-Oc-9NS" secondAttribute="bottom" constant="14.5" id="POe-b7-Dhs"/>
-                                            <constraint firstAttribute="height" constant="280" id="Wl1-Ew-2g1"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="82K-Oc-9NS" secondAttribute="trailing" constant="20" id="r5Q-b1-IOL"/>
+                                            <constraint firstAttribute="width" constant="280" id="Peg-ze-I5l"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Ig3-j0-XU5" firstAttribute="leading" secondItem="sdK-Ll-Hd9" secondAttribute="leading" constant="20" id="1RD-R8-De4"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ig3-j0-XU5" secondAttribute="trailing" constant="20" id="b6v-AL-cBl"/>
+                                    <constraint firstItem="Ig3-j0-XU5" firstAttribute="top" secondItem="sdK-Ll-Hd9" secondAttribute="top" constant="224" id="dij-xo-uKv"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.67843137249999996" green="0.0" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
