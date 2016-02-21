@@ -52,7 +52,7 @@ class CoolSwitchView: UIView {
     
     func turnOff() {
         print("turn off")
-        UIView.animateWithDuration(2,
+        UIView.animateWithDuration(0.6,
             animations:  {() in
                 self.fullImage.alpha = 0
                 self.emptyImage.alpha = 1
@@ -61,7 +61,16 @@ class CoolSwitchView: UIView {
         self.on = false
     }
     
+    func toggle() {
+        if self.on {
+            self.turnOff()
+        } else {
+            self.turnOn()
+        }
+    }
+    
     @IBAction func onTap(sender: AnyObject) {
         print("its tapped");
+        self.toggle()
     }
 }

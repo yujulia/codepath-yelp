@@ -18,10 +18,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="circle-empty" translatesAutoresizingMaskIntoConstraints="NO" id="Saf-C9-n52">
-                    <rect key="frame" x="12" y="13" width="16" height="16"/>
+                    <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="circle-full" translatesAutoresizingMaskIntoConstraints="NO" id="M7b-Tg-joo">
-                    <rect key="frame" x="31" y="13" width="16" height="16"/>
+                    <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
