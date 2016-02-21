@@ -10,15 +10,14 @@ import UIKit
 
 class DropCell: UITableViewCell {
 
-    @IBOutlet weak var BGView: UIView!
-    @IBOutlet weak var downImage: UIImageView!
+    @IBOutlet weak var selecteLabel: UILabel!
+    @IBOutlet weak var dropdownImage: UIImageView!
+
     
     // ------------------------------------------ 
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.BGView.layer.borderColor = UIColor.lightGrayColor().CGColor
-        self.BGView.layer.borderWidth = 1
 
     }
 

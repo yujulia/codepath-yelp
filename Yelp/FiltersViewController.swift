@@ -271,4 +271,19 @@ extension FiltersViewController: UITableViewDelegate {
         return cell
     
     }
+    
+    func reloadTest() {
+        print("reload")
+
+        self.tableView.reloadSections(NSIndexSet(index: 3), withRowAnimation: UITableViewRowAnimation.Automatic)
+    }
+    
+    
+    
+//    func reloadSections(_ sections: NSIndexSet,
+//        withRowAnimation animation: UITableViewRowAnimation) {
+//            
+//    }
+    
+    
 }
