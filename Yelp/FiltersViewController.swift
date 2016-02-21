@@ -105,20 +105,20 @@ extension FiltersViewController: SliderCellDelegate {
     }
 }
 
-// DropCell delegate methods 
+// ExpandCell delegate methods
 
-extension FiltersViewController: DropCellDelegate {
+extension FiltersViewController: ExpandCellDelegate {
     
-    func dropCell(dropCell: DropCell, didTap dropped: Bool) {
-        let indexPath = self.tableView.indexPathForCell(dropCell)!
+    func expandCell(expandCell: ExpandCell, didTap open: Bool) {
+        let indexPath = self.tableView.indexPathForCell(expandCell)!
         
-        print("drop cell dropped ", dropped, indexPath.section)
+        print("expand cell expanded ", open, indexPath.section)
         
-        if dropped {
-            self.state?.setDropped(indexPath.section)
+        if open {
+            self.state?.setOpen(indexPath.section)
             self.reloadTest()
         } else {
-            self.state?.setNotDropped(indexPath.section)
+            self.state?.setClosed(indexPath.section)
         }
     }
 }
@@ -157,8 +157,8 @@ extension FiltersViewController: UITableViewDelegate {
             case Const.Sections.Categories.rawValue:
                 return Const.Categories.count
             case Const.Sections.Sortby.rawValue:
-                let dropped = self.state?.getDropped(section)
-                if dropped! {
+                let open = self.state?.getOpen(section)
+                if open! {
                     return 3
                 }
                 return 1
@@ -263,13 +263,13 @@ extension FiltersViewController: UITableViewDelegate {
     
     private func returnSortByCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
         
-        if let dropped = self.state?.getDropped(indexPath.section) {
-            if dropped {
+        if let open = self.state?.getOpen(indexPath.section) {
+            if open {
                 let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
                 cell.delegate = self
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("DropCell", forIndexPath: indexPath) as! DropCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("ExpandCell", forIndexPath: indexPath) as! ExpandCell
                 cell.delegate = self
                 return cell
             }

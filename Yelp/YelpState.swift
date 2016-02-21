@@ -19,7 +19,7 @@ class YelpState: NSObject {
     var filterDeals: Bool?
     var filterCategories = [Int:String]()
     var resultOffset: Int?
-    var droppedSections = [Int:Bool]()
+    var openSections = [Int:Bool]()
     
     // ------------------ filter distance
     
@@ -118,20 +118,20 @@ class YelpState: NSObject {
     
     // ------------------
     
-    func setDropped(section: Int) {
-        print("section dropped", section)
-        self.droppedSections[section] = true
+    func setOpen(section: Int) {
+        print("section open", section)
+        self.openSections[section] = true
     }
     
-    func setNotDropped(section: Int) {
-        print("section  not dropped", section)
-        self.droppedSections[section] = false
+    func setClosed(section: Int) {
+        print("section  closed", section)
+        self.openSections[section] = false
     }
     
-    func getDropped(section: Int) -> Bool {
+    func getOpen(section: Int) -> Bool {
         print("trying to get dropped for section ", section)
-        print(self.droppedSections)
-        return self.droppedSections[section] ?? false
+        print(self.openSections)
+        return self.openSections[section] ?? false
     }
     
 }

@@ -2,7 +2,7 @@
 
 Yelp is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
-Time spent: 14+8+5+8 hours spent in total
+Time spent: t14+f8+f5+s8 hours spent in total
 
 ## User Stories
 
@@ -44,6 +44,8 @@ Please list two areas of the assignment you'd like to **discuss further with you
 1. when segueing search bar background flickers, not sure what is causing this
 2. how to override cancel in search bar
 3. adding a prototype to custom views seems to break it, how to do this correctly
+4. how to auto layout center 2 things that are side by side
+5. how to auto layout nested views - really annoyings
 
 
 ## Video Walkthrough
