@@ -11,6 +11,7 @@ import MBProgressHUD
 
 class BusinessesViewController: UIViewController, UITableViewDataSource {
 
+    @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     let ESTIMATE_ROW_HEIGHT: CGFloat = 120.0
@@ -29,6 +30,16 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     var allBusinesses: [Business]!
     var businesses: [Business]!
     
+    // ------------------------------------------ view did load
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.state = YelpState()
+        self.setupSearchBar()
+        self.setupTable()
+        self.setupRefresh()
+        self.searchWithFilters()
+    }
     
     // ------------------------------------------ toggle HUD, set/release locks
     
@@ -48,11 +59,16 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     
     func searchReturned(business: [Business], error: NSError?) -> Void {
 
+        print("response length", business.count)
+        
         if business.count != 0 {
             if self.filtering {
+                // new set of results
                 self.allBusinesses = business
                 self.filtering = false
+                
             } else {
+                // append results (scrolled)
                 var biz = self.allBusinesses
                 if self.allBusinesses != nil {
                     biz.appendContentsOf(business)
@@ -61,14 +77,13 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
                 }
                 self.allBusinesses = biz
             }
+            
         } else {
             self.allBusinesses.removeAll()
+            self.emptyView.hidden = false
         }
         
         self.filterResults(self.previousSearch)
-        
-        print("response length", business.count)
-        // if no results display something
         
         self.notLoading()
     }
@@ -76,11 +91,10 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     // ------------------------------------------ perform the search
     
     private func searchWithFilters() {
-        
         if self.loading {
             return
         }
-        
+        self.emptyView.hidden = true
         self.isLoading()
         self.state.doSearch(self.searchReturned)
     }
@@ -102,7 +116,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     //-------------------------------------------- add custom spinner to the hud
     
     private func setupCustomHUD() {
-        
         var imgListArray = [UIImage]()
         let testimage = UIImage(named: "red1")
         let spinner = UIImageView(image: testimage)
@@ -121,20 +134,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         self.hud?.mode = .CustomView
         self.hud?.customView = spinner
         self.hud?.color = Const.YelpRed
-    }
-    
-    // ------------------------------------------ view did load
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.state = YelpState()
-        
-        self.setupSearchBar()
-        self.setupTable()
-        self.setupRefresh()
-        
-        self.searchWithFilters()
     }
     
     // ------------------------------------------ prepare for segue
@@ -183,6 +182,7 @@ extension BusinessesViewController: UITableViewDelegate {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = ESTIMATE_ROW_HEIGHT
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        self.emptyView.hidden = true
     }
     
     // ------------------------------------------ return business count
@@ -199,7 +199,6 @@ extension BusinessesViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell", forIndexPath: indexPath) as! BusinessCell
-        
         cell.business = self.businesses[indexPath.row]
         cell.row = indexPath.row
         
@@ -207,7 +206,6 @@ extension BusinessesViewController: UITableViewDelegate {
             self.state.setResultOffset(self.allBusinesses.count)
             self.searchWithFilters()
         }
-        
         return cell
     }
 }
@@ -222,7 +220,6 @@ extension BusinessesViewController: UISearchBarDelegate {
         let searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.placeholder = "Restaurants"
-        
         self.navigationItem.titleView = searchBar
         self.navigationController?.navigationBar.barTintColor = Const.YelpRed
         self.navigationController?.navigationBar.translucent = false
@@ -283,5 +280,4 @@ extension BusinessesViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         self.filterResults(searchBar.text)
     }
-    
 }

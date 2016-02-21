@@ -119,10 +119,30 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFq-WI-9iz">
+                                <rect key="frame" x="-4" y="64" width="328" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="got nothing :(" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPh-xP-4Ak">
+                                        <rect key="frame" x="114" y="11" width="99" height="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="gPh-xP-4Ak" firstAttribute="centerX" secondItem="OFq-WI-9iz" secondAttribute="centerX" id="BAm-ha-bYm"/>
+                                    <constraint firstAttribute="height" constant="40" id="UTZ-S4-6KL"/>
+                                    <constraint firstItem="gPh-xP-4Ak" firstAttribute="centerY" secondItem="OFq-WI-9iz" secondAttribute="centerY" id="n7S-nk-h5u"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4Na-cd-SHh" firstAttribute="leading" secondItem="XhR-oz-92f" secondAttribute="leading" id="7V9-Ka-KhQ"/>
+                            <constraint firstItem="OFq-WI-9iz" firstAttribute="leading" secondItem="XhR-oz-92f" secondAttribute="leadingMargin" constant="-20" id="HCz-cu-QEa"/>
+                            <constraint firstItem="OFq-WI-9iz" firstAttribute="top" secondItem="hR0-74-jRp" secondAttribute="bottom" id="Jme-s3-347"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OFq-WI-9iz" secondAttribute="trailing" constant="-20" id="M2R-ea-KEy"/>
                             <constraint firstItem="VBY-gq-v8E" firstAttribute="top" secondItem="4Na-cd-SHh" secondAttribute="bottom" id="l8M-x1-PKq"/>
                             <constraint firstItem="4Na-cd-SHh" firstAttribute="top" secondItem="XhR-oz-92f" secondAttribute="top" id="qcu-Pi-vZZ"/>
                             <constraint firstAttribute="trailing" secondItem="4Na-cd-SHh" secondAttribute="trailing" id="xA0-ey-8VL"/>
@@ -137,6 +157,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emptyView" destination="OFq-WI-9iz" id="M8i-Xe-cHA"/>
                         <outlet property="tableView" destination="4Na-cd-SHh" id="CWM-C7-myB"/>
                     </connections>
                 </viewController>
@@ -221,7 +242,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.67843137249999996" green="0.0" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ig3-j0-XU5" firstAttribute="top" secondItem="SmV-b2-wbM" secondAttribute="bottom" constant="225" id="0ct-02-lGq"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Ig3-j0-XU5" secondAttribute="bottom" id="O6W-AJ-Sp2"/>
@@ -259,7 +280,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Css-kY-gsM">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Css-kY-gsM">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -400,6 +421,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="liw-Qp-Ybi" firstAttribute="top" secondItem="Css-kY-gsM" secondAttribute="bottom" id="2zi-ao-Q4W"/>
+                            <constraint firstItem="Css-kY-gsM" firstAttribute="top" secondItem="CoV-i0-i6k" secondAttribute="top" id="MYY-Ec-39s"/>
+                            <constraint firstAttribute="trailing" secondItem="Css-kY-gsM" secondAttribute="trailing" id="Mrm-c0-hIZ"/>
+                            <constraint firstItem="Css-kY-gsM" firstAttribute="leading" secondItem="CoV-i0-i6k" secondAttribute="leading" id="Wdl-yj-Unm"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="0P5-gt-DYF">
                         <barButtonItem key="leftBarButtonItem" image="cancel" id="WC2-ng-nMD">
