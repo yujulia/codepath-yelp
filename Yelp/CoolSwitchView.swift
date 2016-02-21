@@ -37,10 +37,6 @@ class CoolSwitchView: UIView {
         
         self.fullImage.alpha = 0
         self.emptyImage.alpha = 1
-        print("does this do anything...", self.fullImage)
-        
-        print("init sub")
-
     }
     
     func turnOn() {
@@ -65,4 +61,7 @@ class CoolSwitchView: UIView {
         self.on = false
     }
     
+    @IBAction func onTap(sender: AnyObject) {
+        print("its tapped");
+    }
 }

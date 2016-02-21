@@ -25,8 +25,17 @@
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="Ibd-lT-fyd" appends="YES" id="y2I-8Z-GI9"/>
+            </connections>
             <point key="canvasLocation" x="111" y="274"/>
         </view>
+        <tapGestureRecognizer id="Ibd-lT-fyd">
+            <connections>
+                <action selector="onTap:" destination="-1" id="L1l-B0-8OV"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="circle-empty" width="16" height="16"/>
