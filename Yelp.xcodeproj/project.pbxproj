@@ -17,6 +17,8 @@
 		22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAAA9B1AEA1EC300A544AF /* BusinessesViewController.swift */; };
 		5A62EE291C79403C00892E44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62EE281C79403C00892E44 /* DetailViewController.swift */; };
 		5A62EE2D1C79972B00892E44 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62EE2C1C79972B00892E44 /* ImageLoader.swift */; };
+		5A62EE301C799B5500892E44 /* CoolSwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A62EE2F1C799B5500892E44 /* CoolSwitch.xib */; };
+		5A62EE321C799C0800892E44 /* CoolSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62EE311C799C0800892E44 /* CoolSwitchView.swift */; };
 		5A9EB8231C76565E00D2A336 /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EB8221C76565E00D2A336 /* BusinessCell.swift */; };
 		5A9EB8251C76882F00D2A336 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EB8241C76882F00D2A336 /* SwitchCell.swift */; };
 		5A9EB8271C768B0A00D2A336 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EB8261C768B0A00D2A336 /* FiltersViewController.swift */; };
@@ -52,6 +54,8 @@
 		22AAAA9B1AEA1EC300A544AF /* BusinessesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessesViewController.swift; sourceTree = "<group>"; };
 		5A62EE281C79403C00892E44 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5A62EE2C1C79972B00892E44 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		5A62EE2F1C799B5500892E44 /* CoolSwitch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoolSwitch.xib; sourceTree = "<group>"; };
+		5A62EE311C799C0800892E44 /* CoolSwitchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoolSwitchView.swift; sourceTree = "<group>"; };
 		5A9EB8221C76565E00D2A336 /* BusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
 		5A9EB8241C76882F00D2A336 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		5A9EB8261C768B0A00D2A336 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 		222D8A5719CCF9F900D2DB53 /* Yelp */ = {
 			isa = PBXGroup;
 			children = (
+				5A62EE2E1C799B2E00892E44 /* Custom Views */,
 				5A9EB8281C768D4D00D2A336 /* Helpers */,
 				5A9EB81F1C7655F000D2A336 /* Views */,
 				22AAAA9A1AEA0AA100A544AF /* Models */,
@@ -178,6 +183,15 @@
 				AA3C5CF4FD317D72ABE2AAC4 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5A62EE2E1C799B2E00892E44 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				5A62EE2F1C799B5500892E44 /* CoolSwitch.xib */,
+				5A62EE311C799C0800892E44 /* CoolSwitchView.swift */,
+			);
+			name = "Custom Views";
 			sourceTree = "<group>";
 		};
 		5A9EB81F1C7655F000D2A336 /* Views */ = {
@@ -296,6 +310,7 @@
 			files = (
 				222D8A6019CCF9F900D2DB53 /* Main.storyboard in Resources */,
 				222D8A6519CCF9F900D2DB53 /* LaunchScreen.xib in Resources */,
+				5A62EE301C799B5500892E44 /* CoolSwitch.xib in Resources */,
 				222D8A6219CCF9F900D2DB53 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +380,7 @@
 				5A9EB8231C76565E00D2A336 /* BusinessCell.swift in Sources */,
 				22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */,
 				5A9EB8361C77DCFE00D2A336 /* DropCell.swift in Sources */,
+				5A62EE321C799C0800892E44 /* CoolSwitchView.swift in Sources */,
 				5A62EE291C79403C00892E44 /* DetailViewController.swift in Sources */,
 				5A9EB8271C768B0A00D2A336 /* FiltersViewController.swift in Sources */,
 				5A9EB8341C77D75F00D2A336 /* YelpState.swift in Sources */,

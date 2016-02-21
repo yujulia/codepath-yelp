@@ -21,6 +21,7 @@ class SwitchCell: UITableViewCell {
 
     @IBOutlet weak var switchLabel: UILabel!
     @IBOutlet weak var onSwitch: UISwitch!
+    @IBOutlet weak var CoolSwitch: CoolSwitchView!
     
     weak var delegate: SwitchCellDelegate?
 
@@ -32,10 +33,24 @@ class SwitchCell: UITableViewCell {
             action: "switchValueChanged",
             forControlEvents: UIControlEvents.ValueChanged
         )
+        
+        self.CoolSwitch.turnOff()
+        
+//        self.CoolSwitch.addTarget(
+//            self,
+//            action: "coolSwitchClicked",
+//            forControlEvents:
+//                UIControlEvents.TouchUpInside
+//        )
+    }
+    
+    func coolSwitchClicked() {
+        print("i clicked it")
     }
     
     func switchValueChanged() {
         delegate?.switchCell?(self, didChangeValue: self.onSwitch.on)
     }
+
 
 }
