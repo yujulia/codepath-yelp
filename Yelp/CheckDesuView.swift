@@ -10,12 +10,12 @@ import UIKit
 
 class CheckDesuView: UIView {
 
-    var changeCallback: (()->Void)?
-    var checked: Bool = false
-    
     @IBOutlet weak var uncheckedImage: UIImageView!
     @IBOutlet weak var checkedImage: UIImageView!
     @IBOutlet var contentView: UIView!
+    
+    var changeCallback: (()->Void)?
+    var checked: Bool = false
     
     // ------------------------------------------ defaults
     

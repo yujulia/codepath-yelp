@@ -5,21 +5,36 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RadioView" customModule="Yelp" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="qbu-pp-3eX"/>
+                <outlet property="emptyCircleImage" destination="tAA-Az-bdW" id="9Ew-id-w5D"/>
+                <outlet property="filledCircleImage" destination="IGP-1s-1Mm" id="rXr-Dj-nOF"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="tAA-Az-bdW">
-                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="tAA-Az-bdW">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                 </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="circle-filled" translatesAutoresizingMaskIntoConstraints="NO" id="IGP-1s-1Mm">
-                    <rect key="frame" x="60" y="-1" width="48" height="48"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="circle-filled" translatesAutoresizingMaskIntoConstraints="NO" id="IGP-1s-1Mm">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="ShI-2K-bXW" appends="YES" id="9GK-dM-SOY"/>
+            </connections>
         </view>
+        <tapGestureRecognizer id="ShI-2K-bXW">
+            <connections>
+                <action selector="onTap:" destination="-1" id="QdG-Wq-blp"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="circle" width="48" height="48"/>

@@ -23,7 +23,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
             self.setupCustomHUD()
         }
     }
-    
     var nomore = false
     var loading = false
     var filtering = false
