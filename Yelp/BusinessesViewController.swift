@@ -231,10 +231,10 @@ extension BusinessesViewController: UISearchBarDelegate {
         let searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.placeholder = "Restaurants"
-        searchBar.sizeToFit()
         
         self.navigationItem.titleView = searchBar
         self.navigationController?.navigationBar.barTintColor = Const.YelpRed
+        self.navigationController?.navigationBar.translucent = false
     }
     
     // ------------------------------------------ search the current result set

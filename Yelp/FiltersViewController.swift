@@ -38,6 +38,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         self.navigationController?.navigationBar.barTintColor = Const.YelpRed
         let titleDict: Dictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict
+        self.navigationController?.navigationBar.translucent = false
     }
     
     // ------------------------------------------ view did load
