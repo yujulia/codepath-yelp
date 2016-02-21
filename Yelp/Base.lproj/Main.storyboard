@@ -178,12 +178,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JDY-oB-5JW">
-                                <rect key="frame" x="16" y="64" width="288" height="320"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="Dtc-GY-0dV"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="64" width="288" height="504"/>
                             </imageView>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ig3-j0-XU5">
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="toe-Md-Zl2" userLabel="white bg">
+                                <rect key="frame" x="0.0" y="289" width="320" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="LIc-Zx-jt7"/>
+                                    <constraint firstAttribute="height" constant="600" id="pYL-pw-vgK"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ig3-j0-XU5">
                                 <rect key="frame" x="16" y="289" width="288" height="279"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="restaurant name that could be two lines" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82K-Oc-9NS">
@@ -221,7 +226,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="n7V-8T-Kn7" firstAttribute="centerX" secondItem="Ig3-j0-XU5" secondAttribute="centerX" id="IVc-2O-w7w"/>
                                     <constraint firstItem="82K-Oc-9NS" firstAttribute="leading" secondItem="Ig3-j0-XU5" secondAttribute="leading" constant="20" id="MDe-25-gsM"/>
@@ -242,14 +246,18 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ig3-j0-XU5" firstAttribute="top" secondItem="SmV-b2-wbM" secondAttribute="bottom" constant="225" id="0ct-02-lGq"/>
+                            <constraint firstItem="toe-Md-Zl2" firstAttribute="top" secondItem="SmV-b2-wbM" secondAttribute="bottom" constant="225" id="91P-gL-Z0h"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Ig3-j0-XU5" secondAttribute="bottom" id="O6W-AJ-Sp2"/>
                             <constraint firstItem="JDY-oB-5JW" firstAttribute="top" secondItem="SmV-b2-wbM" secondAttribute="bottom" id="WFi-8o-ySH"/>
+                            <constraint firstItem="nKi-E1-cDK" firstAttribute="top" secondItem="JDY-oB-5JW" secondAttribute="bottom" id="a6T-Mx-wke"/>
                             <constraint firstItem="Ig3-j0-XU5" firstAttribute="trailing" secondItem="uZK-gC-Y8l" secondAttribute="trailingMargin" id="cJH-wD-g9D"/>
                             <constraint firstItem="Ig3-j0-XU5" firstAttribute="leading" secondItem="uZK-gC-Y8l" secondAttribute="leadingMargin" id="chf-wd-4va"/>
+                            <constraint firstItem="toe-Md-Zl2" firstAttribute="leading" secondItem="uZK-gC-Y8l" secondAttribute="leading" id="gOg-28-pwr"/>
                             <constraint firstItem="JDY-oB-5JW" firstAttribute="leading" secondItem="uZK-gC-Y8l" secondAttribute="leadingMargin" id="mVl-ba-RiF"/>
+                            <constraint firstAttribute="trailing" secondItem="toe-Md-Zl2" secondAttribute="trailing" id="qvf-LO-KHL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JDY-oB-5JW" secondAttribute="trailing" id="wId-O1-zbb"/>
                         </constraints>
                     </view>
