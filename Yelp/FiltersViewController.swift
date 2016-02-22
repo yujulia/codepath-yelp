@@ -192,6 +192,7 @@ extension FiltersViewController: UITableViewDelegate {
 
         if section == Const.Sections.Deals.rawValue {
             let emptyHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+            emptyHeaderView.backgroundColor = Const.YelpRed
             return emptyHeaderView
         }
         
@@ -218,9 +219,13 @@ extension FiltersViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         if section == Const.Sections.Deals.rawValue {
-            return 0
+            return 0.1
         }
         return SECTION_HEIGHT
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.1
     }
     
     // ------------------------------------------ return a slider cell for distance
