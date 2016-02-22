@@ -67,7 +67,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
 }
 
 // Checkbox delegate
-
 extension FiltersViewController: CheckBoxCellDelegate {
     
     // ------------------------------------------ switch cell value changed
@@ -89,9 +88,7 @@ extension FiltersViewController: CheckBoxCellDelegate {
     }
 }
 
-
 // SliderCell delegate methods
-
 extension FiltersViewController: SliderCellDelegate {
     
     // ------------------------------------------ some slider cell value changed
@@ -106,7 +103,6 @@ extension FiltersViewController: SliderCellDelegate {
 }
 
 // ExpandCell delegate methods
-
 extension FiltersViewController: ExpandCellDelegate {
     
     func expandCell(expandCell: ExpandCell, didChangeValue open: Bool) {
@@ -123,8 +119,20 @@ extension FiltersViewController: ExpandCellDelegate {
     }
 }
 
-// TableView delegate methods
+// RadioCell delegate methods
+extension FiltersViewController: RadioCellDelegate {
+    func radioCell(radioCell: RadioCell, didChangeValue on: Bool) {
+        let indexPath = self.tableView.indexPathForCell(radioCell)!
+        
+        print("this is filters delegate ", on, indexPath)
+        
+        // toggle all the other radio cells
+        // close this 
+        
+    }
+}
 
+// TableView delegate methods
 extension FiltersViewController: UITableViewDelegate {
     
     // ------------------------------------------ set up current table
@@ -267,7 +275,7 @@ extension FiltersViewController: UITableViewDelegate {
         
         if let open = self.state?.getOpen(indexPath.section) {
             if open {
-                let cell = tableView.dequeueReusableCellWithIdentifier("CheckBoxCell", forIndexPath: indexPath) as! CheckBoxCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("RadioCell", forIndexPath: indexPath) as! RadioCell
                 cell.delegate = self
                 return cell
             } else {
@@ -315,8 +323,5 @@ extension FiltersViewController: UITableViewDelegate {
 
         self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: UITableViewRowAnimation.Bottom)
     }
-    
-    
 
-    
 }

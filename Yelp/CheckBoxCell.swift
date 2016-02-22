@@ -26,18 +26,9 @@ class CheckBoxCell: UITableViewCell {
         self.checkBox.addValueChangeCallback(self.checkBoxValueChanged)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func checkBoxValueChanged() {
         self.checked = self.checkBox.checked
         print("check value changed", checkBoxLabel.text, self.checked);
         delegate?.checkBoxCell?(self, didChangeValue: self.checked)
     }
-    
-    
-
 }

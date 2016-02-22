@@ -8,20 +8,27 @@
 
 import UIKit
 
+@objc protocol RadioCellDelegate {
+    optional func radioCell(radioCell: RadioCell, didChangeValue on: Bool)
+}
+
 class RadioCell: UITableViewCell {
 
     @IBOutlet weak var radioView: RadioView!
     @IBOutlet weak var radioLabel: UILabel!
     
+    weak var delegate: RadioCellDelegate?
+    var on: Bool = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.radioView.addValueChangeCallback(self.radioValueChanged)
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func radioValueChanged() {
+        self.on = self.radioView.on
+        print("radio value changed", self.radioLabel.text, self.on)
+        self.delegate?.radioCell?(self, didChangeValue: self.on)
     }
-
 }

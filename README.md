@@ -37,8 +37,7 @@ The following **additional** features are implemented:
 - [x] Implemented "search" on restaurant name of existing results
 - [x] Added custom hud spinner on loading response
 - [x] Custom checkbox / radio view
-- [x] No result displays message
-- [x] Added network error
+- [x] No result and network error shows error
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
