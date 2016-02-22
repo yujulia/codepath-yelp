@@ -17,10 +17,10 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="l5s-JM-jV2">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="checked-sqr" translatesAutoresizingMaskIntoConstraints="NO" id="l5s-JM-jV2">
                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                 </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="luP-Hv-QaP">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="unchecked-sqr" translatesAutoresizingMaskIntoConstraints="NO" id="luP-Hv-QaP">
                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                     <gestureRecognizers/>
                 </imageView>
@@ -38,7 +38,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="checked" width="48" height="48"/>
-        <image name="unchecked" width="48" height="48"/>
+        <image name="checked-sqr" width="48" height="48"/>
+        <image name="unchecked-sqr" width="48" height="48"/>
     </resources>
 </document>

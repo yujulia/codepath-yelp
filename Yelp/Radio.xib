@@ -20,7 +20,7 @@
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="tAA-Az-bdW">
                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                 </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="circle-filled" translatesAutoresizingMaskIntoConstraints="NO" id="IGP-1s-1Mm">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="circle-dot" translatesAutoresizingMaskIntoConstraints="NO" id="IGP-1s-1Mm">
                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                 </imageView>
             </subviews>
@@ -38,6 +38,6 @@
     </objects>
     <resources>
         <image name="circle" width="48" height="48"/>
-        <image name="circle-filled" width="48" height="48"/>
+        <image name="circle-dot" width="48" height="48"/>
     </resources>
 </document>
