@@ -283,6 +283,7 @@ extension FiltersViewController: UITableViewDelegate {
         
         if let miles = self.state?.getFilterDistanceInMiles() {
             cell.sliderLabel.text = String(miles)
+            cell.slider.value = miles
         }
         cell.delegate = self
         
