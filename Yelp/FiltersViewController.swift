@@ -105,29 +105,39 @@ extension FiltersViewController: SliderCellDelegate {
 // ExpandCell delegate methods
 extension FiltersViewController: ExpandCellDelegate {
     
+    // ------------------------------------------ expand cell value changed
+    
     func expandCell(expandCell: ExpandCell, didChangeValue open: Bool) {
         let indexPath = self.tableView.indexPathForCell(expandCell)!
-        
-        print("expand cell expanded ", open, indexPath.section)
-        
         if open {
             self.state?.setOpen(indexPath.section)
-            self.reloadTest()
         } else {
             self.state?.setClosed(indexPath.section)
+            
         }
+        
+        self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Bottom)
     }
 }
 
 // RadioCell delegate methods
 extension FiltersViewController: RadioCellDelegate {
+    
+    // ------------------------------------------ radio value changed
+    
     func radioCell(radioCell: RadioCell, didChangeValue on: Bool) {
         let indexPath = self.tableView.indexPathForCell(radioCell)!
         
-        print("this is filters delegate ", on, indexPath)
+        // we selected something so close this section
+        
+        if let expandCell = self.state?.getExpandCell(indexPath.section) {
+            expandCell.setToClosed()
+            self.state?.setClosed(indexPath.section)
+            self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Top)
+        }
         
         // toggle all the other radio cells
-        // close this 
+        // save value
         
     }
 }
@@ -160,16 +170,15 @@ extension FiltersViewController: UITableViewDelegate {
     // ------------------------------------------ return rows in section
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         switch section {
             case Const.Sections.Categories.rawValue:
                 return Const.Categories.count
             case Const.Sections.Sortby.rawValue:
                 let open = self.state?.getOpen(section)
                 if open! {
-                    return 3
+                    return Const.SortOptions.count
                 }
-                return 1
+                return 1 // return the expander
             default:
                 return 1
         }
@@ -269,10 +278,9 @@ extension FiltersViewController: UITableViewDelegate {
         return cell
     }
     
-    // ------------------------------------------ return a drop down cell for sort by
+    // ------------------------------------------ return expand or radio cells for sort by
     
     private func returnSortByCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
-        
         if let open = self.state?.getOpen(indexPath.section) {
             if open {
                 let cell = tableView.dequeueReusableCellWithIdentifier("RadioCell", forIndexPath: indexPath) as! RadioCell
@@ -281,13 +289,12 @@ extension FiltersViewController: UITableViewDelegate {
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("ExpandCell", forIndexPath: indexPath) as! ExpandCell
                 cell.delegate = self
+                self.state?.setExpandCell(indexPath.section, cell: cell)
                 return cell
             }
         }
         
-        // should not hit this...
-        let nopeCell = UITableViewCell()
-        return nopeCell
+        return UITableViewCell()
     }
 
     // ------------------------------------------ return table cell
@@ -318,10 +325,10 @@ extension FiltersViewController: UITableViewDelegate {
     
     }
     
-    func reloadTest() {
-        print("reload")
-
-        self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: UITableViewRowAnimation.Bottom)
+    // ------------------------------------------ reload a section
+    
+    private func reloadSection(section: Int, animation: UITableViewRowAnimation) {
+        self.tableView.reloadSections(NSIndexSet(index: section), withRowAnimation: animation)
     }
 
 }

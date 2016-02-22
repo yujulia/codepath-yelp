@@ -20,6 +20,7 @@ class YelpState: NSObject {
     var filterCategories = [Int:String]()
     var resultOffset: Int?
     var openSections = [Int:Bool]()
+    var expandCells = [Int:ExpandCell]()
     
     // ------------------ filter distance
     
@@ -133,9 +134,15 @@ class YelpState: NSObject {
     }
     
     func getOpen(section: Int) -> Bool {
-        print("trying to get dropped for section ", section)
-        print(self.openSections)
         return self.openSections[section] ?? false
+    }
+    
+    func setExpandCell(section: Int, cell: ExpandCell) {
+        self.expandCells[section] = cell
+    }
+    
+    func getExpandCell(section: Int) -> ExpandCell? {
+        return self.expandCells[section]
     }
     
 }

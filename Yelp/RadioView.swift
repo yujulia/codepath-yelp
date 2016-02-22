@@ -47,7 +47,6 @@ class RadioView: UIView {
         self.toggle()
     }
     
-    
     // ------------------------------------------ set the alpha and value
     
     func setToOff() {

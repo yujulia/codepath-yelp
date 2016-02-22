@@ -28,12 +28,20 @@ class ExpandCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func setToOpen() {
+        self.expanded = true
+    }
+    
+    func setToClosed() {
+        self.expanded = false
+    }
 
     // ------------------------------------------ expand cell tapped
     
     @IBAction func onExpand(sender: AnyObject) {
         self.expanded = !self.expanded
         self.delegate?.expandCell?(self, didChangeValue: self.expanded)
-        print("expand tapped expand is:", self.expanded)
+        print("expand toggled expand is:", self.expanded)
     }
 }
