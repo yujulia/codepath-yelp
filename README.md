@@ -23,7 +23,7 @@ The following **optional** features are implemented:
 
 - [ ] Search results page
    - [x] Infinite scroll for restaurant results.
-   - [ ] Implement map view of restaurant results.
+   - [x] Implement map view of restaurant results.
 - [x] Filter page
    - [x] Implement a custom switch instead of the default UISwitch.
    - [x] Distance filter should expand as in the real Yelp app *** NOTE *** I did this on sort by instead
