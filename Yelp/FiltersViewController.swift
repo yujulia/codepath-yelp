@@ -158,10 +158,26 @@ extension FiltersViewController: LoadMoreCellDelegate {
     // ------------------------------------------ load more clicked
     
     func loadMoreCell(loadMoreCell: LoadMoreCell, didChangeValue expanded: Bool) {
-        let indexPath = self.tableView.indexPathForCell(loadMoreCell)!
-        
+
         self.categoryExpanded = true
-        self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Bottom)
+        
+        self.tableView.beginUpdates()
+        
+        // TODO -- probably move construction of paths to const or state on load
+        
+        let deletePaths = [NSIndexPath(forRow: CAT_ROW_LIMIT, inSection: Const.Sections.Categories.rawValue)]
+        
+        var insertPaths = [NSIndexPath]()
+        for index in CAT_ROW_LIMIT...Const.Categories.count-1 {
+            let path = NSIndexPath(forRow: index, inSection: Const.Sections.Categories.rawValue)
+            insertPaths.append(path)
+        }
+        
+        self.tableView.deleteRowsAtIndexPaths(deletePaths, withRowAnimation: UITableViewRowAnimation.Fade)
+        
+        self.tableView.insertRowsAtIndexPaths(insertPaths, withRowAnimation: UITableViewRowAnimation.Top)
+        
+        self.tableView.endUpdates()
     }
     
 }
