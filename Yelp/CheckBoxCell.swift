@@ -8,11 +8,22 @@
 
 import UIKit
 
+@objc protocol CheckBoxCellDelegate {
+    optional func checkBoxCell(checkBoxCell: CheckBoxCell, didChangeValue checked: Bool)
+}
+
 class CheckBoxCell: UITableViewCell {
 
+    @IBOutlet weak var checkBoxLabel: UILabel!
+    @IBOutlet weak var checkBox: CheckDesuView!
+    
+    weak var delegate: CheckBoxCellDelegate?
+    var checked: Bool = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        self.checkBox.addValueChangeCallback(self.checkBoxValueChanged)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -20,36 +31,13 @@ class CheckBoxCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func checkBoxValueChanged() {
+        self.checked = self.checkBox.checked
+        print("check value changed", checkBoxLabel.text, self.checked);
+        delegate?.checkBoxCell?(self, didChangeValue: self.checked)
+    }
+    
+    
 
 }
-
-
-
-//@objc protocol SwitchCellDelegate {
-//    optional func switchCell(switchCell: SwitchCell, didChangeValue value: Bool)
-//}
-//
-//// table cell containing a switch
-//
-//class SwitchCell: UITableViewCell {
-//    
-//    
-//    @IBOutlet weak var switchLabel: UILabel!
-//    
-//    @IBOutlet weak var checkBox: CheckDesuView!
-//    
-//    
-//    weak var delegate: SwitchCellDelegate?
-//    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        
-//        self.checkBox.addValueChangeCallback(self.checkBoxValueChanged)
-//    }
-//    
-//    func checkBoxValueChanged() {
-//        print("check value changed", switchLabel.text);
-//        delegate?.switchCell?(self, didChangeValue: self.checkBox.checked)
-//    }
-//    
-//}

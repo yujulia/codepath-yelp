@@ -109,7 +109,7 @@ extension FiltersViewController: SliderCellDelegate {
 
 extension FiltersViewController: ExpandCellDelegate {
     
-    func expandCell(expandCell: ExpandCell, didTap open: Bool) {
+    func expandCell(expandCell: ExpandCell, didChangeValue open: Bool) {
         let indexPath = self.tableView.indexPathForCell(expandCell)!
         
         print("expand cell expanded ", open, indexPath.section)

@@ -11,7 +11,6 @@ import UIKit
 class RadioView: UIView {
 
     @IBOutlet var contentView: UIView!
-    
     @IBOutlet weak var filledCircleImage: UIImageView!
     @IBOutlet weak var emptyCircleImage: UIImageView!
     

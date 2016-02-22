@@ -11,7 +11,7 @@ import UIKit
 // cell prototype
 
 @objc protocol ExpandCellDelegate {
-    optional func expandCell(expandCell: ExpandCell, didTap expanded: Bool)
+    optional func expandCell(expandCell: ExpandCell, didChangeValue expanded: Bool)
 }
 
 class ExpandCell: UITableViewCell {
@@ -33,7 +33,7 @@ class ExpandCell: UITableViewCell {
     
     @IBAction func onExpand(sender: AnyObject) {
         self.expanded = !self.expanded
-        self.delegate?.expandCell?(self, didTap: self.expanded)
+        self.delegate?.expandCell?(self, didChangeValue: self.expanded)
         print("expand tapped expand is:", self.expanded)
     }
 }

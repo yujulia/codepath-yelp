@@ -416,6 +416,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radio label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFw-HD-VKa">
+                                                    <rect key="frame" x="20" y="21" width="75.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9x-92-Lvz" customClass="RadioView" customModule="Yelp" customModuleProvider="target">
                                                     <rect key="frame" x="252" y="10" width="40" height="40"/>
                                                     <color key="backgroundColor" red="0.67843137249999996" green="0.0" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -424,19 +430,17 @@
                                                         <constraint firstAttribute="height" constant="40" id="xAg-C3-Cr0"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radio label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFw-HD-VKa">
-                                                    <rect key="frame" x="20" y="21" width="75.5" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="kFw-HD-VKa" firstAttribute="centerY" secondItem="2fZ-cH-obZ" secondAttribute="centerY" id="5Vy-84-n26"/>
                                                 <constraint firstItem="d9x-92-Lvz" firstAttribute="centerY" secondItem="2fZ-cH-obZ" secondAttribute="centerY" id="EKK-6y-NWa"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="d9x-92-Lvz" secondAttribute="bottom" constant="10" id="GGE-8m-0Ay"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="d9x-92-Lvz" secondAttribute="trailing" constant="20" id="Jkw-ee-e5f"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kFw-HD-VKa" secondAttribute="bottom" constant="10" id="Wf7-TF-Hcm"/>
+                                                <constraint firstItem="kFw-HD-VKa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2fZ-cH-obZ" secondAttribute="top" constant="10" id="fdK-CP-a3W"/>
                                                 <constraint firstItem="kFw-HD-VKa" firstAttribute="leading" secondItem="2fZ-cH-obZ" secondAttribute="leading" constant="20" id="fg0-Au-CuN"/>
                                                 <constraint firstItem="d9x-92-Lvz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kFw-HD-VKa" secondAttribute="trailing" constant="20" id="fuW-8F-HRK"/>
+                                                <constraint firstItem="d9x-92-Lvz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2fZ-cH-obZ" secondAttribute="top" constant="10" id="iUZ-qE-8DE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -500,8 +504,8 @@
                                                         <constraint firstAttribute="width" constant="40" id="vFg-pN-jBV"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lw3-0F-Pel">
-                                                    <rect key="frame" x="20" y="21" width="101.5" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checkbox Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lw3-0F-Pel">
+                                                    <rect key="frame" x="20" y="21" width="110" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -519,6 +523,10 @@
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qf8-Kz-Lnv" secondAttribute="bottom" constant="10" id="tRc-ZV-fvc"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkBox" destination="qf8-Kz-Lnv" id="rXp-JN-weO"/>
+                                            <outlet property="checkBoxLabel" destination="Lw3-0F-Pel" id="dpR-eO-yur"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
