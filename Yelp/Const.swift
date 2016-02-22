@@ -18,11 +18,21 @@ class Const {
         case Categories = 3
     }
     
+    var indexPaths = [NSIndexPath]()
+    
     static let YelpRed = UIColor(red: 189.0/255, green: 27.0/255, blue: 0/255, alpha: 1.0)
     
     static let SortOptions = ["Best Matched", "Distance", "Highest Rated"]
     
     static let FilterSections = ["Deals", "Distance", "Sort By", "Categories"]
+    
+    static let SortPlaceholderIndexPath = [NSIndexPath(forRow: 0, inSection: Const.Sections.Sortby.rawValue)]
+    
+    static let SortIndexPath = [
+        NSIndexPath(forRow: 0, inSection: Const.Sections.Sortby.rawValue),
+        NSIndexPath(forRow: 1, inSection: Const.Sections.Sortby.rawValue),
+        NSIndexPath(forRow: 2, inSection: Const.Sections.Sortby.rawValue)
+    ]
     
     static let Categories = [["name" : "Afghan", "code": "afghani"],
             ["name" : "African", "code": "african"],
@@ -193,4 +203,6 @@ class Const {
             ["name" : "Wok", "code": "wok"],
             ["name" : "Wraps", "code": "wraps"],
             ["name" : "Yugoslav", "code": "yugoslav"]]
+    
+    
 }

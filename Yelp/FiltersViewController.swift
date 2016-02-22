@@ -33,6 +33,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     weak var delegate: FiltersViewControllerDelegate?
     weak var state: YelpState?
     var categoryExpanded = false
+    var removing = false
     
     // ------------------------------------------ set up nav bar colors
     
@@ -55,6 +56,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         if Const.Categories.count <= CAT_ROW_LIMIT {
             self.categoryExpanded = true
         }
+        
     }
 
     // ------------------------------------------ cancel clicked
@@ -112,15 +114,21 @@ extension FiltersViewController: SliderCellDelegate {
 // ExpandCell delegate methods
 extension FiltersViewController: ExpandCellDelegate {
     
+    private func updateSortRows(deletePaths: [NSIndexPath], insertPaths: [NSIndexPath]) {
+        self.tableView.beginUpdates()
+        self.tableView.deleteRowsAtIndexPaths(deletePaths, withRowAnimation: UITableViewRowAnimation.Fade)
+        self.tableView.insertRowsAtIndexPaths(insertPaths, withRowAnimation: UITableViewRowAnimation.Top)
+        self.tableView.endUpdates()
+    }
+    
     // ------------------------------------------ expand cell value changed
     
     func expandCell(expandCell: ExpandCell, didChangeValue open: Bool) {
         let indexPath = self.tableView.indexPathForCell(expandCell)!
         if open {
             self.state?.setOpenForSection(indexPath.section)
-            self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Bottom)
+            self.updateSortRows(Const.SortPlaceholderIndexPath, insertPaths: Const.SortIndexPath)
         }
-
     }
 }
 
@@ -139,16 +147,7 @@ extension FiltersViewController: RadioCellDelegate {
             expandCell.expandLabel.text = radioCell.radioLabel.text
             
             self.state?.setClosedForSection(indexPath.section)
-            
-            // TRY to delete paths instead of reloading section
-            
-//            if let paths = self.state?.getIndexPathsForReload() {
-//                print("got index paths", paths.count)
-//                self.tableView.deleteRowsAtIndexPaths(paths, withRowAnimation: UITableViewRowAnimation.Fade)
-//                self.state?.resetIndexPathsForReload()
-//            }
-//            
-            self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Top)
+            self.updateSortRows(Const.SortIndexPath, insertPaths: Const.SortPlaceholderIndexPath)
         }
     }
 }
@@ -196,18 +195,21 @@ extension FiltersViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
+            
             case Const.Sections.Categories.rawValue:
                 if self.categoryExpanded {
                     return Const.Categories.count
                 } else {
                     return CAT_ROW_LIMIT + 1
                 }
+            
             case Const.Sections.Sortby.rawValue:
                 let open = self.state?.getStatusForSection(section)
                 if open! {
                     return Const.SortOptions.count
                 }
-                return 1 // return the expander
+                return 1
+            
             default:
                 return 1
         }
@@ -318,6 +320,7 @@ extension FiltersViewController: UITableViewDelegate {
     // ------------------------------------------ return expand or radio cells for sort by
     
     private func returnSortByCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
+        
         if let open = self.state?.getStatusForSection(indexPath.section) {
             if open {
                 let cell = tableView.dequeueReusableCellWithIdentifier("RadioCell", forIndexPath: indexPath) as! RadioCell
@@ -329,18 +332,15 @@ extension FiltersViewController: UITableViewDelegate {
                         cell.turnOn()
                     }
                 }
-                self.state?.saveIndexPathForReload(indexPath)
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("ExpandCell", forIndexPath: indexPath) as! ExpandCell
                 cell.delegate = self
                 self.state?.saveExpandCellInSection(indexPath.section, cell: cell)
-                self.state?.saveIndexPathForReload(indexPath)
+                
                 return cell
             }
         }
-        
-        
         
         return UITableViewCell()
     }
