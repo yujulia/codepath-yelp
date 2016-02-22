@@ -21,6 +21,7 @@ class YelpState: NSObject {
     var resultOffset: Int?
     var openSections = [Int:Bool]()
     var expandCells = [Int:ExpandCell]()
+    var selectedInSection = [2: 0]
     
     // ------------------ filter distance
     
@@ -101,13 +102,11 @@ class YelpState: NSObject {
         let distance = self.getFilterDistance()
         let offset = self.getResultOffset()
         let term = "Restaurants"
-        
-        // TODO -- implement sort
-        // let sort = self.state.getSortBy()
+        let sort = YelpSortMode(rawValue: self.selectedInSection[Const.Sections.Sortby.rawValue]!)
         
         Business.searchWithTerm(
             term,
-            sort: nil,
+            sort: sort,
             categories: categories,
             deals: deals,
             distance: distance,
@@ -121,28 +120,37 @@ class YelpState: NSObject {
         }
     }
     
-    // ------------------
+    // ------------------ remember what sections are open or closed
     
-    func setOpen(section: Int) {
-        print("section open", section)
+    func setOpenForSection(section: Int) {
         self.openSections[section] = true
     }
     
-    func setClosed(section: Int) {
-        print("section  closed", section)
+    func setClosedForSection(section: Int) {
         self.openSections[section] = false
     }
     
-    func getOpen(section: Int) -> Bool {
+    func getStatusForSection(section: Int) -> Bool {
         return self.openSections[section] ?? false
     }
     
-    func setExpandCell(section: Int, cell: ExpandCell) {
+    func saveExpandCellInSection(section: Int, cell: ExpandCell) {
         self.expandCells[section] = cell
     }
     
-    func getExpandCell(section: Int) -> ExpandCell? {
+    func getExpandCellFromSection(section: Int) -> ExpandCell? {
         return self.expandCells[section]
     }
+    
+    // ------------------ remember what radio button was selected
+    
+    func setSelectedRadioForSection(indexPath: NSIndexPath) {
+        self.selectedInSection[indexPath.section] = indexPath.row
+    }
+    
+    func getSelectedRadioForSection(section: Int) -> Int? {
+        return self.selectedInSection[section]
+    }
+    
     
 }

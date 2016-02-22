@@ -42,6 +42,5 @@ class ExpandCell: UITableViewCell {
     @IBAction func onExpand(sender: AnyObject) {
         self.expanded = !self.expanded
         self.delegate?.expandCell?(self, didChangeValue: self.expanded)
-        print("expand toggled expand is:", self.expanded)
     }
 }

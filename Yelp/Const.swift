@@ -11,12 +11,6 @@ import UIKit
 
 class Const {
     
-    enum SortBy {
-        case First
-        case Distance
-        case Rated
-    }
-    
     enum Sections: Int {
         case Deals = 0
         case Distance = 1
@@ -26,7 +20,7 @@ class Const {
     
     static let YelpRed = UIColor(red: 189.0/255, green: 27.0/255, blue: 0/255, alpha: 1.0)
     
-    static let SortOptions = ["First", "Distance", "Highest Rated"]
+    static let SortOptions = ["Best Matched", "Distance", "Highest Rated"]
     
     static let FilterSections = ["Deals", "Distance", "Sort By", "Categories"]
     

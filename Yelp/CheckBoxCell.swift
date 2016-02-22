@@ -28,7 +28,6 @@ class CheckBoxCell: UITableViewCell {
 
     func checkBoxValueChanged() {
         self.checked = self.checkBox.checked
-        print("check value changed", checkBoxLabel.text, self.checked);
         delegate?.checkBoxCell?(self, didChangeValue: self.checked)
     }
 }

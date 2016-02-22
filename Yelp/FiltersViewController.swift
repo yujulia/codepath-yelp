@@ -110,9 +110,9 @@ extension FiltersViewController: ExpandCellDelegate {
     func expandCell(expandCell: ExpandCell, didChangeValue open: Bool) {
         let indexPath = self.tableView.indexPathForCell(expandCell)!
         if open {
-            self.state?.setOpen(indexPath.section)
+            self.state?.setOpenForSection(indexPath.section)
         } else {
-            self.state?.setClosed(indexPath.section)
+            self.state?.setClosedForSection(indexPath.section)
             
         }
         
@@ -128,17 +128,15 @@ extension FiltersViewController: RadioCellDelegate {
     func radioCell(radioCell: RadioCell, didChangeValue on: Bool) {
         let indexPath = self.tableView.indexPathForCell(radioCell)!
         
-        // we selected something so close this section
+        self.state?.setSelectedRadioForSection(indexPath)
         
-        if let expandCell = self.state?.getExpandCell(indexPath.section) {
+        if let expandCell = self.state?.getExpandCellFromSection(indexPath.section) {
             expandCell.setToClosed()
-            self.state?.setClosed(indexPath.section)
+            expandCell.expandLabel.text = radioCell.radioLabel.text
+            
+            self.state?.setClosedForSection(indexPath.section)
             self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Top)
         }
-        
-        // toggle all the other radio cells
-        // save value
-        
     }
 }
 
@@ -174,7 +172,7 @@ extension FiltersViewController: UITableViewDelegate {
             case Const.Sections.Categories.rawValue:
                 return Const.Categories.count
             case Const.Sections.Sortby.rawValue:
-                let open = self.state?.getOpen(section)
+                let open = self.state?.getStatusForSection(section)
                 if open! {
                     return Const.SortOptions.count
                 }
@@ -244,7 +242,7 @@ extension FiltersViewController: UITableViewDelegate {
         return cell
     }
     
-    // ------------------------------------------ return a switch cell for categories
+    // ------------------------------------------ return a checkbox cell for categories
     
     private func returnCategoriesCell(tableView: UITableView, indexPath: NSIndexPath) -> CheckBoxCell {
         
@@ -264,7 +262,7 @@ extension FiltersViewController: UITableViewDelegate {
         return cell
     }
     
-    // ------------------------------------------ return a switch cell for deals
+    // ------------------------------------------ return a checkbox cell for deals
     
     private func returnDealsCell(tableView: UITableView, indexPath: NSIndexPath) -> CheckBoxCell {
         
@@ -286,15 +284,23 @@ extension FiltersViewController: UITableViewDelegate {
     // ------------------------------------------ return expand or radio cells for sort by
     
     private func returnSortByCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
-        if let open = self.state?.getOpen(indexPath.section) {
+        if let open = self.state?.getStatusForSection(indexPath.section) {
             if open {
                 let cell = tableView.dequeueReusableCellWithIdentifier("RadioCell", forIndexPath: indexPath) as! RadioCell
                 cell.delegate = self
+                cell.radioLabel.text = Const.SortOptions[indexPath.row]
+                cell.turnOff()
+                if let selected = self.state?.getSelectedRadioForSection(indexPath.section) {
+                    if selected == indexPath.row {
+                        cell.turnOn()
+                    }
+                }
+                
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("ExpandCell", forIndexPath: indexPath) as! ExpandCell
                 cell.delegate = self
-                self.state?.setExpandCell(indexPath.section, cell: cell)
+                self.state?.saveExpandCellInSection(indexPath.section, cell: cell)
                 return cell
             }
         }

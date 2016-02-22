@@ -86,7 +86,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
             
         if offset != nil {
             parameters["offset"] = offset!
-        } 
+        }
         
         print(parameters)
         

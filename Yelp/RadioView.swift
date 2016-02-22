@@ -43,7 +43,6 @@ class RadioView: UIView {
     // ------------------------------------------ tapped
 
     @IBAction func onTap(sender: AnyObject) {
-        print("radio tap")
         self.toggle()
     }
     

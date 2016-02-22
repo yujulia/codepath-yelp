@@ -25,10 +25,17 @@ class RadioCell: UITableViewCell {
         
         self.radioView.addValueChangeCallback(self.radioValueChanged)
     }
+
+    func turnOff() {
+        self.radioView.setToOff()
+    }
+    
+    func turnOn() {
+        self.radioView.setToOn()
+    }
     
     func radioValueChanged() {
         self.on = self.radioView.on
-        print("radio value changed", self.radioLabel.text, self.on)
         self.delegate?.radioCell?(self, didChangeValue: self.on)
     }
 }
