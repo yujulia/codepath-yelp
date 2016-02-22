@@ -142,13 +142,13 @@ extension FiltersViewController: RadioCellDelegate {
             
             // TRY to delete paths instead of reloading section
             
-            if let paths = self.state?.getIndexPathsForReload() {
-                print("got index paths", paths.count)
-                self.tableView.deleteRowsAtIndexPaths(paths, withRowAnimation: UITableViewRowAnimation.Fade)
-                self.state?.resetIndexPathsForReload()
-            }
-            
-//            self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Top)
+//            if let paths = self.state?.getIndexPathsForReload() {
+//                print("got index paths", paths.count)
+//                self.tableView.deleteRowsAtIndexPaths(paths, withRowAnimation: UITableViewRowAnimation.Fade)
+//                self.state?.resetIndexPathsForReload()
+//            }
+//            
+            self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Top)
         }
     }
 }

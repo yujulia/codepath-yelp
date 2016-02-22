@@ -6,6 +6,39 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="pHA-XG-dI0">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ejx-gk-MaC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="CTB-Xg-8v5" customClass="MapViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ima-C4-l1k"/>
+                        <viewControllerLayoutGuide type="bottom" id="eOZ-3k-KYW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Axx-S6-dwZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KwT-fK-FG0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ekA-nD-UKd">
+                        <barButtonItem key="rightBarButtonItem" image="list" id="2vx-oy-LpW">
+                            <connections>
+                                <action selector="listIconTap:" destination="CTB-Xg-8v5" id="enj-rV-KLu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="KwT-fK-FG0" id="H6j-Xm-RNI"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1839" y="-324"/>
+        </scene>
         <!--Yelp-->
         <scene sceneID="5L9-Uz-lNK">
             <objects>
@@ -172,6 +205,11 @@
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="r2i-jX-79W" kind="modal" identifier="toFilterSegue" id="IUj-Ja-IPk"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="map" id="B91-yb-JGJ">
+                            <connections>
+                                <segue destination="Hml-64-nkE" kind="modal" modalTransitionStyle="flipHorizontal" id="ew9-u6-z1u"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -580,6 +618,24 @@
             </objects>
             <point key="canvasLocation" x="1712" y="338"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NOq-bG-MYo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hml-64-nkE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m49-Et-Wxc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CTB-Xg-8v5" kind="relationship" relationship="rootViewController" id="9we-Mk-RGK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vOh-Zq-0fw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="-324"/>
+        </scene>
     </scenes>
     <resources>
         <image name="alert" width="48" height="48"/>
@@ -587,6 +643,8 @@
         <image name="cancel" width="16" height="16"/>
         <image name="down" width="20" height="20"/>
         <image name="filter" width="16" height="16"/>
+        <image name="list" width="16" height="16"/>
+        <image name="map" width="16" height="16"/>
         <image name="search" width="16" height="16"/>
     </resources>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
