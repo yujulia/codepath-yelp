@@ -452,13 +452,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1S-Lh-fuj">
-                                                    <rect key="frame" x="20" y="20.5" width="101.5" height="18"/>
+                                                    <rect key="frame" x="20" y="21" width="101.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgG-2v-HBZ">
-                                                    <rect key="frame" x="252" y="10" width="40" height="40"/>
+                                                    <rect key="frame" x="260" y="10" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="CH1-bI-aSI"/>
                                                         <constraint firstAttribute="height" constant="40" id="G6j-of-Ths"/>
@@ -472,8 +472,11 @@
                                             <constraints>
                                                 <constraint firstItem="xgG-2v-HBZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="g1S-Lh-fuj" secondAttribute="trailing" constant="20" id="PiY-Ip-pIl"/>
                                                 <constraint firstItem="g1S-Lh-fuj" firstAttribute="leading" secondItem="vkN-6X-Owg" secondAttribute="leading" constant="20" id="Txn-aZ-8uk"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xgG-2v-HBZ" secondAttribute="bottom" constant="10" id="WRm-HF-lvk"/>
+                                                <constraint firstItem="xgG-2v-HBZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vkN-6X-Owg" secondAttribute="top" constant="10" id="cHe-0T-d0j"/>
+                                                <constraint firstAttribute="trailing" secondItem="xgG-2v-HBZ" secondAttribute="trailing" constant="20" id="dSV-cX-40b"/>
                                                 <constraint firstItem="xgG-2v-HBZ" firstAttribute="centerY" secondItem="vkN-6X-Owg" secondAttribute="centerY" id="hRU-Ls-2mp"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="xgG-2v-HBZ" secondAttribute="trailing" constant="20" id="tjb-hZ-II1"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="g1S-Lh-fuj" secondAttribute="bottom" constant="10" id="nPO-p3-ht0"/>
                                                 <constraint firstItem="g1S-Lh-fuj" firstAttribute="centerY" secondItem="vkN-6X-Owg" secondAttribute="centerY" id="tpG-oD-9FW"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -481,6 +484,41 @@
                                             <outlet property="expandButton" destination="xgG-2v-HBZ" id="TyY-9D-N21"/>
                                             <outlet property="expandLabel" destination="g1S-Lh-fuj" id="C1f-an-4vu"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckBoxCell" rowHeight="60" id="E87-NI-uKV" customClass="CheckBoxCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="453" width="320" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E87-NI-uKV" id="imz-iY-izS">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qf8-Kz-Lnv" customClass="CheckDesuView" customModule="Yelp" customModuleProvider="target">
+                                                    <rect key="frame" x="260" y="10" width="40" height="40"/>
+                                                    <color key="backgroundColor" red="0.67843137249999996" green="0.0" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="81T-cw-2Sq"/>
+                                                        <constraint firstAttribute="width" constant="40" id="vFg-pN-jBV"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lw3-0F-Pel">
+                                                    <rect key="frame" x="20" y="21" width="101.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Lw3-0F-Pel" firstAttribute="centerY" secondItem="imz-iY-izS" secondAttribute="centerY" id="BrM-i1-uKs"/>
+                                                <constraint firstItem="qf8-Kz-Lnv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="imz-iY-izS" secondAttribute="top" constant="10" id="ImG-B4-itG"/>
+                                                <constraint firstItem="qf8-Kz-Lnv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Lw3-0F-Pel" secondAttribute="trailing" constant="20" id="S6g-BB-1aX"/>
+                                                <constraint firstItem="Lw3-0F-Pel" firstAttribute="leading" secondItem="imz-iY-izS" secondAttribute="leading" constant="20" id="U6m-10-pZ7"/>
+                                                <constraint firstAttribute="trailing" secondItem="qf8-Kz-Lnv" secondAttribute="trailing" constant="20" id="UbC-kZ-XKQ"/>
+                                                <constraint firstItem="qf8-Kz-Lnv" firstAttribute="centerY" secondItem="imz-iY-izS" secondAttribute="centerY" id="Wau-tG-gXK"/>
+                                                <constraint firstItem="Lw3-0F-Pel" firstAttribute="top" relation="greaterThanOrEqual" secondItem="imz-iY-izS" secondAttribute="top" constant="10" id="Z8z-Yt-fTV"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Lw3-0F-Pel" secondAttribute="bottom" constant="10" id="ogq-yX-CcV"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qf8-Kz-Lnv" secondAttribute="bottom" constant="10" id="tRc-ZV-fvc"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
