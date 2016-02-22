@@ -209,7 +209,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="map" id="B91-yb-JGJ">
                             <connections>
-                                <segue destination="Hml-64-nkE" kind="modal" modalTransitionStyle="flipHorizontal" id="ew9-u6-z1u"/>
+                                <segue destination="Hml-64-nkE" kind="modal" identifier="toMapSegue" modalTransitionStyle="flipHorizontal" id="ew9-u6-z1u"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

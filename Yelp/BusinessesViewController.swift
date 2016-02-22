@@ -168,6 +168,14 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
             
             detailViewController.business = self.businesses[indexPath!.row]
         }
+        
+        if segue.identifier == "toMapSegue" {
+            let navController = segue.destinationViewController as! UINavigationController
+            let mapViewController = navController.topViewController as! MapViewController
+            
+            mapViewController.business = self.businesses
+            mapViewController.state = self.state
+        }
     }
 }
 
