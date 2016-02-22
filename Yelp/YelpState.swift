@@ -22,6 +22,7 @@ class YelpState: NSObject {
     var openSections = [Int:Bool]()
     var expandCells = [Int:ExpandCell]()
     var selectedInSection = [2: 0]
+    var catIndexPaths = [NSIndexPath]()
     
     // ------------------ filter distance
     
@@ -150,6 +151,21 @@ class YelpState: NSObject {
     
     func getSelectedRadioForSection(section: Int) -> Int? {
         return self.selectedInSection[section]
+    }
+    
+    // ------------------ remember what index paths to reload
+    
+    func saveIndexPathForReload(indexPath: NSIndexPath) {
+        self.catIndexPaths.append(indexPath)
+    }
+    
+    func getIndexPathsForReload() -> [NSIndexPath]? {
+        print("returning", self.catIndexPaths.count)
+        return self.catIndexPaths
+    }
+    
+    func resetIndexPathsForReload() {
+        self.catIndexPaths.removeAll()
     }
     
     

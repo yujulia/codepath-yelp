@@ -118,12 +118,9 @@ extension FiltersViewController: ExpandCellDelegate {
         let indexPath = self.tableView.indexPathForCell(expandCell)!
         if open {
             self.state?.setOpenForSection(indexPath.section)
-        } else {
-            self.state?.setClosedForSection(indexPath.section)
-            
+            self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Bottom)
         }
-        
-        self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Bottom)
+
     }
 }
 
@@ -142,7 +139,16 @@ extension FiltersViewController: RadioCellDelegate {
             expandCell.expandLabel.text = radioCell.radioLabel.text
             
             self.state?.setClosedForSection(indexPath.section)
-            self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Top)
+            
+            // TRY to delete paths instead of reloading section
+            
+            if let paths = self.state?.getIndexPathsForReload() {
+                print("got index paths", paths.count)
+                self.tableView.deleteRowsAtIndexPaths(paths, withRowAnimation: UITableViewRowAnimation.Fade)
+                self.state?.resetIndexPathsForReload()
+            }
+            
+//            self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Top)
         }
     }
 }
@@ -257,8 +263,6 @@ extension FiltersViewController: UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("SliderCell", forIndexPath: indexPath) as! SliderCell
         
-        // TODO -- do this in the cell
-        
         if let miles = self.state?.getFilterDistanceInMiles() {
             cell.sliderLabel.text = String(miles)
         }
@@ -325,15 +329,18 @@ extension FiltersViewController: UITableViewDelegate {
                         cell.turnOn()
                     }
                 }
-                
+                self.state?.saveIndexPathForReload(indexPath)
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("ExpandCell", forIndexPath: indexPath) as! ExpandCell
                 cell.delegate = self
                 self.state?.saveExpandCellInSection(indexPath.section, cell: cell)
+                self.state?.saveIndexPathForReload(indexPath)
                 return cell
             }
         }
+        
+        
         
         return UITableViewCell()
     }
@@ -363,7 +370,6 @@ extension FiltersViewController: UITableViewDelegate {
         }
         
         return cell
-    
     }
     
     // ------------------------------------------ reload a section

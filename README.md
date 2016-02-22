@@ -2,7 +2,7 @@
 
 Yelp is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
-Time spent: t14+f8+f5+s8 hours spent in total
+Time spent: t14+f8+f5+s8-s12 hours spent in total
 
 ## User Stories
 
