@@ -11,8 +11,6 @@ import MBProgressHUD
 
 class BusinessesViewController: UIViewController, UITableViewDataSource {
 
-    @IBOutlet weak var emptyViewLabel: UILabel!
-    @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     let ESTIMATE_ROW_HEIGHT: CGFloat = 120.0
@@ -24,6 +22,9 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
             self.setupCustomHUD()
         }
     }
+    
+    var dataError = false
+    var dataErrorMessage: String?
     var nomore = false
     var loading = false
     var filtering = false
@@ -63,10 +64,13 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
 
         print("response length", business.count)
         
+        self.dataError = false // Reset any errors
+        
         if business.count < RESPONSE_LIMIT {
             self.nomore = true
         }
         
+        // we have some results
         if business.count != 0 {
             if self.filtering {
                 // new set of results
@@ -83,22 +87,21 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
                 self.allBusinesses = biz
             }
         } else {
-            if self.allBusinesses != nil {
-                self.allBusinesses.removeAll()
-            }
+            // we have no results, show an error
+            self.dataError = true
+            self.nomore = false
             
             if let err = error {
-                self.emptyViewLabel.text = err.localizedDescription
+                self.dataErrorMessage = err.localizedDescription
             } else {
-                self.emptyViewLabel.text = "no results :("
+                self.dataErrorMessage = "No results found"
             }
-            
-            self.emptyView.hidden = false
         }
         
         self.filterResults(self.previousSearch)
         self.notLoading()
     }
+    
     
     // ------------------------------------------ perform the search
     
@@ -106,7 +109,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         if self.loading || self.nomore {
             return
         }
-        self.emptyView.hidden = true
         self.isLoading()
         self.state.doSearch(self.searchReturned)
     }
@@ -170,7 +172,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
 }
 
 // filtersViewController delegate methods
-
 extension BusinessesViewController: FiltersViewControllerDelegate {
     
     // ------------------------------------------ did update filters
@@ -184,7 +185,6 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
 }
 
 // tableview delegate methods
-
 extension BusinessesViewController: UITableViewDelegate {
     
     // ------------------------------------------ set up current table
@@ -195,36 +195,45 @@ extension BusinessesViewController: UITableViewDelegate {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = ESTIMATE_ROW_HEIGHT
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        self.emptyView.hidden = true
     }
     
     // ------------------------------------------ return business count
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.dataError {
+            return 1
+        }
+        
         if let businesses = self.businesses {
             return businesses.count
-        } else {
-            return 0
         }
+        
+        return 0
     }
     
     // ------------------------------------------ return business cell
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell", forIndexPath: indexPath) as! BusinessCell
-        cell.business = self.businesses[indexPath.row]
-        cell.row = indexPath.row
         
-        if indexPath.row >= self.allBusinesses.count-1 {
-            self.state.setResultOffset(self.allBusinesses.count)
-            self.searchWithFilters()
+        if self.dataError {
+            let cell = tableView.dequeueReusableCellWithIdentifier("ErrorCell", forIndexPath: indexPath) as! ErrorCell
+            cell.errorLabel.text = self.dataErrorMessage
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell", forIndexPath: indexPath) as! BusinessCell
+            cell.business = self.businesses[indexPath.row]
+            cell.row = indexPath.row
+            
+            if indexPath.row >= self.allBusinesses.count-1 {
+                self.state.setResultOffset(self.allBusinesses.count)
+                self.searchWithFilters()
+            }
+            return cell
         }
-        return cell
     }
 }
 
 // Search delegate
-
 extension BusinessesViewController: UISearchBarDelegate {
     
     // ------------------------------------------ add search to navbar

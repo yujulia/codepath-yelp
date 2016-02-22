@@ -47,7 +47,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 3. adding a prototype to custom views seems to break it, how to do this correctly
 4. how to auto layout center 2 things that are side by side
 5. how to auto layout nested views - really annoyings
-
+6. can you not auto size views based on content???
 
 ## Video Walkthrough
 

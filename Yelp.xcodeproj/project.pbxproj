@@ -25,6 +25,7 @@
 		5A6C76B01C7A7D0800CD8A5C /* RadioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C76AF1C7A7D0800CD8A5C /* RadioCell.swift */; };
 		5A6C76B41C7A807400CD8A5C /* CheckBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C76B31C7A807400CD8A5C /* CheckBoxCell.swift */; };
 		5A6C76B61C7A824500CD8A5C /* ExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C76B51C7A824500CD8A5C /* ExpandCell.swift */; };
+		5A6C76B81C7A985500CD8A5C /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C76B71C7A985500CD8A5C /* ErrorCell.swift */; };
 		5A9EB8231C76565E00D2A336 /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EB8221C76565E00D2A336 /* BusinessCell.swift */; };
 		5A9EB8271C768B0A00D2A336 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EB8261C768B0A00D2A336 /* FiltersViewController.swift */; };
 		5A9EB82A1C768D5C00D2A336 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EB8291C768D5C00D2A336 /* Const.swift */; };
@@ -66,6 +67,7 @@
 		5A6C76AF1C7A7D0800CD8A5C /* RadioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioCell.swift; sourceTree = "<group>"; };
 		5A6C76B31C7A807400CD8A5C /* CheckBoxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxCell.swift; sourceTree = "<group>"; };
 		5A6C76B51C7A824500CD8A5C /* ExpandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandCell.swift; sourceTree = "<group>"; };
+		5A6C76B71C7A985500CD8A5C /* ErrorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
 		5A9EB8221C76565E00D2A336 /* BusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
 		5A9EB8261C768B0A00D2A336 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		5A9EB8291C768D5C00D2A336 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				5A6C76AF1C7A7D0800CD8A5C /* RadioCell.swift */,
 				5A6C76B31C7A807400CD8A5C /* CheckBoxCell.swift */,
 				5A6C76B51C7A824500CD8A5C /* ExpandCell.swift */,
+				5A6C76B71C7A985500CD8A5C /* ErrorCell.swift */,
 			);
 			name = "Table Cell Views";
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				5A9EB82E1C76CB7500D2A336 /* SliderCell.swift in Sources */,
 				22AAAA991AEA0A9700A544AF /* Business.swift in Sources */,
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,
+				5A6C76B81C7A985500CD8A5C /* ErrorCell.swift in Sources */,
 				5A6C76B41C7A807400CD8A5C /* CheckBoxCell.swift in Sources */,
 				222D8A5B19CCF9F900D2DB53 /* AppDelegate.swift in Sources */,
 				5A62EE2D1C79972B00892E44 /* ImageLoader.swift in Sources */,
