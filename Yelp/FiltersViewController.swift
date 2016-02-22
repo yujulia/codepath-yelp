@@ -26,11 +26,13 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
-    weak var delegate: FiltersViewControllerDelegate?
-    weak var state: YelpState?
-    
     let SECTION_HEIGHT: CGFloat = 30.0
     let ESTIMATE_ROW_HEIGHT: CGFloat = 120.0
+    let CAT_ROW_LIMIT: Int = 5
+    
+    weak var delegate: FiltersViewControllerDelegate?
+    weak var state: YelpState?
+    var categoryExpanded = false
     
     // ------------------------------------------ set up nav bar colors
     
@@ -48,6 +50,11 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
         
         self.setupNavBar()
         self.setupTable()
+        
+        // if we have less than limit nothing to expand
+        if Const.Categories.count <= CAT_ROW_LIMIT {
+            self.categoryExpanded = true
+        }
     }
 
     // ------------------------------------------ cancel clicked
@@ -140,6 +147,20 @@ extension FiltersViewController: RadioCellDelegate {
     }
 }
 
+// LoadMoreCell delegae methods 
+extension FiltersViewController: LoadMoreCellDelegate {
+    
+    // ------------------------------------------ load more clicked
+    
+    func loadMoreCell(loadMoreCell: LoadMoreCell, didChangeValue expanded: Bool) {
+        let indexPath = self.tableView.indexPathForCell(loadMoreCell)!
+        
+        self.categoryExpanded = true
+        self.reloadSection(indexPath.section, animation: UITableViewRowAnimation.Bottom)
+    }
+    
+}
+
 // TableView delegate methods
 extension FiltersViewController: UITableViewDelegate {
     
@@ -170,7 +191,11 @@ extension FiltersViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
             case Const.Sections.Categories.rawValue:
-                return Const.Categories.count
+                if self.categoryExpanded {
+                    return Const.Categories.count
+                } else {
+                    return CAT_ROW_LIMIT + 1
+                }
             case Const.Sections.Sortby.rawValue:
                 let open = self.state?.getStatusForSection(section)
                 if open! {
@@ -202,7 +227,7 @@ extension FiltersViewController: UITableViewDelegate {
         let sectionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 280, height: 30))
         sectionLabel.frame.origin.x = 20
         sectionLabel.frame.origin.y = 0
-        sectionLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 14.0)
+        sectionLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18.0)
         sectionLabel.textColor = UIColor.whiteColor()
         
         sectionLabel.text = Const.FilterSections[section]
@@ -244,22 +269,27 @@ extension FiltersViewController: UITableViewDelegate {
     
     // ------------------------------------------ return a checkbox cell for categories
     
-    private func returnCategoriesCell(tableView: UITableView, indexPath: NSIndexPath) -> CheckBoxCell {
+    private func returnCategoriesCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("CheckBoxCell", forIndexPath: indexPath) as! CheckBoxCell
-        
-        // TODO -- operations on values should be through setter/getters not direct acccess
-        
-        cell.checkBoxLabel.text = Const.Categories[indexPath.row]["name"]
-
-        if self.state?.filterCategories[indexPath.row] != nil {
-            cell.checkBox.setToChecked()
+        if self.categoryExpanded || indexPath.row < CAT_ROW_LIMIT {
+            let cell = tableView.dequeueReusableCellWithIdentifier("CheckBoxCell", forIndexPath: indexPath) as! CheckBoxCell
+            cell.checkBoxLabel.text = Const.Categories[indexPath.row]["name"]
+            
+            if self.state?.filterCategories[indexPath.row] != nil {
+                cell.checkBox.setToChecked()
+            } else {
+                cell.checkBox.setToUnchecked()
+            }
+            cell.delegate = self
+            
+            return cell
         } else {
-            cell.checkBox.setToUnchecked()
+            let cell = tableView.dequeueReusableCellWithIdentifier("LoadMoreCell", forIndexPath: indexPath) as! LoadMoreCell
+            
+            cell.delegate = self
+            
+            return cell
         }
-        cell.delegate = self
-
-        return cell
     }
     
     // ------------------------------------------ return a checkbox cell for deals

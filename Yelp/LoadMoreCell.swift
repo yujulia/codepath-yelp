@@ -8,21 +8,22 @@
 
 import UIKit
 
+@objc protocol LoadMoreCellDelegate {
+    optional func loadMoreCell(loadMoreCell: LoadMoreCell, didChangeValue expanded: Bool)
+}
+
 class LoadMoreCell: UITableViewCell {
+    
+    weak var delegate: LoadMoreCellDelegate?
+    var expanded: Bool = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
     @IBAction func loadMoreClicked(sender: AnyObject) {
-        
-        // load more i guess
+        self.expanded = true
+        self.delegate?.loadMoreCell?(self, didChangeValue: self.expanded)
     }
 }

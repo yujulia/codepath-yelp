@@ -366,33 +366,35 @@
                                             <outlet property="sliderLabel" destination="z9a-KW-vlL" id="BNy-eS-ibR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadMoreCell" rowHeight="55" id="Rbr-tY-7I7" customClass="LoadMoreCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="154" width="320" height="55"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadMoreCell" rowHeight="40" id="Rbr-tY-7I7" customClass="LoadMoreCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="154" width="320" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rbr-tY-7I7" id="kZ1-vo-gL8">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="54.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="39.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxR-iA-9t6">
-                                                    <rect key="frame" x="121.5" y="10" width="77" height="34.5"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal" title="Load More"/>
+                                                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxR-iA-9t6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="39.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="nyL-6h-3vU"/>
+                                                    </constraints>
+                                                    <state key="normal" image="down"/>
                                                     <connections>
                                                         <action selector="loadMoreClicked:" destination="Rbr-tY-7I7" eventType="touchUpInside" id="UqM-t5-NAV"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="uxR-iA-9t6" firstAttribute="top" secondItem="kZ1-vo-gL8" secondAttribute="top" constant="10" id="DKy-8F-nal"/>
-                                                <constraint firstAttribute="bottom" secondItem="uxR-iA-9t6" secondAttribute="bottom" constant="10" id="ODd-ep-N4Z"/>
-                                                <constraint firstItem="uxR-iA-9t6" firstAttribute="centerY" secondItem="kZ1-vo-gL8" secondAttribute="centerY" id="cG9-Tm-Tzg"/>
-                                                <constraint firstItem="uxR-iA-9t6" firstAttribute="centerX" secondItem="kZ1-vo-gL8" secondAttribute="centerX" id="qgK-on-G0Q"/>
+                                                <constraint firstItem="uxR-iA-9t6" firstAttribute="leading" secondItem="kZ1-vo-gL8" secondAttribute="leading" id="4RC-Bw-u6B"/>
+                                                <constraint firstAttribute="bottom" secondItem="uxR-iA-9t6" secondAttribute="bottom" id="EmG-t1-YbR"/>
+                                                <constraint firstAttribute="trailing" secondItem="uxR-iA-9t6" secondAttribute="trailing" id="G3n-DM-otq"/>
+                                                <constraint firstItem="uxR-iA-9t6" firstAttribute="top" secondItem="kZ1-vo-gL8" secondAttribute="top" id="Ttu-iK-MJv"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.67843137249999996" green="0.0" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.93413628108130253" green="0.9329391718126786" blue="0.95384968891794875" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RadioCell" rowHeight="60" id="1d8-ET-G7M" customClass="RadioCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="209" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="194" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1d8-ET-G7M" id="2fZ-cH-obZ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
@@ -431,7 +433,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ExpandCell" rowHeight="60" id="OtV-vE-7zS" customClass="ExpandCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="269" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="254" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OtV-vE-7zS" id="vkN-6X-Owg">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
@@ -472,7 +474,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CheckBoxCell" rowHeight="60" id="E87-NI-uKV" customClass="CheckBoxCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="329" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="314" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E87-NI-uKV" id="imz-iY-izS">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
@@ -583,6 +585,7 @@
         <image name="alert" width="48" height="48"/>
         <image name="arrow-right" width="48" height="48"/>
         <image name="cancel" width="16" height="16"/>
+        <image name="down" width="20" height="20"/>
         <image name="filter" width="16" height="16"/>
         <image name="search" width="16" height="16"/>
     </resources>
