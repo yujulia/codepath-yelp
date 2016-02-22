@@ -66,25 +66,25 @@ class FiltersViewController: UIViewController, UITableViewDataSource {
     }
 }
 
-// SwitchCell delegate methods
+// Checkbox delegate
 
-extension FiltersViewController: SwitchCellDelegate {
+extension FiltersViewController: CheckBoxCellDelegate {
     
     // ------------------------------------------ switch cell value changed
     
-    func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
-        let indexPath = self.tableView.indexPathForCell(switchCell)!
+    func checkBoxCell(checkBoxCell: CheckBoxCell, didChangeValue checked: Bool) {
+        let indexPath = self.tableView.indexPathForCell(checkBoxCell)!
         
         switch indexPath.section {
             
-            case Const.Sections.Deals.rawValue:
-                self.state?.setFilterDeals(value)
+        case Const.Sections.Deals.rawValue:
+            self.state?.setFilterDeals(checked)
             
-            case Const.Sections.Categories.rawValue:
-                self.state?.toggleFilterCategory(indexPath.row, on: value)
+        case Const.Sections.Categories.rawValue:
+            self.state?.toggleFilterCategory(indexPath.row, on: checked)
             
-            default:
-                print("a switch cell value changed thats should not exist")
+        default:
+            print("a check cell value changed thats should not exist")
         }
     }
 }
@@ -224,11 +224,13 @@ extension FiltersViewController: UITableViewDelegate {
     
     // ------------------------------------------ return a switch cell for categories
     
-    private func returnCategoriesCell(tableView: UITableView, indexPath: NSIndexPath) -> SwitchCell {
+    private func returnCategoriesCell(tableView: UITableView, indexPath: NSIndexPath) -> CheckBoxCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("CheckBoxCell", forIndexPath: indexPath) as! CheckBoxCell
         
-        cell.switchLabel.text = Const.Categories[indexPath.row]["name"]
+        // TODO -- operations on values should be through setter/getters not direct acccess
+        
+        cell.checkBoxLabel.text = Const.Categories[indexPath.row]["name"]
 
         if self.state?.filterCategories[indexPath.row] != nil {
             cell.checkBox.setToChecked()
@@ -242,11 +244,11 @@ extension FiltersViewController: UITableViewDelegate {
     
     // ------------------------------------------ return a switch cell for deals
     
-    private func returnDealsCell(tableView: UITableView, indexPath: NSIndexPath) -> SwitchCell {
+    private func returnDealsCell(tableView: UITableView, indexPath: NSIndexPath) -> CheckBoxCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("CheckBoxCell", forIndexPath: indexPath) as! CheckBoxCell
 
-        cell.switchLabel.text = "Offering a Deal"
+        cell.checkBoxLabel.text = "Offering a Deal"
         
         if self.state?.getFilterDeals() != nil {
             cell.checkBox.setToChecked()
@@ -265,7 +267,7 @@ extension FiltersViewController: UITableViewDelegate {
         
         if let open = self.state?.getOpen(indexPath.section) {
             if open {
-                let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("CheckBoxCell", forIndexPath: indexPath) as! CheckBoxCell
                 cell.delegate = self
                 return cell
             } else {

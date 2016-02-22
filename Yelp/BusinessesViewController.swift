@@ -11,6 +11,7 @@ import MBProgressHUD
 
 class BusinessesViewController: UIViewController, UITableViewDataSource {
 
+    @IBOutlet weak var emptyViewLabel: UILabel!
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -82,7 +83,16 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
                 self.allBusinesses = biz
             }
         } else {
-            self.allBusinesses.removeAll()
+            if self.allBusinesses != nil {
+                self.allBusinesses.removeAll()
+            }
+            
+            if let err = error {
+                self.emptyViewLabel.text = err.localizedDescription
+            } else {
+                self.emptyViewLabel.text = "no results :("
+            }
+            
             self.emptyView.hidden = false
         }
         

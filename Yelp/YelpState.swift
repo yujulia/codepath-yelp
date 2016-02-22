@@ -112,7 +112,11 @@ class YelpState: NSObject {
             distance: distance,
             offset: offset
             ) { (business, error) -> Void in
-                callback(business, error: error)
+                if let biz = business {
+                    callback(biz, error: error)
+                } else {
+                    callback([Business](), error: error)
+                }
         }
     }
     
